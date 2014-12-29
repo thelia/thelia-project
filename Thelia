@@ -1,0 +1,4 @@
+<?php
+
+$bootstrapFile = __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php";
+require "bin/Thelia";

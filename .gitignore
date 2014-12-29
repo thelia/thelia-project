@@ -1,0 +1,44 @@
+/vendor
+/.idea
+/bin
+/log/*
+/web/assets
+/cache/*
+!/cache/.gitkeep
+!/log/.gitkeep
+!/cache/.htaccess
+
+# Thelia default templates
+/templates/frontOffice/default
+/templates/backOffice/default
+/templates/email/default
+/templates/pdf/default
+
+# Thelia config
+/local/config
+/local/setup
+
+# Thelia default modules
+Cheque
+/local/modules/HookCurrency
+/local/modules/HookProductsNew
+/local/modules/Tinymce
+/local/modules/Colissimo
+/local/modules/HookCustomer
+/local/modules/HookProductsOffer
+/local/modules/VirtualProductControl
+/local/modules/Front
+/local/modules/HookLang
+/local/modules/HookSearch
+/local/modules/VirtualProductDelivery
+/local/modules/HookAnalytics
+/local/modules/HookLinks
+/local/modules/HookSocial
+/local/modules/HookCart
+/local/modules/HookNavigation
+/local/modules/TheliaDebugBar
+/local/modules/HookContact
+/local/modules/HookNewsletter
+/local/modules/TheliaSmarty
+
+### Please add your dependancies here

@@ -1,0 +1,3097 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "a8495bda79a31c2b42d5f89125d6b43e",
+    "packages": [
+        {
+            "name": "doctrine/cache",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/cache.git",
+                "reference": "e16d7adf45664a50fa86f515b6d5e7f670130449"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/e16d7adf45664a50fa86f515b6d5e7f670130449",
+                "reference": "e16d7adf45664a50fa86f515b6d5e7f670130449",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "conflict": {
+                "doctrine/common": ">2.2,<2.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7",
+                "satooshi/php-coveralls": "~0.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Cache\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com",
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": "http://www.instaclick.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "https://github.com/schmittjoh",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Caching library offering an object-oriented API for many cache backends",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "cache",
+                "caching"
+            ],
+            "time": "2013-10-25 19:04:14"
+        },
+        {
+            "name": "ensepar/html2pdf",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/OwlyCode/html2pdf.git",
+                "reference": "b53a27430cc35b29bbe2faaa55ed4a7d5c156cd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OwlyCode/html2pdf/zipball/b53a27430cc35b29bbe2faaa55ed4a7d5c156cd3",
+                "reference": "b53a27430cc35b29bbe2faaa55ed4a7d5c156cd3",
+                "shasum": ""
+            },
+            "require": {
+                "ensepar/tcpdf": "5.0.003",
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTML2PDF": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Spipu",
+                    "homepage": "http://sourceforge.net/users/spipu",
+                    "role": "Developer"
+                },
+                {
+                    "name": "OwlyCode",
+                    "homepage": "http://www.github.com/OwlyCode",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Unofficial fork of 'html2pdf' with Composer support. (Fixed composer dependency problem)",
+            "homepage": "https://github.com/jwronsky/html2pdf",
+            "keywords": [
+                "html",
+                "html2pdf",
+                "pdf"
+            ],
+            "time": "2013-09-13 12:23:43"
+        },
+        {
+            "name": "ensepar/tcpdf",
+            "version": "5.0.003",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/OwlyCode/tcpdf.git",
+                "reference": "ae578409e9454fdf6c794cce6f063b0c95bfa518"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OwlyCode/tcpdf/zipball/ae578409e9454fdf6c794cce6f063b0c95bfa518",
+                "reference": "ae578409e9454fdf6c794cce6f063b0c95bfa518",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "fonts",
+                    "config/lang",
+                    "config",
+                    "2dbarcodes.php",
+                    "barcodes.php",
+                    "htmlcolors.php",
+                    "qrcode.php",
+                    "tcpdf.php",
+                    "unicode_data.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Asuni",
+                    "email": "info@tecnick.com",
+                    "homepage": "http://nicolaasuni.tecnick.com"
+                },
+                {
+                    "name": "Tristan Maindron",
+                    "email": "tmaindron@gmail.com",
+                    "homepage": "http://www.github.com/OwlyCode"
+                }
+            ],
+            "description": "TCPDF is a PHP class for generating PDF documents.",
+            "homepage": "http://www.tcpdf.org/",
+            "keywords": [
+                "TCPDF",
+                "pdf"
+            ],
+            "time": "2013-09-12 17:00:40"
+        },
+        {
+            "name": "imagine/imagine",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avalanche123/Imagine.git",
+                "reference": "f64ec666baaa800edcbf237db41121a569230709"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/f64ec666baaa800edcbf237db41121a569230709",
+                "reference": "f64ec666baaa800edcbf237db41121a569230709",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation",
+                "ext-gmagick": "to use the Gmagick implementation",
+                "ext-imagick": "to use the Imagick implementation"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bulat Shakirzyanov",
+                    "email": "mallluhuct@gmail.com",
+                    "homepage": "http://avalanche123.com"
+                }
+            ],
+            "description": "Image processing for PHP 5.3",
+            "homepage": "http://imagine.readthedocs.org/",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing"
+            ],
+            "time": "2013-07-10 17:25:36"
+        },
+        {
+            "name": "ircmaxell/password-compat",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/password_compat.git",
+                "reference": "5c5cde8822a69545767f7c7f3058cb15ff84614c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/password_compat/zipball/5c5cde8822a69545767f7c7f3058cb15ff84614c",
+                "reference": "5c5cde8822a69545767f7c7f3058cb15ff84614c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/password.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@php.net",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A compatibility library for the proposed simplified password hashing algorithm: https://wiki.php.net/rfc/password_hash",
+            "homepage": "https://github.com/ircmaxell/password_compat",
+            "keywords": [
+                "hashing",
+                "password"
+            ],
+            "time": "2014-11-20 16:49:30"
+        },
+        {
+            "name": "kriswallsmith/assetic",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/assetic.git",
+                "reference": "b20efe38845d20458702f97f3ff625d80805897b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/b20efe38845d20458702f97f3ff625d80805897b",
+                "reference": "b20efe38845d20458702f97f3ff625d80805897b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1",
+                "symfony/process": "~2.1"
+            },
+            "require-dev": {
+                "cssmin/cssmin": "*",
+                "joliclic/javascript-packer": "*",
+                "kamicane/packager": "*",
+                "leafo/lessphp": "*",
+                "leafo/scssphp": "*",
+                "leafo/scssphp-compass": "*",
+                "mrclay/minify": "*",
+                "patchwork/jsqueeze": "~1.0",
+                "phpunit/phpunit": "~4",
+                "psr/log": "~1.0",
+                "ptachoire/cssembed": "*",
+                "twig/twig": "~1.6"
+            },
+            "suggest": {
+                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
+                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
+                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
+                "patchwork/jsqueeze": "Assetic provides the integration with the JSqueeze JavaScript compressor",
+                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
+                "twig/twig": "Assetic provides the integration with the Twig templating engine"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Assetic": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asset Management for PHP",
+            "homepage": "https://github.com/kriswallsmith/assetic",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ],
+            "time": "2014-12-12 05:04:05"
+        },
+        {
+            "name": "leafo/lessphp",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leafo/lessphp.git",
+                "reference": "51f3f06f0fe78a722dabfd14578444bdd078d9de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leafo/lessphp/zipball/51f3f06f0fe78a722dabfd14578444bdd078d9de",
+                "reference": "51f3f06f0fe78a722dabfd14578444bdd078d9de",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "lessc.inc.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Leaf Corcoran",
+                    "email": "leafot@gmail.com",
+                    "homepage": "http://leafo.net"
+                }
+            ],
+            "description": "lessphp is a compiler for LESS written in PHP.",
+            "homepage": "http://leafo.net/lessphp/",
+            "time": "2013-08-09 17:09:19"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "a52fea02a8ad9e9b6c385b2ae44411306bd2657f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/a52fea02a8ad9e9b6c385b2ae44411306bd2657f",
+                "reference": "a52fea02a8ad9e9b6c385b2ae44411306bd2657f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "~1.0",
+                "symfony/var-dumper": "~2.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "DebugBar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug"
+            ],
+            "time": "2014-12-17 09:51:25"
+        },
+        {
+            "name": "propel/propel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/propelorm/Propel2.git",
+                "reference": "793aea6b762d9a72b083bfc49c74c574f67650c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/40d0bab06c738e6a5a7c5319fb5a7c549f5e84b1",
+                "reference": "793aea6b762d9a72b083bfc49c74c574f67650c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "psr/log": "~1.0",
+                "symfony/config": "~2.3",
+                "symfony/console": "~2.3",
+                "symfony/filesystem": "~2.3",
+                "symfony/finder": "~2.3",
+                "symfony/validator": "~2.3",
+                "symfony/yaml": "~2.3"
+            },
+            "require-dev": {
+                "behat/behat": "~2.4",
+                "monolog/monolog": "~1.3",
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "monolog/monolog": "The recommended logging library to use with Propel."
+            },
+            "bin": [
+                "bin/propel"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Propel": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com"
+                }
+            ],
+            "description": "Propel2 is an open-source Object-Relational Mapping (ORM) for PHP 5.4",
+            "homepage": "http://www.propelorm.org/",
+            "keywords": [
+                "Active Record",
+                "orm",
+                "persistence"
+            ],
+            "time": "2014-01-08 10:53:39"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2012-12-21 11:40:51"
+        },
+        {
+            "name": "ptachoire/cssembed",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krichprollsch/phpCssEmbed.git",
+                "reference": "406c6d5b846cafa9186f9944a6210d0e6fed154b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krichprollsch/phpCssEmbed/zipball/406c6d5b846cafa9186f9944a6210d0e6fed154b",
+                "reference": "406c6d5b846cafa9186f9944a6210d0e6fed154b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CssEmbed": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pierre Tachoire",
+                    "email": "pierre.tachoire@gmail.com"
+                }
+            ],
+            "description": "Css url embed library.",
+            "homepage": "https://github.com/krichprollsch/phpCssEmbed",
+            "keywords": [
+                "css",
+                "url"
+            ],
+            "time": "2013-07-22 20:01:48"
+        },
+        {
+            "name": "simplepie/simplepie",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplepie/simplepie.git",
+                "reference": "ce53709778bc1e2e4deda1651b66e5081398d5cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplepie/simplepie/zipball/ce53709778bc1e2e4deda1651b66e5081398d5cc",
+                "reference": "ce53709778bc1e2e4deda1651b66e5081398d5cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SimplePie": "library"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Parman",
+                    "homepage": "http://ryanparman.com/",
+                    "role": "Creator, alumnus developer"
+                },
+                {
+                    "name": "Geoffrey Sneddon",
+                    "homepage": "http://gsnedders.com/",
+                    "role": "Alumnus developer"
+                },
+                {
+                    "name": "Ryan McCue",
+                    "email": "me@ryanmccue.info",
+                    "homepage": "http://ryanmccue.info/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple Atom/RSS parsing library for PHP",
+            "homepage": "http://simplepie.org/",
+            "keywords": [
+                "atom",
+                "feeds",
+                "rss"
+            ],
+            "time": "2012-10-30 17:54:03"
+        },
+        {
+            "name": "smarty/smarty",
+            "version": "v3.1.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smarty-php/smarty.git",
+                "reference": "be0fd3186ceec57e4da9a44031f517c06ae2418a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/be0fd3186ceec57e4da9a44031f517c06ae2418a",
+                "reference": "be0fd3186ceec57e4da9a44031f517c06ae2418a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "libs/Smarty.class.php",
+                    "libs/SmartyBC.class.php",
+                    "libs/sysplugins/smarty_security.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Monte Ohrt",
+                    "email": "monte@ohrt.com"
+                },
+                {
+                    "name": "Uwe Tews",
+                    "email": "uwe.tews@googlemail.com"
+                },
+                {
+                    "name": "Rodney Rehm",
+                    "email": "rodney.rehm@medialize.de"
+                }
+            ],
+            "description": "Smarty - the compiling PHP template engine",
+            "homepage": "http://www.smarty.net",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2014-10-31 01:29:14"
+        },
+        {
+            "name": "stack/builder",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stackphp/builder.git",
+                "reference": "c1f8a4693b55c563405024f708a76ef576c3b276"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stackphp/builder/zipball/c1f8a4693b55c563405024f708a76ef576c3b276",
+                "reference": "c1f8a4693b55c563405024f708a76ef576c3b276",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/http-foundation": "~2.1",
+                "symfony/http-kernel": "~2.1"
+            },
+            "require-dev": {
+                "silex/silex": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Stack": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                }
+            ],
+            "description": "Builder for stack middlewares based on HttpKernelInterface.",
+            "keywords": [
+                "stack"
+            ],
+            "time": "2014-11-23 20:37:11"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v5.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "e02f71a35436af4bd58a1bd90116089e632e29e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/e02f71a35436af4bd58a1bd90116089e632e29e1",
+                "reference": "e02f71a35436af4bd58a1bd90116089e632e29e1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.2-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "mail",
+                "mailer"
+            ],
+            "time": "2014-09-20 07:17:36"
+        },
+        {
+            "name": "symfony-cmf/routing",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony-cmf/Routing.git",
+                "reference": "8e87981d72c6930a27585dcd3119f3199f6cb2a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/8e87981d72c6930a27585dcd3119f3199f6cb2a6",
+                "reference": "8e87981d72c6930a27585dcd3119f3199f6cb2a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "psr/log": "~1.0",
+                "symfony/http-kernel": "~2.2",
+                "symfony/routing": "~2.2"
+            },
+            "require-dev": {
+                "symfony/config": "~2.2",
+                "symfony/dependency-injection": "~2.0@stable",
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "suggest": {
+                "symfony/event-dispatcher": "DynamicRouter can optionally trigger an event at the start of matching. Minimal version ~2.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Cmf\\Component\\Routing\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony CMF Community",
+                    "homepage": "https://github.com/symfony-cmf/Routing/contributors"
+                }
+            ],
+            "description": "Extends the Symfony2 routing component for dynamic routes and chaining several routers",
+            "homepage": "http://cmf.symfony.com",
+            "keywords": [
+                "database",
+                "routing"
+            ],
+            "time": "2014-10-20 20:55:17"
+        },
+        {
+            "name": "symfony/browser-kit",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/BrowserKit",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/BrowserKit.git",
+                "reference": "fb4605e5db7881c76df834a6a5946a2b6eb392bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/fb4605e5db7881c76df834a6a5946a2b6eb392bf",
+                "reference": "fb4605e5db7881c76df834a6a5946a2b6eb392bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/dom-crawler": "~2.0"
+            },
+            "require-dev": {
+                "symfony/css-selector": "~2.0",
+                "symfony/process": "~2.0"
+            },
+            "suggest": {
+                "symfony/process": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\BrowserKit\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony BrowserKit Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/class-loader",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/ClassLoader",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/ClassLoader.git",
+                "reference": "307598c29193f0eee4744f4adcae62ebaa97a9d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/ClassLoader/zipball/307598c29193f0eee4744f4adcae62ebaa97a9d2",
+                "reference": "307598c29193f0eee4744f4adcae62ebaa97a9d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/finder": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\ClassLoader\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony ClassLoader Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-11-30 13:33:44"
+        },
+        {
+            "name": "symfony/config",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Config",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Config.git",
+                "reference": "3272450452cfc1d9b9f92ae9d2a05c0c83f63731"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/3272450452cfc1d9b9f92ae9d2a05c0c83f63731",
+                "reference": "3272450452cfc1d9b9f92ae9d2a05c0c83f63731",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/filesystem": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Config\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Config Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "a50c64cefa27215d5f3260d2f26b781c66b350d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/a50c64cefa27215d5f3260d2f26b781c66b350d6",
+                "reference": "a50c64cefa27215d5f3260d2f26b781c66b350d6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "suggest": {
+                "symfony/event-dispatcher": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/debug",
+            "version": "v2.6.1",
+            "target-dir": "Symfony/Component/Debug",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Debug.git",
+                "reference": "08b529b4c0aa3e746d187fe2a63f08cb955a3566"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Debug/zipball/08b529b4c0aa3e746d187fe2a63f08cb955a3566",
+                "reference": "08b529b4c0aa3e746d187fe2a63f08cb955a3566",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "symfony/http-foundation": "~2.1",
+                "symfony/http-kernel": "~2.1"
+            },
+            "suggest": {
+                "symfony/http-foundation": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Debug\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Debug Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 20:19:20"
+        },
+        {
+            "name": "symfony/dependency-injection",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/DependencyInjection",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/DependencyInjection.git",
+                "reference": "f165ee0e0b3522b5158def22622b2f171a8ecd59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/f165ee0e0b3522b5158def22622b2f171a8ecd59",
+                "reference": "f165ee0e0b3522b5158def22622b2f171a8ecd59",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/config": "~2.2",
+                "symfony/yaml": "~2.0"
+            },
+            "suggest": {
+                "symfony/config": "",
+                "symfony/proxy-manager-bridge": "Generate service proxies to lazy load them",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\DependencyInjection\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony DependencyInjection Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/dom-crawler",
+            "version": "v2.6.1",
+            "target-dir": "Symfony/Component/DomCrawler",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/DomCrawler.git",
+                "reference": "300d449f79d74ac62b06edd05214e8dd2e635840"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/300d449f79d74ac62b06edd05214e8dd2e635840",
+                "reference": "300d449f79d74ac62b06edd05214e8dd2e635840",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/css-selector": "~2.0"
+            },
+            "suggest": {
+                "symfony/css-selector": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\DomCrawler\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony DomCrawler Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 20:19:20"
+        },
+        {
+            "name": "symfony/event-dispatcher",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/EventDispatcher",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/EventDispatcher.git",
+                "reference": "36a40695d94e948d7a85347db0b12ba446c400fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/36a40695d94e948d7a85347db0b12ba446c400fa",
+                "reference": "36a40695d94e948d7a85347db0b12ba446c400fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/dependency-injection": "~2.0"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony EventDispatcher Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-11-30 13:33:44"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Filesystem",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Filesystem.git",
+                "reference": "9cfe8b5cefb4dbe90148f38bcd0683c6804009a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/9cfe8b5cefb4dbe90148f38bcd0683c6804009a0",
+                "reference": "9cfe8b5cefb4dbe90148f38bcd0683c6804009a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-11-30 13:33:44"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Finder",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Finder.git",
+                "reference": "d533aea3400dc463c4d0ba9c3ecf40bd80d49dbd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/d533aea3400dc463c4d0ba9c3ecf40bd80d49dbd",
+                "reference": "d533aea3400dc463c4d0ba9c3ecf40bd80d49dbd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Finder\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/form",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Form",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Form.git",
+                "reference": "46328e7445092478a02c1512b15e0b556d4228ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Form/zipball/46328e7445092478a02c1512b15e0b556d4228ac",
+                "reference": "46328e7445092478a02c1512b15e0b556d4228ac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/intl": "~2.3",
+                "symfony/options-resolver": "~2.1",
+                "symfony/property-access": "~2.3"
+            },
+            "require-dev": {
+                "doctrine/collections": "~1.0",
+                "symfony/http-foundation": "~2.2",
+                "symfony/validator": "~2.3.0"
+            },
+            "suggest": {
+                "symfony/http-foundation": "",
+                "symfony/validator": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Form\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Form Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/http-foundation",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/HttpFoundation",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/HttpFoundation.git",
+                "reference": "94935ec4f9ad28d554e82c6e1fa11615a031108d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/94935ec4f9ad28d554e82c6e1fa11615a031108d",
+                "reference": "94935ec4f9ad28d554e82c6e1fa11615a031108d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\HttpFoundation\\": ""
+                },
+                "classmap": [
+                    "Symfony/Component/HttpFoundation/Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony HttpFoundation Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/http-kernel",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/HttpKernel",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/HttpKernel.git",
+                "reference": "495206899d7bf2767ee6ef3133ff5e63b880fde2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/495206899d7bf2767ee6ef3133ff5e63b880fde2",
+                "reference": "495206899d7bf2767ee6ef3133ff5e63b880fde2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "psr/log": "~1.0",
+                "symfony/debug": "~2.3",
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/http-foundation": "~2.2"
+            },
+            "require-dev": {
+                "symfony/browser-kit": "~2.2",
+                "symfony/class-loader": "~2.1",
+                "symfony/config": "~2.0",
+                "symfony/console": "~2.2",
+                "symfony/dependency-injection": "~2.0",
+                "symfony/finder": "~2.0",
+                "symfony/process": "~2.0",
+                "symfony/routing": "~2.2",
+                "symfony/stopwatch": "~2.2",
+                "symfony/templating": "~2.2"
+            },
+            "suggest": {
+                "symfony/browser-kit": "",
+                "symfony/class-loader": "",
+                "symfony/config": "",
+                "symfony/console": "",
+                "symfony/dependency-injection": "",
+                "symfony/finder": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\HttpKernel\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony HttpKernel Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-03 12:04:45"
+        },
+        {
+            "name": "symfony/icu",
+            "version": "v1.0.0",
+            "target-dir": "Symfony/Component/Icu",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Icu.git",
+                "reference": "cac3fdfb111adbe590155f491594636d45129783"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Icu/zipball/cac3fdfb111adbe590155f491594636d45129783",
+                "reference": "cac3fdfb111adbe590155f491594636d45129783",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/intl": "~2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Icu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "Contains an excerpt of the ICU data and classes to load it.",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "icu",
+                "intl"
+            ],
+            "time": "2013-06-03 18:32:07"
+        },
+        {
+            "name": "symfony/intl",
+            "version": "v2.6.1",
+            "target-dir": "Symfony/Component/Intl",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Intl.git",
+                "reference": "807b24a520d2baae8828874ba87e07ab149424ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Intl/zipball/807b24a520d2baae8828874ba87e07ab149424ed",
+                "reference": "807b24a520d2baae8828874ba87e07ab149424ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/filesystem": ">=2.1"
+            },
+            "suggest": {
+                "ext-intl": "to use the component with locales other than \"en\""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Intl\\": ""
+                },
+                "classmap": [
+                    "Symfony/Component/Intl/Resources/stubs"
+                ],
+                "files": [
+                    "Symfony/Component/Intl/Resources/stubs/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                },
+                {
+                    "name": "Eriksen Costa",
+                    "email": "eriksen.costa@infranology.com.br"
+                },
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch"
+                }
+            ],
+            "description": "A PHP replacement layer for the C intl extension that includes additional data from the ICU library.",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "i18n",
+                "icu",
+                "internationalization",
+                "intl",
+                "l10n",
+                "localization"
+            ],
+            "time": "2014-12-02 20:19:20"
+        },
+        {
+            "name": "symfony/options-resolver",
+            "version": "v2.5.8",
+            "target-dir": "Symfony/Component/OptionsResolver",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/OptionsResolver.git",
+                "reference": "55083336af2c3cf07aca947a5d2c83fd02db17a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/OptionsResolver/zipball/55083336af2c3cf07aca947a5d2c83fd02db17a0",
+                "reference": "55083336af2c3cf07aca947a5d2c83fd02db17a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "config",
+                "configuration",
+                "options"
+            ],
+            "time": "2014-12-02 20:15:53"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v2.6.1",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "bf0c9bd625f13b0b0bbe39919225cf145dfb935a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/bf0c9bd625f13b0b0bbe39919225cf145dfb935a",
+                "reference": "bf0c9bd625f13b0b0bbe39919225cf145dfb935a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 20:19:20"
+        },
+        {
+            "name": "symfony/property-access",
+            "version": "v2.6.1",
+            "target-dir": "Symfony/Component/PropertyAccess",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/PropertyAccess.git",
+                "reference": "da9d53d17e686e5a8c84e310a68b35e783fcebc0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/PropertyAccess/zipball/da9d53d17e686e5a8c84e310a68b35e783fcebc0",
+                "reference": "da9d53d17e686e5a8c84e310a68b35e783fcebc0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\PropertyAccess\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony PropertyAccess Component",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "access",
+                "array",
+                "extraction",
+                "index",
+                "injection",
+                "object",
+                "property",
+                "property path",
+                "reflection"
+            ],
+            "time": "2014-12-02 20:19:20"
+        },
+        {
+            "name": "symfony/routing",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Routing",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Routing.git",
+                "reference": "7aa060d6fc47af0417628b0c39116a8f2599aba1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Routing/zipball/7aa060d6fc47af0417628b0c39116a8f2599aba1",
+                "reference": "7aa060d6fc47af0417628b0c39116a8f2599aba1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "doctrine/common": "~2.2",
+                "psr/log": "~1.0",
+                "symfony/config": "~2.2",
+                "symfony/http-foundation": "~2.3",
+                "symfony/yaml": "~2.0"
+            },
+            "suggest": {
+                "doctrine/common": "",
+                "symfony/config": "",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Routing\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Routing Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/serializer",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Serializer",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Serializer.git",
+                "reference": "2e05093b4ff1fca25db38a5b04fcf684336a19a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Serializer/zipball/2e05093b4ff1fca25db38a5b04fcf684336a19a1",
+                "reference": "2e05093b4ff1fca25db38a5b04fcf684336a19a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Serializer\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Serializer Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-11-30 13:33:44"
+        },
+        {
+            "name": "symfony/translation",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Translation",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Translation.git",
+                "reference": "dc812ef0f006093b32442a77ff5b46107f5cb121"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/dc812ef0f006093b32442a77ff5b46107f5cb121",
+                "reference": "dc812ef0f006093b32442a77ff5b46107f5cb121",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/config": "~2.0",
+                "symfony/intl": "~2.3",
+                "symfony/yaml": "~2.2"
+            },
+            "suggest": {
+                "symfony/config": "",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Translation\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Translation Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-11-30 13:33:44"
+        },
+        {
+            "name": "symfony/validator",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Validator",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Validator.git",
+                "reference": "21aba61e348bbab121799cb0a9dd1d784d836d5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Validator/zipball/21aba61e348bbab121799cb0a9dd1d784d836d5f",
+                "reference": "21aba61e348bbab121799cb0a9dd1d784d836d5f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/translation": "~2.0"
+            },
+            "require-dev": {
+                "symfony/config": "~2.2",
+                "symfony/http-foundation": "~2.1",
+                "symfony/intl": "~2.3",
+                "symfony/yaml": "~2.0"
+            },
+            "suggest": {
+                "doctrine/common": "",
+                "symfony/config": "",
+                "symfony/http-foundation": "",
+                "symfony/intl": "",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Validator\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Validator Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "symfony/var-dumper",
+            "version": "v2.6.1",
+            "target-dir": "Symfony/Component/VarDumper",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "8f3ee04faeca3b8418229b2efbfc8b2b8625b8aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/8f3ee04faeca3b8418229b2efbfc8b2b8625b8aa",
+                "reference": "8f3ee04faeca3b8418229b2efbfc8b2b8625b8aa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-symfony_debug": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-0": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                }
+            ],
+            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "homepage": "http://symfony.com",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
+            "time": "2014-11-18 10:08:24"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.3.23",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "12b26e23e220b65aa9eaa1b2ff1c923423d206b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/12b26e23e220b65aa9eaa1b2ff1c923423d206b9",
+                "reference": "12b26e23e220b65aa9eaa1b2ff1c923423d206b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 19:42:47"
+        },
+        {
+            "name": "thelia/backoffice-default-template",
+            "version": "2.1.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-templates/back.git",
+                "reference": "93efafd6f74113157e12af447035177d78dfc15f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-templates/back/zipball/93efafd6f74113157e12af447035177d78dfc15f",
+                "reference": "93efafd6f74113157e12af447035177d78dfc15f",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-backoffice-template",
+            "extra": {
+                "installer-name": "default"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/cheque-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/Cheque.git",
+                "reference": "b348e1db3e4e55fc9bf397feb187e9745e89d502"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/Cheque/zipball/b348e1db3e4e55fc9bf397feb187e9745e89d502",
+                "reference": "b348e1db3e4e55fc9bf397feb187e9745e89d502",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "Cheque"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/colissimo-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/Colissimo.git",
+                "reference": "8e465822e3b1d7345e389e70f1ce58d26f123034"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/Colissimo/zipball/8e465822e3b1d7345e389e70f1ce58d26f123034",
+                "reference": "8e465822e3b1d7345e389e70f1ce58d26f123034",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "Colissimo"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/config",
+            "version": "2.1.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia/config.git",
+                "reference": "aaaaa0cd2db4f13f82cb5281309977a1cf13fefd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia/config/zipball/aaaaa0cd2db4f13f82cb5281309977a1cf13fefd",
+                "reference": "aaaaa0cd2db4f13f82cb5281309977a1cf13fefd",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-local",
+            "extra": {
+                "installer-name": "config"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2014-12-24 10:21:06"
+        },
+        {
+            "name": "thelia/core",
+            "version": "2.1.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia/core.git",
+                "reference": "5df52dadab4eeb51cdc258294989d0b8f1b79fc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia/core/zipball/5df52dadab4eeb51cdc258294989d0b8f1b79fc1",
+                "reference": "5df52dadab4eeb51cdc258294989d0b8f1b79fc1",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/cache": "v1.3.0",
+                "ensepar/html2pdf": "1.0.1",
+                "imagine/imagine": "v0.5.0",
+                "ircmaxell/password-compat": "1.0.*",
+                "kriswallsmith/assetic": "1.2.*@dev",
+                "leafo/lessphp": "0.4.*",
+                "maximebf/debugbar": "dev-master",
+                "php": ">=5.4",
+                "propel/propel": "dev-master#793aea6b762d9a72b083bfc49c74c574f67650c8",
+                "psr/log": "1.0",
+                "ptachoire/cssembed": "1.0.*",
+                "simplepie/simplepie": "1.3.*",
+                "smarty/smarty": "v3.1.19",
+                "stack/builder": "1.0.*",
+                "swiftmailer/swiftmailer": "5.2.*",
+                "symfony-cmf/routing": "~1.0",
+                "symfony/browser-kit": "2.3.*",
+                "symfony/class-loader": "2.3.*",
+                "symfony/config": "2.3.*",
+                "symfony/console": "2.3.*",
+                "symfony/dependency-injection": "2.3.*",
+                "symfony/event-dispatcher": "2.3.*",
+                "symfony/filesystem": "2.3.*",
+                "symfony/finder": "2.3.*",
+                "symfony/form": "2.3.*",
+                "symfony/http-foundation": "2.3.*",
+                "symfony/http-kernel": "2.3.*",
+                "symfony/icu": "1.0",
+                "symfony/options-resolver": "2.5.*",
+                "symfony/routing": "2.3.*",
+                "symfony/serializer": "2.3.*",
+                "symfony/translation": "2.3.*",
+                "symfony/validator": "2.3.*",
+                "symfony/yaml": "2.3.*",
+                "thelia/currency-converter": "~1.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "1.5.x-dev",
+                "phpunit/phpunit": "4.1.*",
+                "thelia/hooktest-module": "~1.0",
+                "thelia/hooktest-template": "~1.0"
+            },
+            "bin": [
+                "Thelia"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Thelia\\": "lib/Thelia/"
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "description": "Core of Thelia ecommerce CMS.",
+            "homepage": "http://thelia.net/",
+            "time": "2014-12-24 14:53:25"
+        },
+        {
+            "name": "thelia/currency-converter",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia/CurrencyConverter.git",
+                "reference": "7ca97c650275548631c3f3c609d6b70b0f374a48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia/CurrencyConverter/zipball/7ca97c650275548631c3f3c609d6b70b0f374a48",
+                "reference": "7ca97c650275548631c3f3c609d6b70b0f374a48",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "thelia/math-tools": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Thelia\\CurrencyConverter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Manuel Raynaud",
+                    "email": "manu@thelia.net"
+                }
+            ],
+            "description": "php 5.4 currency tools",
+            "time": "2014-11-10 08:09:40"
+        },
+        {
+            "name": "thelia/email-default-template",
+            "version": "2.1.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-templates/email.git",
+                "reference": "970f5fe936aa4154878c0dd32c236da9eca67b70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-templates/email/zipball/970f5fe936aa4154878c0dd32c236da9eca67b70",
+                "reference": "970f5fe936aa4154878c0dd32c236da9eca67b70",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-email-template",
+            "extra": {
+                "installer-name": "default"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2014-12-24 11:31:04"
+        },
+        {
+            "name": "thelia/front-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/Front.git",
+                "reference": "f124ea931e9b66bce3e85fb8d00b2fc2317f2498"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/Front/zipball/f124ea931e9b66bce3e85fb8d00b2fc2317f2498",
+                "reference": "f124ea931e9b66bce3e85fb8d00b2fc2317f2498",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "Front"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/frontoffice-default-template",
+            "version": "2.1.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-templates/front.git",
+                "reference": "ace3a9b3befa859414962d26220e11d7314d80d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-templates/front/zipball/ace3a9b3befa859414962d26220e11d7314d80d4",
+                "reference": "ace3a9b3befa859414962d26220e11d7314d80d4",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-frontoffice-template",
+            "extra": {
+                "installer-name": "default"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/hook-analytics-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookAnalytics.git",
+                "reference": "e7f2b38d37ad3802e2cb40fec59835703c2eb78b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookAnalytics/zipball/e7f2b38d37ad3802e2cb40fec59835703c2eb78b",
+                "reference": "e7f2b38d37ad3802e2cb40fec59835703c2eb78b",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookAnalytics"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-cart-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookCart.git",
+                "reference": "6d5e2a75585ea07a2ea86a26a3574a4990ea82ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookCart/zipball/6d5e2a75585ea07a2ea86a26a3574a4990ea82ab",
+                "reference": "6d5e2a75585ea07a2ea86a26a3574a4990ea82ab",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookCart"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-contact-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookContact.git",
+                "reference": "fd01d4d18cf1876f53cb257b9e3f0b07a4d99ecf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookContact/zipball/fd01d4d18cf1876f53cb257b9e3f0b07a4d99ecf",
+                "reference": "fd01d4d18cf1876f53cb257b9e3f0b07a4d99ecf",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookContact"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-currency-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookCurrency.git",
+                "reference": "52b27d6cd1c5009bf518453e885ddd8d7de5a61e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookCurrency/zipball/52b27d6cd1c5009bf518453e885ddd8d7de5a61e",
+                "reference": "52b27d6cd1c5009bf518453e885ddd8d7de5a61e",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookCurrency"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-customer-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookCustomer.git",
+                "reference": "59c28983531828ace94cc61895a39aeb8aaa9283"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookCustomer/zipball/59c28983531828ace94cc61895a39aeb8aaa9283",
+                "reference": "59c28983531828ace94cc61895a39aeb8aaa9283",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookCustomer"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/hook-lang-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookLang.git",
+                "reference": "1e71ab68ab153daffe1332a7280455847c7c6613"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookLang/zipball/1e71ab68ab153daffe1332a7280455847c7c6613",
+                "reference": "1e71ab68ab153daffe1332a7280455847c7c6613",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookLang"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-links-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookLinks.git",
+                "reference": "ca860363540f01b87778135e6166dcce82e948ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookLinks/zipball/ca860363540f01b87778135e6166dcce82e948ad",
+                "reference": "ca860363540f01b87778135e6166dcce82e948ad",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookLinks"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-navigation-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookNavigation.git",
+                "reference": "636e78281ce999a1287ea8e8797224c2c3347eaf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookNavigation/zipball/636e78281ce999a1287ea8e8797224c2c3347eaf",
+                "reference": "636e78281ce999a1287ea8e8797224c2c3347eaf",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookNavigation"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-newsletter-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookNewsletter.git",
+                "reference": "6a25d50aafe3cecf0bc0e1fd4750ff6e25fbc56a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookNewsletter/zipball/6a25d50aafe3cecf0bc0e1fd4750ff6e25fbc56a",
+                "reference": "6a25d50aafe3cecf0bc0e1fd4750ff6e25fbc56a",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookNewsletter"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-products-new-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookProductsNew.git",
+                "reference": "e34f05c1bf56209932c107e57cdd2a677ce81b80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookProductsNew/zipball/e34f05c1bf56209932c107e57cdd2a677ce81b80",
+                "reference": "e34f05c1bf56209932c107e57cdd2a677ce81b80",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookProductsNew"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-products-offer-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookProductsOffer.git",
+                "reference": "582499efd9fe3061beed4c8304e295e36d4d9b18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookProductsOffer/zipball/582499efd9fe3061beed4c8304e295e36d4d9b18",
+                "reference": "582499efd9fe3061beed4c8304e295e36d4d9b18",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookProductsOffer"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-search-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookSearch.git",
+                "reference": "47c73198e76d78fa4b4c98faeeadfc117284ee57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookSearch/zipball/47c73198e76d78fa4b4c98faeeadfc117284ee57",
+                "reference": "47c73198e76d78fa4b4c98faeeadfc117284ee57",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookSearch"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/hook-social-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/HookSocial.git",
+                "reference": "75d6279a9b38c00cfdb90c2195055fe117f6dc7b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/HookSocial/zipball/75d6279a9b38c00cfdb90c2195055fe117f6dc7b",
+                "reference": "75d6279a9b38c00cfdb90c2195055fe117f6dc7b",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "HookSocial"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 11:09:13"
+        },
+        {
+            "name": "thelia/installer",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia/installer.git",
+                "reference": "9e7fff75c6d6638f8f476e310a6ea7265f12c141"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia/installer/zipball/9e7fff75c6d6638f8f476e310a6ea7265f12c141",
+                "reference": "9e7fff75c6d6638f8f476e310a6ea7265f12c141",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Thelia\\Composer\\TheliaInstallerPlugin"
+            },
+            "autoload": {
+                "psr-0": {
+                    "Thelia\\Composer": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL V3"
+            ],
+            "authors": [
+                {
+                    "name": "Manuel Raynaud",
+                    "email": "raynaud.manu@gmail.com",
+                    "homepage": "https://github.com/lunika"
+                }
+            ],
+            "description": "custom installer for Thelia.",
+            "keywords": [
+                "Thelia",
+                "Thelia-module",
+                "Thelia-template"
+            ],
+            "time": "2014-12-22 20:31:23"
+        },
+        {
+            "name": "thelia/math-tools",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia/math-tools.git",
+                "reference": "151c819df2b428fffde19314e8a02bef02dbad31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia/math-tools/zipball/151c819df2b428fffde19314e8a02bef02dbad31",
+                "reference": "151c819df2b428fffde19314e8a02bef02dbad31",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Thelia\\Math\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Perche",
+                    "email": "bperche@openstudio.com"
+                }
+            ],
+            "description": "Number management library",
+            "time": "2014-11-07 14:57:24"
+        },
+        {
+            "name": "thelia/pdf-default-template",
+            "version": "2.1.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-templates/pdf.git",
+                "reference": "c562a32b395d186678162e2156abc7b737385e48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-templates/pdf/zipball/c562a32b395d186678162e2156abc7b737385e48",
+                "reference": "c562a32b395d186678162e2156abc7b737385e48",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-pdf-template",
+            "extra": {
+                "installer-name": "default"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2014-12-24 11:31:04"
+        },
+        {
+            "name": "thelia/setup",
+            "version": "2.1.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia/setup.git",
+                "reference": "b9174ad42b3515fac6be5f6f0946f4789974a284"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia/setup/zipball/b9174ad42b3515fac6be5f6f0946f4789974a284",
+                "reference": "b9174ad42b3515fac6be5f6f0946f4789974a284",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "1.1"
+            },
+            "type": "thelia-local",
+            "extra": {
+                "installer-name": "setup"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2014-12-24 14:53:25"
+        },
+        {
+            "name": "thelia/smarty-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/TheliaSmarty.git",
+                "reference": "f011c59c9f19d27a9c2a1b4773050b107590a168"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/TheliaSmarty/zipball/f011c59c9f19d27a9c2a1b4773050b107590a168",
+                "reference": "f011c59c9f19d27a9c2a1b4773050b107590a168",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "TheliaSmarty"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/thelia-debug-bar-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/TheliaDebugBar.git",
+                "reference": "249760f08c8605bcb2d6646cdb8d8f671275bbf6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/TheliaDebugBar/zipball/249760f08c8605bcb2d6646cdb8d8f671275bbf6",
+                "reference": "249760f08c8605bcb2d6646cdb8d8f671275bbf6",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "TheliaDebugBar"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/tinymce-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/Tinymce.git",
+                "reference": "2793d8cd8b38b01e82e4a30ef5999d8637836bf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/Tinymce/zipball/2793d8cd8b38b01e82e4a30ef5999d8637836bf4",
+                "reference": "2793d8cd8b38b01e82e4a30ef5999d8637836bf4",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "Tinymce"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/virtual-product-control-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/VirtualProductControl.git",
+                "reference": "e0f0d862ea7036b35cc39f8a771bcd7f19149619"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/VirtualProductControl/zipball/e0f0d862ea7036b35cc39f8a771bcd7f19149619",
+                "reference": "e0f0d862ea7036b35cc39f8a771bcd7f19149619",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "VirtualProductControl"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 14:52:57"
+        },
+        {
+            "name": "thelia/virtual-product-delivery-module",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/VirtualProductDelivery.git",
+                "reference": "86d91204b7593120ce074b1364ade349e1e8588b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/VirtualProductDelivery/zipball/86d91204b7593120ce074b1364ade349e1e8588b",
+                "reference": "86d91204b7593120ce074b1364ade349e1e8588b",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "VirtualProductDelivery"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2014-12-24 14:52:57"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "propel/propel": 20
+    },
+    "prefer-stable": true,
+    "platform": [],
+    "platform-dev": []
+}

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7ff0754b003197e2d025d63f61826ec9",
+    "hash": "74f187f3ed6503a4dd08fcd0e868835a",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -2169,7 +2169,7 @@
         },
         {
             "name": "thelia/backoffice-default-template",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/back.git",
@@ -2247,7 +2247,7 @@
         },
         {
             "name": "thelia/config",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/config.git",
@@ -2271,16 +2271,16 @@
         },
         {
             "name": "thelia/core",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/core.git",
-                "reference": "95e107cb8348dc3111925e99cb43a1d973723af1"
+                "reference": "fa93650ba2ffd42885ff1053fff5f00c2122e99b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia/core/zipball/95e107cb8348dc3111925e99cb43a1d973723af1",
-                "reference": "95e107cb8348dc3111925e99cb43a1d973723af1",
+                "url": "https://api.github.com/repos/thelia/core/zipball/fa93650ba2ffd42885ff1053fff5f00c2122e99b",
+                "reference": "fa93650ba2ffd42885ff1053fff5f00c2122e99b",
                 "shasum": ""
             },
             "require": {
@@ -2344,7 +2344,7 @@
             ],
             "description": "Core of Thelia ecommerce CMS.",
             "homepage": "http://thelia.net/",
-            "time": "2015-01-09 11:22:40"
+            "time": "2015-01-12 08:59:51"
         },
         {
             "name": "thelia/currency-converter",
@@ -2393,7 +2393,7 @@
         },
         {
             "name": "thelia/email-default-template",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/email.git",
@@ -2444,7 +2444,7 @@
         },
         {
             "name": "thelia/frontoffice-default-template",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/front.git",
@@ -2908,7 +2908,7 @@
         },
         {
             "name": "thelia/pdf-default-template",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/pdf.git",
@@ -2932,16 +2932,16 @@
         },
         {
             "name": "thelia/setup",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/setup.git",
-                "reference": "6504d6a839a242a1168185ed9bd46a89c2849299"
+                "reference": "bd6ba7d93d705f4852b66698b06abe6e3911f24c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia/setup/zipball/6504d6a839a242a1168185ed9bd46a89c2849299",
-                "reference": "6504d6a839a242a1168185ed9bd46a89c2849299",
+                "url": "https://api.github.com/repos/thelia/setup/zipball/bd6ba7d93d705f4852b66698b06abe6e3911f24c",
+                "reference": "bd6ba7d93d705f4852b66698b06abe6e3911f24c",
                 "shasum": ""
             },
             "require": {
@@ -2952,7 +2952,7 @@
                 "installer-name": "setup"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-01-09 11:22:40"
+            "time": "2015-01-12 08:59:51"
         },
         {
             "name": "thelia/smarty-module",

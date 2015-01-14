@@ -26,5 +26,5 @@ php composer.phar require thelia/pdf-default-template $version
 echo "${blue}Deleting composer${NC}"
 rm -f composer.phar
 
-echo "${blue}Restore database.yml"
+echo "${blue}Restore database.yml${NC}"
 mv database.yml.tmp local/config/database.yml

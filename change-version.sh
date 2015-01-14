@@ -8,6 +8,9 @@ version=$1
 blue='\033[0;34m'
 NC='\033[0m'
 
+echo "${blue}Backup database.yml${NC}"
+mv local/config/database.yml ./database.yml.tmp
+
 echo "${blue}Downloading composer${NC}"
 curl -sS https://getcomposer.org/installer | php > /dev/null
 
@@ -22,3 +25,6 @@ php composer.phar require thelia/pdf-default-template $version
 
 echo "${blue}Deleting composer${NC}"
 rm -f composer.phar
+
+echo "${blue}Restore database.yml"
+mv database.yml.tmp local/config/database.yml

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "74f187f3ed6503a4dd08fcd0e868835a",
+    "hash": "2648a446f6a148fe1ad512c1e9589413",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -2190,6 +2190,33 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2015-01-07 09:37:58"
+        },
+        {
+            "name": "thelia/carousel-module",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thelia-modules/Carousel.git",
+                "reference": "1c79172eca09454cb02888894e30054c36d80c53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thelia-modules/Carousel/zipball/1c79172eca09454cb02888894e30054c36d80c53",
+                "reference": "1c79172eca09454cb02888894e30054c36d80c53",
+                "shasum": ""
+            },
+            "require": {
+                "thelia/installer": "~1.1"
+            },
+            "type": "thelia-module",
+            "extra": {
+                "installer-name": "Carousel"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "time": "2015-01-19 21:22:01"
         },
         {
             "name": "thelia/cheque-module",

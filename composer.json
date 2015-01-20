@@ -31,7 +31,8 @@
         "thelia/hook-contact-module": "~1.1",
         "thelia/hook-customer-module": "~1.1",
         "thelia/hook-products-offer-module": "~1.1",
-        "thelia/hook-newsletter-module": "~1.1"
+        "thelia/hook-newsletter-module": "~1.1",
+        "thelia/carousel-module": "~1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

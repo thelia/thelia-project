@@ -40,8 +40,16 @@
       "bin-dir": "bin"
     },
     "autoload": {
-       "psr-0": {
+        "psr-0": {
           "": "local/modules/"
-       }
+        },
+        "psr-4": {
+            "Thelia\\Project\\": "lib/Thelia/Project"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd" : [
+            "Thelia\\Project\\ScriptHandler::installThelia"
+        ]
     }
 }

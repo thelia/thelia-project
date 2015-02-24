@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6b7015b6b8a8bd873755dc15d0886912",
+    "hash": "c3bf47ccd0f69c3ec0a2a4de5dcd3c38",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -183,6 +183,58 @@
                 "pdf"
             ],
             "time": "2013-09-12 17:00:40"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "2495d3361ac1e9fc15608a1b33ec2dd41c56b2dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/2495d3361ac1e9fc15608a1b33ec2dd41c56b2dc",
+                "reference": "2495d3361ac1e9fc15608a1b33ec2dd41c56b2dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "suggest": {
+                "ext-intl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2015-02-23 10:49:44"
         },
         {
             "name": "imagine/imagine",
@@ -2169,16 +2221,16 @@
         },
         {
             "name": "thelia/backoffice-default-template",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/back.git",
-                "reference": "c6473ebcb975eb462f9add65252d30b5699e77ef"
+                "reference": "dd391e6279a6ba99bd7cf2a11fd818e11f1737a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-templates/back/zipball/c6473ebcb975eb462f9add65252d30b5699e77ef",
-                "reference": "c6473ebcb975eb462f9add65252d30b5699e77ef",
+                "url": "https://api.github.com/repos/thelia-templates/back/zipball/dd391e6279a6ba99bd7cf2a11fd818e11f1737a0",
+                "reference": "dd391e6279a6ba99bd7cf2a11fd818e11f1737a0",
                 "shasum": ""
             },
             "require": {
@@ -2189,7 +2241,7 @@
                 "installer-name": "default"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-01-07 09:37:58"
+            "time": "2015-02-24 13:54:46"
         },
         {
             "name": "thelia/carousel-module",
@@ -2274,16 +2326,16 @@
         },
         {
             "name": "thelia/config",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/config.git",
-                "reference": "d2230b048309a68a216f296a983c555cea88df26"
+                "reference": "c835e9e5bde4f4280f951abff30639a54fb8bac2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia/config/zipball/d2230b048309a68a216f296a983c555cea88df26",
-                "reference": "d2230b048309a68a216f296a983c555cea88df26",
+                "url": "https://api.github.com/repos/thelia/config/zipball/c835e9e5bde4f4280f951abff30639a54fb8bac2",
+                "reference": "c835e9e5bde4f4280f951abff30639a54fb8bac2",
                 "shasum": ""
             },
             "require": {
@@ -2294,20 +2346,20 @@
                 "installer-name": "config"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-01-05 10:04:44"
+            "time": "2015-02-16 14:09:54"
         },
         {
             "name": "thelia/core",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/core.git",
-                "reference": "fa93650ba2ffd42885ff1053fff5f00c2122e99b"
+                "reference": "46bfbf1d35527b5bb60182f91263d824af65611a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia/core/zipball/fa93650ba2ffd42885ff1053fff5f00c2122e99b",
-                "reference": "fa93650ba2ffd42885ff1053fff5f00c2122e99b",
+                "url": "https://api.github.com/repos/thelia/core/zipball/46bfbf1d35527b5bb60182f91263d824af65611a",
+                "reference": "46bfbf1d35527b5bb60182f91263d824af65611a",
                 "shasum": ""
             },
             "require": {
@@ -2371,7 +2423,7 @@
             ],
             "description": "Core of Thelia ecommerce CMS.",
             "homepage": "http://thelia.net/",
-            "time": "2015-01-12 08:59:51"
+            "time": "2015-02-24 16:21:21"
         },
         {
             "name": "thelia/currency-converter",
@@ -2420,16 +2472,16 @@
         },
         {
             "name": "thelia/email-default-template",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/email.git",
-                "reference": "970f5fe936aa4154878c0dd32c236da9eca67b70"
+                "reference": "65eeac557912f527850497888061f4434a62593e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-templates/email/zipball/970f5fe936aa4154878c0dd32c236da9eca67b70",
-                "reference": "970f5fe936aa4154878c0dd32c236da9eca67b70",
+                "url": "https://api.github.com/repos/thelia-templates/email/zipball/65eeac557912f527850497888061f4434a62593e",
+                "reference": "65eeac557912f527850497888061f4434a62593e",
                 "shasum": ""
             },
             "require": {
@@ -2440,7 +2492,7 @@
                 "installer-name": "default"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2014-12-24 11:31:04"
+            "time": "2015-02-16 09:49:05"
         },
         {
             "name": "thelia/front-module",
@@ -2471,16 +2523,16 @@
         },
         {
             "name": "thelia/frontoffice-default-template",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/front.git",
-                "reference": "561cb54e33e7ff76a692cc46fa8a74bf78e0be45"
+                "reference": "529fede3b9e7d1da9f5a8b6cf1d5754ff94a1780"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-templates/front/zipball/561cb54e33e7ff76a692cc46fa8a74bf78e0be45",
-                "reference": "561cb54e33e7ff76a692cc46fa8a74bf78e0be45",
+                "url": "https://api.github.com/repos/thelia-templates/front/zipball/529fede3b9e7d1da9f5a8b6cf1d5754ff94a1780",
+                "reference": "529fede3b9e7d1da9f5a8b6cf1d5754ff94a1780",
                 "shasum": ""
             },
             "require": {
@@ -2491,7 +2543,7 @@
                 "installer-name": "default"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-01-09 09:38:25"
+            "time": "2015-02-24 09:25:48"
         },
         {
             "name": "thelia/hook-analytics-module",
@@ -2935,16 +2987,16 @@
         },
         {
             "name": "thelia/pdf-default-template",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/pdf.git",
-                "reference": "2bb0befaa38749becb424e84c15373f90a15d3dd"
+                "reference": "99361b9f73bb11f7cfdb6efb77dd2578567ecfe7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-templates/pdf/zipball/2bb0befaa38749becb424e84c15373f90a15d3dd",
-                "reference": "2bb0befaa38749becb424e84c15373f90a15d3dd",
+                "url": "https://api.github.com/repos/thelia-templates/pdf/zipball/99361b9f73bb11f7cfdb6efb77dd2578567ecfe7",
+                "reference": "99361b9f73bb11f7cfdb6efb77dd2578567ecfe7",
                 "shasum": ""
             },
             "require": {
@@ -2955,23 +3007,24 @@
                 "installer-name": "default"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-01-05 10:05:43"
+            "time": "2015-02-16 10:32:10"
         },
         {
             "name": "thelia/setup",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/setup.git",
-                "reference": "bd6ba7d93d705f4852b66698b06abe6e3911f24c"
+                "reference": "4f7e3094ab169b91554cc62dd97b368fbeff279b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia/setup/zipball/bd6ba7d93d705f4852b66698b06abe6e3911f24c",
-                "reference": "bd6ba7d93d705f4852b66698b06abe6e3911f24c",
+                "url": "https://api.github.com/repos/thelia/setup/zipball/4f7e3094ab169b91554cc62dd97b368fbeff279b",
+                "reference": "4f7e3094ab169b91554cc62dd97b368fbeff279b",
                 "shasum": ""
             },
             "require": {
+                "fzaninotto/faker": "1.5.x-dev",
                 "thelia/installer": "1.1"
             },
             "type": "thelia-local",
@@ -2979,7 +3032,7 @@
                 "installer-name": "setup"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-01-12 08:59:51"
+            "time": "2015-02-24 16:21:21"
         },
         {
             "name": "thelia/smarty-module",
@@ -3124,6 +3177,7 @@
         "propel/propel": 20
     },
     "prefer-stable": true,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }

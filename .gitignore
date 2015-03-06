@@ -19,7 +19,8 @@
 /local/setup
 
 # Thelia default modules
-Cheque
+/local/modules/Cheque
+/local/modules/Carousel
 /local/modules/HookCurrency
 /local/modules/HookProductsNew
 /local/modules/Tinymce

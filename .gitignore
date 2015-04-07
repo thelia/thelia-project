@@ -1,8 +1,8 @@
 /vendor
-/.idea
 /bin
 /log/*
 /web/assets
+/web/cache
 /cache/*
 !/cache/.gitkeep
 !/log/.gitkeep
@@ -17,6 +17,8 @@
 # Thelia config
 /local/config
 /local/setup
+/local/media
+/local/session
 
 # Thelia default modules
 /local/modules/Cheque

@@ -21,6 +21,7 @@ php composer.phar require thelia/config                             $version
 php composer.phar require thelia/frontoffice-default-template       $version
 php composer.phar require thelia/backoffice-default-template        $version
 php composer.phar require thelia/email-default-template             $version
+php composer.phar require thelia/pdf-default-template               $version
 php composer.phar require thelia/smarty-module                      $version
 php composer.phar require thelia/front-module                       $version
 php composer.phar require thelia/virtual-product-control-module     $version
@@ -28,7 +29,6 @@ php composer.phar require thelia/virtual-product-delivery-module    $version
 php composer.phar require thelia/tinymce-module                     $version
 php composer.phar require thelia/colissimo-module                   $version
 php composer.phar require thelia/cheque-module                      $version
-php composer.phar require thelia/thelia-debug-bar-module            $version
 php composer.phar require thelia/hook-lang-module                   $version
 php composer.phar require thelia/hook-search-module                 $version
 php composer.phar require thelia/hook-currency-module               $version
@@ -43,10 +43,16 @@ php composer.phar require thelia/hook-customer-module               $version
 php composer.phar require thelia/hook-products-offer-module         $version
 php composer.phar require thelia/hook-newsletter-module             $version
 
-if [ $version -ge "2.1.2" ]; then
+if [ $version \> "2.1.1" ]; then
 php composer.phar require thelia/carousel-module                    $version
 else
 php composer.phar remove thelia/carousel-module
+fi
+
+if [ $version \> "2.1.x" ]; then
+php composer.phar require thelia/free-order-module                    $version
+else
+php composer.phar remove thelia/free-order-module
 fi
 
 echo "${blue}Deleting composer${NC}"

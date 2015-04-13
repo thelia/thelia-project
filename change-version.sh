@@ -28,7 +28,6 @@ php composer.phar require thelia/virtual-product-delivery-module    $version
 php composer.phar require thelia/tinymce-module                     $version
 php composer.phar require thelia/colissimo-module                   $version
 php composer.phar require thelia/cheque-module                      $version
-php composer.phar require thelia/thelia-debug-bar-module            $version
 php composer.phar require thelia/hook-lang-module                   $version
 php composer.phar require thelia/hook-search-module                 $version
 php composer.phar require thelia/hook-currency-module               $version
@@ -43,7 +42,7 @@ php composer.phar require thelia/hook-customer-module               $version
 php composer.phar require thelia/hook-products-offer-module         $version
 php composer.phar require thelia/hook-newsletter-module             $version
 
-if [ $version -ge "2.1.2" ]; then
+if [ $version \> "2.1.1" ]; then
 php composer.phar require thelia/carousel-module                    $version
 else
 php composer.phar remove thelia/carousel-module

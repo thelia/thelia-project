@@ -8,8 +8,10 @@ version=$1
 blue='\033[0;34m'
 NC='\033[0m'
 
-echo "${blue}Backup database.yml${NC}"
-mv local/config/database.yml ./database.yml.tmp
+echo "${blue}Backup database.yml and global configs${NC}"
+mkdir tmpwork
+mv local/config/database.yml ./tmpwork
+mv local/config/config*.xml ./tmpwork
 
 echo "${blue}Downloading composer${NC}"
 curl -sS https://getcomposer.org/installer | php > /dev/null
@@ -58,5 +60,6 @@ fi
 echo "${blue}Deleting composer${NC}"
 rm -f composer.phar
 
-echo "${blue}Restore database.yml${NC}"
-mv database.yml.tmp local/config/database.yml
+echo "${blue}Restore database.yml and global configs${NC}"
+mv ./tmpwork/* local/config/
+rm -r tmpwork

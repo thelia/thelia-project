@@ -21,6 +21,7 @@ php composer.phar require thelia/config                             $version
 php composer.phar require thelia/frontoffice-default-template       $version
 php composer.phar require thelia/backoffice-default-template        $version
 php composer.phar require thelia/email-default-template             $version
+php composer.phar require thelia/pdf-default-template             $version
 php composer.phar require thelia/smarty-module                      $version
 php composer.phar require thelia/front-module                       $version
 php composer.phar require thelia/virtual-product-control-module     $version

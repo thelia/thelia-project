@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2d45458ca14737f79a47539153c7fce6",
+    "hash": "26945fc9c8a0d38bcd4a8942b5d65b3a",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -455,7 +455,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/e5d9c677175d147b72a05087b916dfd103e1df74",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/ab12b6f57dd33b1fffa875046fd17c34d88388b9",
                 "reference": "2d0877a48f376d51841148b1a7a31776356e97ea",
                 "shasum": ""
             },
@@ -3187,87 +3187,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/VirtualProductControl.git",
-                "reference": "b4c56bba0246feb9c4ded6b7ab209faffc028fd4"
+                "reference": "e0f0d862ea7036b35cc39f8a771bcd7f19149619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-modules/VirtualProductControl/zipball/b4c56bba0246feb9c4ded6b7ab209faffc028fd4",
-                "reference": "b4c56bba0246feb9c4ded6b7ab209faffc028fd4",
+                "url": "https://api.github.com/repos/thelia-modules/VirtualProductControl/zipball/e0f0d862ea7036b35cc39f8a771bcd7f19149619",
+                "reference": "e0f0d862ea7036b35cc39f8a771bcd7f19149619",
                 "shasum": ""
             },
             "require": {
-                "doctrine/cache": "v1.3.0",
-                "ensepar/html2pdf": "1.0.1",
-                "imagine/imagine": "v0.5.0",
-                "ircmaxell/password-compat": "1.0.*",
-                "kriswallsmith/assetic": "1.2.*@dev",
-                "leafo/lessphp": "0.4.*",
-                "maximebf/debugbar": "dev-master",
-                "php": ">=5.4",
-                "propel/propel": "dev-master#793aea6b762d9a72b083bfc49c74c574f67650c8",
-                "psr/log": "1.0",
-                "ptachoire/cssembed": "1.0.*",
-                "ramsey/array_column": "~1.1",
-                "simplepie/simplepie": "1.3.*",
-                "smarty/smarty": "3.1.19",
-                "stack/builder": "1.0.*",
-                "swiftmailer/swiftmailer": "5.2.*",
-                "symfony-cmf/routing": "~1.0",
-                "symfony/browser-kit": "2.3.*",
-                "symfony/class-loader": "2.3.*",
-                "symfony/config": "2.3.*",
-                "symfony/console": "2.3.*",
-                "symfony/dependency-injection": "2.3.*",
-                "symfony/event-dispatcher": "2.3.*",
-                "symfony/filesystem": "2.3.*",
-                "symfony/finder": "2.3.*",
-                "symfony/form": "2.3.*",
-                "symfony/http-foundation": "2.3.*",
-                "symfony/http-kernel": "2.3.*",
-                "symfony/icu": "1.0",
-                "symfony/routing": "2.3.*",
-                "symfony/serializer": "2.3.*",
-                "symfony/translation": "2.3.*",
-                "symfony/validator": "2.3.*",
-                "symfony/yaml": "2.3.*",
-                "thelia/currency-converter": "~1.0"
+                "thelia/installer": "~1.1"
             },
-            "require-dev": {
-                "fzaninotto/faker": "1.5.x-dev",
-                "phpunit/phpunit": "4.1.*",
-                "thelia/hooktest-module": "~1.0",
-                "thelia/hooktest-template": "~1.0"
-            },
-            "type": "library",
+            "type": "thelia-module",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Thelia\\": "core/lib/Thelia"
-                },
-                "psr-0": {
-                    "": "local/modules/"
-                },
-                "files": [
-                    "core/bootstrap.php"
-                ]
+                "installer-name": "VirtualProductControl"
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0+"
             ],
-            "description": "Thelia is an ecommerce CMS.",
-            "homepage": "http://thelia.net/",
-            "keywords": [
-                "cms",
-                "cms ecommerce",
-                "ecommerce",
-                "ecommerce cms"
-            ],
-            "time": "2015-07-01 14:33:39"
+            "time": "2014-12-24 14:52:57"
         },
         {
             "name": "thelia/virtual-product-delivery-module",

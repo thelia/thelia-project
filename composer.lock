@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "642d64dd8fd4de04d15e9f922efe7485",
+    "hash": "3bd3e9c74696739f2befb8da3371d1d4",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -460,7 +460,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/e5d9c677175d147b72a05087b916dfd103e1df74",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/ab12b6f57dd33b1fffa875046fd17c34d88388b9",
                 "reference": "e5d9c677175d147b72a05087b916dfd103e1df74",
                 "shasum": ""
             },
@@ -559,20 +559,20 @@
         },
         {
             "name": "oyejorge/less.php",
-            "version": "v1.7.0.4",
+            "version": "v1.7.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oyejorge/less.php.git",
-                "reference": "fc971e6d3eb54dff3d3eba4734ff207d37cb4e0e"
+                "reference": "4385036b1dbfaf37f5380bd26a1e6006fc43149f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oyejorge/less.php/zipball/fc971e6d3eb54dff3d3eba4734ff207d37cb4e0e",
-                "reference": "fc971e6d3eb54dff3d3eba4734ff207d37cb4e0e",
+                "url": "https://api.github.com/repos/oyejorge/less.php/zipball/4385036b1dbfaf37f5380bd26a1e6006fc43149f",
+                "reference": "4385036b1dbfaf37f5380bd26a1e6006fc43149f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2"
+                "php": ">=5.3"
             },
             "bin": [
                 "bin/lessc"
@@ -614,7 +614,7 @@
                 "php",
                 "stylesheet"
             ],
-            "time": "2015-05-27 17:50:32"
+            "time": "2015-07-13 20:34:18"
         },
         {
             "name": "propel/propel",
@@ -2422,16 +2422,16 @@
         },
         {
             "name": "thelia/backoffice-default-template",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/back.git",
-                "reference": "da15595de1a38a6a3a5d03d43eef59d4810f53d9"
+                "reference": "71a3901e828ecf36f8d4997848c6aaadbd1a6dad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-templates/back/zipball/da15595de1a38a6a3a5d03d43eef59d4810f53d9",
-                "reference": "da15595de1a38a6a3a5d03d43eef59d4810f53d9",
+                "url": "https://api.github.com/repos/thelia-templates/back/zipball/71a3901e828ecf36f8d4997848c6aaadbd1a6dad",
+                "reference": "71a3901e828ecf36f8d4997848c6aaadbd1a6dad",
                 "shasum": ""
             },
             "require": {
@@ -2442,11 +2442,11 @@
                 "installer-name": "default"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-01 14:31:07"
+            "time": "2015-07-17 12:57:39"
         },
         {
             "name": "thelia/carousel-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/Carousel.git",
@@ -2473,7 +2473,7 @@
         },
         {
             "name": "thelia/cheque-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/Cheque.git",
@@ -2500,7 +2500,7 @@
         },
         {
             "name": "thelia/colissimo-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/Colissimo.git",
@@ -2527,7 +2527,7 @@
         },
         {
             "name": "thelia/config",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/config.git",
@@ -2551,16 +2551,16 @@
         },
         {
             "name": "thelia/core",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/core.git",
-                "reference": "16f3dc5049a3d99ac079712e9d4936c6c6549cf8"
+                "reference": "5a08b850f9c6f067cd43b0783da5202e5fa001bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia/core/zipball/16f3dc5049a3d99ac079712e9d4936c6c6549cf8",
-                "reference": "16f3dc5049a3d99ac079712e9d4936c6c6549cf8",
+                "url": "https://api.github.com/repos/thelia/core/zipball/5a08b850f9c6f067cd43b0783da5202e5fa001bd",
+                "reference": "5a08b850f9c6f067cd43b0783da5202e5fa001bd",
                 "shasum": ""
             },
             "require": {
@@ -2627,7 +2627,7 @@
             ],
             "description": "Core of Thelia ecommerce CMS.",
             "homepage": "http://thelia.net/",
-            "time": "2015-07-01 07:54:27"
+            "time": "2015-07-17 13:37:03"
         },
         {
             "name": "thelia/currency-converter",
@@ -2676,7 +2676,7 @@
         },
         {
             "name": "thelia/email-default-template",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/email.git",
@@ -2700,7 +2700,7 @@
         },
         {
             "name": "thelia/free-order-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/FreeOrder.git",
@@ -2727,7 +2727,7 @@
         },
         {
             "name": "thelia/front-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/Front.git",
@@ -2754,16 +2754,16 @@
         },
         {
             "name": "thelia/frontoffice-default-template",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/front.git",
-                "reference": "45046dccfa4e0c83d3297fa844cd2315385ca66d"
+                "reference": "c21d553574a2d5f0261f555468faef4d7ac2efc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-templates/front/zipball/45046dccfa4e0c83d3297fa844cd2315385ca66d",
-                "reference": "45046dccfa4e0c83d3297fa844cd2315385ca66d",
+                "url": "https://api.github.com/repos/thelia-templates/front/zipball/c21d553574a2d5f0261f555468faef4d7ac2efc6",
+                "reference": "c21d553574a2d5f0261f555468faef4d7ac2efc6",
                 "shasum": ""
             },
             "require": {
@@ -2774,11 +2774,11 @@
                 "installer-name": "default"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-01 09:47:17"
+            "time": "2015-07-17 12:57:39"
         },
         {
             "name": "thelia/hook-analytics-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookAnalytics.git",
@@ -2805,7 +2805,7 @@
         },
         {
             "name": "thelia/hook-cart-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookCart.git",
@@ -2832,7 +2832,7 @@
         },
         {
             "name": "thelia/hook-contact-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookContact.git",
@@ -2859,7 +2859,7 @@
         },
         {
             "name": "thelia/hook-currency-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookCurrency.git",
@@ -2886,7 +2886,7 @@
         },
         {
             "name": "thelia/hook-customer-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookCustomer.git",
@@ -2913,16 +2913,16 @@
         },
         {
             "name": "thelia/hook-lang-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookLang.git",
-                "reference": "62cf22abac052be368067cf3cb669b8d3eccdbb4"
+                "reference": "8dda600bdfd2d0f8ffee6843cd34a29097c35cea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-modules/HookLang/zipball/62cf22abac052be368067cf3cb669b8d3eccdbb4",
-                "reference": "62cf22abac052be368067cf3cb669b8d3eccdbb4",
+                "url": "https://api.github.com/repos/thelia-modules/HookLang/zipball/8dda600bdfd2d0f8ffee6843cd34a29097c35cea",
+                "reference": "8dda600bdfd2d0f8ffee6843cd34a29097c35cea",
                 "shasum": ""
             },
             "require": {
@@ -2936,11 +2936,11 @@
             "license": [
                 "LGPL-3.0+"
             ],
-            "time": "2015-02-18 10:12:25"
+            "time": "2015-07-13 16:23:20"
         },
         {
             "name": "thelia/hook-links-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookLinks.git",
@@ -2967,7 +2967,7 @@
         },
         {
             "name": "thelia/hook-navigation-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookNavigation.git",
@@ -2994,7 +2994,7 @@
         },
         {
             "name": "thelia/hook-newsletter-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookNewsletter.git",
@@ -3021,7 +3021,7 @@
         },
         {
             "name": "thelia/hook-products-new-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookProductsNew.git",
@@ -3048,7 +3048,7 @@
         },
         {
             "name": "thelia/hook-products-offer-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookProductsOffer.git",
@@ -3075,7 +3075,7 @@
         },
         {
             "name": "thelia/hook-search-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookSearch.git",
@@ -3102,7 +3102,7 @@
         },
         {
             "name": "thelia/hook-social-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/HookSocial.git",
@@ -3218,7 +3218,7 @@
         },
         {
             "name": "thelia/pdf-default-template",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-templates/pdf.git",
@@ -3242,16 +3242,16 @@
         },
         {
             "name": "thelia/setup",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia/setup.git",
-                "reference": "5f373a2ef200acc26158e84caaadd3cbe3ab3e14"
+                "reference": "9afd1b8ce8b6d7e119984b73f5bada7ebe76607d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia/setup/zipball/5f373a2ef200acc26158e84caaadd3cbe3ab3e14",
-                "reference": "5f373a2ef200acc26158e84caaadd3cbe3ab3e14",
+                "url": "https://api.github.com/repos/thelia/setup/zipball/9afd1b8ce8b6d7e119984b73f5bada7ebe76607d",
+                "reference": "9afd1b8ce8b6d7e119984b73f5bada7ebe76607d",
                 "shasum": ""
             },
             "require": {
@@ -3263,20 +3263,20 @@
                 "installer-name": "setup"
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-07-01 14:31:07"
+            "time": "2015-07-17 12:23:08"
         },
         {
             "name": "thelia/smarty-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/TheliaSmarty.git",
-                "reference": "91e4d947d8fbbc0dc9a4bd7ef4670d90155e9c00"
+                "reference": "d5b2a5491368988fb7534f787212fcc11af353df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-modules/TheliaSmarty/zipball/91e4d947d8fbbc0dc9a4bd7ef4670d90155e9c00",
-                "reference": "91e4d947d8fbbc0dc9a4bd7ef4670d90155e9c00",
+                "url": "https://api.github.com/repos/thelia-modules/TheliaSmarty/zipball/d5b2a5491368988fb7534f787212fcc11af353df",
+                "reference": "d5b2a5491368988fb7534f787212fcc11af353df",
                 "shasum": ""
             },
             "require": {
@@ -3290,11 +3290,11 @@
             "license": [
                 "LGPL-3.0+"
             ],
-            "time": "2015-06-25 10:14:49"
+            "time": "2015-07-06 13:21:21"
         },
         {
             "name": "thelia/tinymce-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/Tinymce.git",
@@ -3321,97 +3321,34 @@
         },
         {
             "name": "thelia/virtual-product-control-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/VirtualProductControl.git",
-                "reference": "f90df6c33076fbd6d5acab4d4a28baabca3669cc"
+                "reference": "0e2595d9b37de97a9f99cda772d7bd8cd6e906c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thelia-modules/VirtualProductControl/zipball/f90df6c33076fbd6d5acab4d4a28baabca3669cc",
-                "reference": "f90df6c33076fbd6d5acab4d4a28baabca3669cc",
+                "url": "https://api.github.com/repos/thelia-modules/VirtualProductControl/zipball/0e2595d9b37de97a9f99cda772d7bd8cd6e906c8",
+                "reference": "0e2595d9b37de97a9f99cda772d7bd8cd6e906c8",
                 "shasum": ""
             },
             "require": {
-                "doctrine/cache": "v1.3.0",
-                "ensepar/html2pdf": "1.0.1",
-                "imagine/imagine": "v0.6.2",
-                "ircmaxell/password-compat": "1.0.*",
-                "kriswallsmith/assetic": "1.2.*@dev",
-                "leafo/lessphp": "0.4.*",
-                "maximebf/debugbar": "dev-master",
-                "michelf/php-markdown": "1.5.0",
-                "oyejorge/less.php": "~1.7",
-                "php": ">=5.4",
-                "propel/propel": "dev-master#793aea6b762d9a72b083bfc49c74c574f67650c8",
-                "psr/log": "1.0",
-                "ptachoire/cssembed": "1.0.*",
-                "ramsey/array_column": "~1.1",
-                "simplepie/simplepie": "1.3.*",
-                "smarty/smarty": "3.1.19",
-                "stack/builder": "1.0.*",
-                "swiftmailer/swiftmailer": "5.2.*",
-                "symfony-cmf/routing": "~1.0",
-                "symfony/browser-kit": "2.3.*",
-                "symfony/class-loader": "2.3.*",
-                "symfony/config": "2.3.*",
-                "symfony/console": "2.3.*",
-                "symfony/dependency-injection": "2.3.*",
-                "symfony/event-dispatcher": "2.3.*",
-                "symfony/filesystem": "2.3.*",
-                "symfony/finder": "2.3.*",
-                "symfony/form": "2.3.*",
-                "symfony/http-foundation": "2.3.*",
-                "symfony/http-kernel": "2.3.*",
-                "symfony/icu": "1.0",
-                "symfony/routing": "2.3.*",
-                "symfony/serializer": "2.3.*",
-                "symfony/translation": "2.3.*",
-                "symfony/validator": "2.3.*",
-                "symfony/yaml": "2.3.*",
-                "thelia/currency-converter": "~1.0"
+                "thelia/installer": "~1.1"
             },
-            "require-dev": {
-                "fzaninotto/faker": "1.5.x-dev",
-                "phpunit/phpunit": "4.5.*",
-                "thelia/hooktest-module": "~1.0",
-                "thelia/hooktest-template": "~1.0"
-            },
-            "type": "library",
+            "type": "thelia-module",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Thelia\\": "core/lib/Thelia"
-                },
-                "psr-0": {
-                    "": "local/modules/"
-                },
-                "files": [
-                    "core/bootstrap.php"
-                ]
+                "installer-name": "VirtualProductControl"
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0+"
             ],
-            "description": "Thelia is an ecommerce CMS.",
-            "homepage": "http://thelia.net/",
-            "keywords": [
-                "cms",
-                "cms ecommerce",
-                "ecommerce",
-                "ecommerce cms"
-            ],
-            "time": "2015-07-01 14:33:46"
+            "time": "2015-07-15 07:59:02"
         },
         {
             "name": "thelia/virtual-product-delivery-module",
-            "version": "2.2.0-beta1",
+            "version": "2.2.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thelia-modules/VirtualProductDelivery.git",

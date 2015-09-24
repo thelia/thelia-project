@@ -18,7 +18,7 @@ A repository containing all thelia modules is available at this address : https:
 Requirements
 ------------
 
-* php 5.4
+* PHP 5.4
     * Required extensions :
         * PDO_Mysql
         * mcrypt
@@ -29,8 +29,9 @@ Requirements
     * memory_limit at least 128M, preferably 256.
     * post_max_size 20M
     * upload_max_filesize 2M
-* apache 2
-* mysql 5
+    * date.timezone must be defined
+* Web Server Apache 2 or Nginx
+* MySQL 5
 
 If you use Mac OSX, it still doesn't use php 5.4 as default php version... There are many solutions for you :
 
@@ -86,7 +87,7 @@ For tar.gz archives, you need tar's dependencies and the extension "zlib". See [
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.1.4
+$ php composer.phar create-project thelia/thelia-project path/ 2.2.0
 ```
 
 ## Install it

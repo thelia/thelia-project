@@ -102,6 +102,32 @@ $ php Thelia thelia:install
 
 You just have to follow all instructions.
 
+## Update a Thelia project
+
+From version 2.3.0-alpha1 you can now easily update your Thelia project (installed via composer) with the command `./update-version.sh <the new version>`
+
+Example to update to version `2.3.0`:
+
+``` bash
+$ ./update-version.sh 2.3.0
+```
+
+You can now execute the Thelia update process :
+
+``` bash
+$ php local/setup/update.php
+```
+
+### Before Thelia 2.3.0-alpha1
+
+Before version `2.3.0-alpha1` this script doesn't exist but you can download it with this command. For example, to update to version `2.3.0` :
+
+``` bash
+$ curl -sS "https://raw.githubusercontent.com/thelia/thelia-project/2.3.0/update-version.sh" -o "update-version.sh"
+$ chmod +x update-version.sh
+$ ./update-version.sh 2.3.0
+```
+
 Documentation
 -------------
 
@@ -129,4 +155,3 @@ Consult the page : http://localhost/thelia/web/index_dev.php
 You can create a virtual host and choose web folder for root directory.
 
 We still have lot of work to achieve but enjoy this part.
-

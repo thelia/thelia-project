@@ -22,6 +22,12 @@ if [ $version \> "2.2.x" ]; then
         echo -e "The file ${blue}${URL}${NC} has not been downloaded correctly."
         exit
     fi
+
+    grep -q "Not Found" requirements-new.lst
+    if [ $? -ne 0 ]; then
+        echo -e "The file ${blue}${URL}${NC} has not been found."
+        exit
+    fi
 else
     # call the old version
     `change-version.sh ${version}`
@@ -40,6 +46,8 @@ UPDATES=( `cat "requirements-new.lst"` )
 # get the current list of vendor
 php composer.phar info --installed --name-only >requirements-current.lst
 
+echo -e "${blue}Upgrading to $version${NC}"
+echo "===================================="
 for LINE in "${UPDATES[@]}"
 do
     if [ -n "${LINE}" ]; then
@@ -48,14 +56,35 @@ do
 
         grep -q "${REQUIREMENT}" requirements-current.lst
         if [ $? -eq 0 ]; then
-            echo "${REQUIREMENT} will be updated"
+            echo -e "${blue}${REQUIREMENT}${NC} will be updated"
             REQUIREMENTS="${REQUIREMENTS} $LINE"
+        else
+            while true; do
+                read -p "Do you wish to install '${REQUIREMENT}' (yes or no) ? " yn
+                case $yn in
+                    [Yy]* )
+                        echo -e "${blue}${REQUIREMENT}${NC} will be updated"
+                        REQUIREMENTS="${REQUIREMENTS} $LINE"
+                        break
+                        ;;
+                    [Nn]* ) break;;
+                    * ) echo "Please answer yes or no.";;
+                esac
+            done
         fi
     fi
 done
+echo "===================================="
 
-echo -e "${blue}Upgrading to $version${NC}"
-composer require ${REQUIREMENTS}
+while true; do
+    read -p "Do you really want to update (yes or no) ? " yn
+    case $yn in
+        #[Yy]* ) composer require "${REQUIREMENTS}"; break;;
+        [Yy]* ) echo "composer require ${REQUIREMENTS}"; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 echo -e "${blue}Restore database.yml${NC}"
 mv database.yml.tmp local/config/database.yml

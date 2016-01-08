@@ -86,7 +86,7 @@ For tar.gz archives, you need tar's dependencies and the extension "zlib". See [
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.2.1
+$ php composer.phar create-project thelia/thelia-project path/ 2.2.2 (or 2.1.8)
 ```
 
 ## Install it

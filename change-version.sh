@@ -57,8 +57,10 @@ fi
 
 if [ $version \> "2.2.x" ]; then
 php composer.phar require thelia/thelia-migrate-country-module        $version
+php composer.phar require thelia/hook-admin-home-module        $version
 else
 php composer.phar remove thelia/thelia-migrate-country-module
+php composer.phar remove thelia/hook-admin-home-module
 fi
 
 echo "${blue}Deleting composer${NC}"

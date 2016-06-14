@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3bdaab3fbaf214fc9103f699cec36ff4",
-    "content-hash": "84daf7bff4569973f4d99fc23da0d6ee",
+    "hash": "b57cce7545f3a4c11e8c72e5c35cd66b",
+    "content-hash": "66dd7b6eea68d6a6e1c34a4716d675a9",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -2517,24 +2517,24 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.0.1",
+            "version": "v2.6.13",
+            "target-dir": "Symfony/Component/VarDumper",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "87db8700deb12ba2b65e858f656a1f885530bcb0"
+                "reference": "5fba957a30161d8724aade093593cd22f815bea2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/87db8700deb12ba2b65e858f656a1f885530bcb0",
-                "reference": "87db8700deb12ba2b65e858f656a1f885530bcb0",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/5fba957a30161d8724aade093593cd22f815bea2",
+                "reference": "5fba957a30161d8724aade093593cd22f815bea2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9",
-                "symfony/polyfill-mbstring": "~1.0"
+                "php": ">=5.3.3"
             },
             "require-dev": {
-                "twig/twig": "~1.20|~2.0"
+                "symfony/phpunit-bridge": "~2.7"
             },
             "suggest": {
                 "ext-symfony_debug": ""
@@ -2542,19 +2542,16 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
                 "files": [
                     "Resources/functions/dump.php"
                 ],
-                "psr-4": {
+                "psr-0": {
                     "Symfony\\Component\\VarDumper\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2576,7 +2573,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2015-12-05 11:13:14"
+            "time": "2015-07-01 10:03:42"
         },
         {
             "name": "symfony/yaml",

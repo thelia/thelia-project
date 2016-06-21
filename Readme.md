@@ -86,7 +86,7 @@ For tar.gz archives, you need tar's dependencies and the extension "zlib". See [
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.2.4 (or 2.3.2)
+$ php composer.phar create-project thelia/thelia-project path/ 2.2.5 (or 2.3.2)
 ```
 
 ## Install it
@@ -128,4 +128,3 @@ Consult the page : http://localhost/thelia/web/index_dev.php
 You can create a virtual host and choose web folder for root directory.
 
 We still have lot of work to achieve but enjoy this part.
-

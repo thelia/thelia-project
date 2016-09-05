@@ -1,4 +1,5 @@
+#!/usr/bin/env php
 <?php
 
 $bootstrapFile = __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php";
-require "bin/Thelia";
+require __DIR__ . "/vendor/thelia/core/Thelia";

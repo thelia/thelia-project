@@ -67,14 +67,14 @@ if [ command -v curl >/dev/null 2>&1 ]; then
   exit
 fi
 
-# download the last list of requirements
-URL="https://raw.githubusercontent.com/bibich/thelia-project/${version}/requirements/${version}.lst"
+# download the latest list of requirements
+URL="https://raw.githubusercontent.com/thelia/thelia-project/${version}/requirements/${version}.lst"
 if ! download ${URL}; then
   # try to download from the master repository
-  URL="https://raw.githubusercontent.com/bibich/thelia-project/master/requirements/${version}.lst"
+  URL="https://raw.githubusercontent.com/thelia/thelia-project/master/requirements/${version}.lst"
   if ! download ${URL}; then
     if ask "No valid requirements file found for version ${blue}${version}${NC}. Do you want to use the legacy script ?"; then
-      # call the old version
+      # call the legacy version
       `change-version.sh ${version}`
     else
       exit 1
@@ -91,6 +91,7 @@ echo -e "${blue}Downloading composer${NC}"
 curl -sS https://getcomposer.org/installer | php > /dev/null
 
 REQUIREMENTS=""
+REMOVES=""
 UPDATES=( `cat "requirements-new.lst"` )
 
 # get the current list of vendor
@@ -108,8 +109,9 @@ do
     if [ $? -eq 0 ]; then
       echo -e "${blue}${REQUIREMENT}${NC} will be updated"
       REQUIREMENTS="${REQUIREMENTS} $LINE"
+      REMOVES="${REMOVES} ${REQUIREMENT}"
     else
-      if ask "Do you wish to install '${REQUIREMENT}' ? "; then
+      if ask "Do you wish to install '${blue}${REQUIREMENT}${NC}' ? "; then
         echo -e "${blue}${REQUIREMENT}${NC} will be updated"
         REQUIREMENTS="${REQUIREMENTS} $LINE"
       fi
@@ -122,7 +124,13 @@ echo "List of requirements that will be updated/installed : "
 echo "${REQUIREMENTS}"
 
 if ask "Do you really want to update to ${blue}${version}${NC}? "; then
-  echo "composer require ${REQUIREMENTS}"
+
+  if [ -n "$REMOVES" ]; then
+    echo "Removing ${blue}${REMOVES}${NC}"
+    php composer.phar remove ${REMOVES}
+  fi
+
+  php composer.phar require --prefer-dist --sort-packages --optimize-autoloader ${REQUIREMENTS}
 
   if [ $? -eq 0 ]; then
     echo -e "Your Thelia has been updated to version ${blue}${version}${NC}."

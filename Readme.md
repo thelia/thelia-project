@@ -5,45 +5,12 @@ Readme
 
 Thelia
 ------
-[![Build Status](https://travis-ci.org/thelia/thelia.png?branch=master)](https://travis-ci.org/thelia/thelia) [![License](https://poser.pugx.org/thelia/thelia/license.png)](https://packagist.org/packages/thelia/thelia) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/thelia/thelia/badges/quality-score.png?s=61e3e04a69bffd71c29b08e5392080317a546716)](https://scrutinizer-ci.com/g/thelia/thelia/)
+[![Build Status](https://travis-ci.org/thelia/thelia.png?branch=master)](https://travis-ci.org/thelia/thelia)
+[![License](https://poser.pugx.org/thelia/thelia/license.png)](https://packagist.org/packages/thelia/thelia)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/thelia/thelia/badges/quality-score.png?s=61e3e04a69bffd71c29b08e5392080317a546716)](https://scrutinizer-ci.com/g/thelia/thelia/)
 
 [Thelia](http://thelia.net/) is an open source tool for creating e-business websites and managing online content. This software is published under LGPL.
 
-This is the new major version of Thelia.
-
-You can download this version and have a try or take a look at the source code (or anything you wish, respecting LGPL).  See http://thelia.net/ web site for more information.
-
-A repository containing all thelia modules is available at this address : https://github.com/thelia-modules
-
-Requirements
-------------
-
-* PHP 5.5
-    * Required extensions :
-        * PDO_Mysql
-        * mcrypt
-        * intl
-        * gd
-        * curl
-    * safe_mode off
-    * memory_limit at least 128M, preferably 256.
-    * post_max_size 20M
-    * upload_max_filesize 2M
-    * date.timezone must be defined
-* Web Server Apache 2 or Nginx
-* MySQL 5
-
-If you use Mac OSX, it still doesn't use php 5.4 as default php version... There are many solutions for you :
-
-* use [phpbrew](https://github.com/c9s/phpbrew)
-* use last MAMP version and put the php bin directory in your path:
-
-```bash
-export PATH=/Applications/MAMP/bin/php/php5.5.x/bin/:$PATH
-```
-
-* configure a complete development environment : http://php-osx.liip.ch/
-* use a virtual machine with vagrant and puppet : https://puphpet.com/
 
 ### MySQL 5.6
 
@@ -83,16 +50,51 @@ For tar.bz2 archives, you need tar's dependencies and the extension "bzip2". See
 
 For tar.gz archives, you need tar's dependencies and the extension "zlib". See [PHP Doc](http://fr2.php.net/manual/fr/book.zlib.php)
 
-## Create a Thelia project
+## Download Thelia 2 and install its dependencies
+
+You can get the sources from git and then let composer install dependencies, or use composer to install the whole thelia project into a specific directory
+
+### Using git for download and composer for dependencies
+
+``` bash
+$ git clone --recursive https://github.com/thelia/thelia path
+$ cd path
+$ git checkout 2.3.3 (2.2.6 or 2.1.11)
+$ curl -sS https://getcomposer.org/installer | php
+$ php composer.phar install
+```
+
+### Using composer for both download and dependencies
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.3.2 (or 2.2.4)
+$ php composer.phar create-project thelia/thelia path/ 2.3.3 (2.2.6 or 2.1.11)
 ```
+
+If something goes wrong during the install process, you can restart Thelia install wizard with
+the following command : `php composer.phar run-script post-create-project-cmd`
 
 ## Install it
 
-You can install Thelia using the cli tool and the scripts provided by thelia/setup
+You can install Thelia by two different way
+
+### Using install wizard
+
+Installing thelia with the web install wizard allow to create an administrator, add some informations about your shop, etc
+
+First of all, you have to configure a vhost as describe in [configuration](http://doc.thelia.net/en/documentation/configuration.html) section.
+
+The install wizard in accessible with your favorite browser :
+
+``` bash
+http://yourdomain.tld/[/subdomain_if_needed]/install
+```
+
+For example, I have thelia downloaded at http://thelia.net and my vhost is correctly configured, I have to reach this address :
+
+``` bash
+http://thelia.net/install
+```
 
 ### Using cli tools
 
@@ -100,16 +102,81 @@ You can install Thelia using the cli tool and the scripts provided by thelia/set
 $ php Thelia thelia:install
 ```
 
+or if you use a Thelia project :
+
+``` bash
+$ php composer.phar run-script post-create-project-cmd
+```
+
 You just have to follow all instructions.
+
+### Docker and docker compose
+
+This repo contains all the configuration needed to run Thelia with docker and docker-compose.
+
+It requires obviously [docker](https://docker.com/) and [docker-compose](http://docs.docker.com/compose/)
+
+How to start the configuration :
+
+```
+docker-compose up -d
+```
+
+tip : create an alias for docker-compose, it's boring to write it all the time
+
+All the script are launched through docker. For examples :
+
+```
+docker exec -it thelia_web_1 php Thelia cache:clear
+docker exec -it thelia_web_1 php setup/faker.php
+docker exec -it thelia_web_1 unit-tests.sh
+docker exec -it thelia_web_1 php composer.phar install
+```
+
+Database information :
+
+* host : mariaDB
+* login : root
+* password : toor
+
+Once started, you can access it with your browser at this url : http://127.0.0.1:8080 and phpmyadmin : http://127.0.0.1:8081
+
+What is missing :
+
+* confguration for export compression (zip, gzip, etc)
+
+Obviously you can modify all the configuration for your own case, for example the php version or add environment variable for the database configuration. Each time you modify the configuration, you have to rebuild it :
+
+```
+docker-compose build --no-cache
+```
+
+## Update Thelia
+
+Before proceeding to the update, it's strongly recommended to backup your website (files and database).  
+You can backup your database with tools such as phpmyadmin or mysqldump.
+
+## Update standart Thelia (not Thelia project)
+
+- Download the new version on Thelia web site.
+- Be sure to close your shop, so that only you can access the shop (using a .htaccess, list of allowed IP, …)
+- Unzip the downloaded archive in your Thelia directory, overwriting all files with those from the archive
+- Start the update process :
+  - Go to http://yourshop.tld/install to start the update wizard. This may take a long time !
+  - or run the update script : `php setup/update.php`
+- Delete or rename the web/install directory.
+- Done !
+
+full instructions here : [Update Thelia](http://doc.thelia.net/en/documentation/installation/index.html#how-to-update-thelia-)
 
 ## Update a Thelia project
 
-From version 2.3.0-alpha1 you can now easily update your Thelia project (installed via composer) with the command `./update-version.sh <the new version>`
+From version 2.4.0-alpha1, you can now easily update your Thelia project (installed via composer) with the command `./update-version.sh <the new version>`
 
-Example to update to version `2.3.0`:
+Example to update to version `2.4.0`:
 
 ``` bash
-$ ./update-version.sh 2.3.0
+$ ./update-version.sh 2.4.0
 ```
 
 You can now execute the Thelia update process :
@@ -118,22 +185,20 @@ You can now execute the Thelia update process :
 $ php local/setup/update.php
 ```
 
-### Before Thelia 2.3.0-alpha1
+### Before Thelia 2.4.0-alpha1
 
-Before version `2.3.0-alpha1` this script doesn't exist but you can download it with this command. For example, to update to version `2.3.0` :
+Before version `2.4.0-alpha1` this script doesn't exist but you can download it with this command. For example, to update to version `2.4.0` :
 
 ``` bash
-$ curl -sS "https://raw.githubusercontent.com/thelia/thelia-project/2.3.0/update-version.sh" -o "update-version.sh"
+$ curl -sS "https://raw.githubusercontent.com/thelia/thelia-project/2.4.0/update-version.sh" -o "update-version.sh"
 $ chmod +x update-version.sh
-$ ./update-version.sh 2.3.0
+$ ./update-version.sh 2.4.0
 ```
 
 Documentation
 -------------
 
 Thelia documentation is available at http://doc.thelia.net
-
-The documentation is also in beta version and some part can be obsolete cause to some refactor.
 
 
 Roadmap
@@ -147,11 +212,19 @@ Contribute
 
 see the documentation : http://doc.thelia.net/en/documentation/contribute.html
 
+If you submit modifications that adds new data or change the structure of the database, take a look to http://doc.thelia.net/en/documentation/contribute.html#sql-scripts-modification
+
 Usage
 -----
 
 Consult the page : http://localhost/thelia/web/index_dev.php
 
 You can create a virtual host and choose web folder for root directory.
+
+To run tests (phpunit required) :
+
+``` bash
+$ phpunit
+```
 
 We still have lot of work to achieve but enjoy this part.

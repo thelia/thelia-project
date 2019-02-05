@@ -2,12 +2,6 @@
     "name": "thelia/thelia-project",
     "description": "Thelia is an ecommerce CMS.",
     "license": "LGPL-3.0+",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/thelia/Propel2"
-        }
-    ],
     "require": {
         "thelia/core": "dev-master",
         "thelia/frontoffice-default-template": "dev-master",

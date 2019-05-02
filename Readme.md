@@ -82,7 +82,7 @@ You can get the sources from git and then let composer install dependencies, or 
 ``` bash
 $ git clone --recursive https://github.com/thelia/thelia path
 $ cd path
-$ git checkout 2.3.4 (2.2.6 or 2.1.11)
+$ git checkout 2.3.5 (2.2.6 or 2.1.11)
 $ curl -sS https://getcomposer.org/installer | php
 $ php composer.phar install
 ```
@@ -91,7 +91,7 @@ $ php composer.phar install
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia path/ 2.3.4 (2.2.6 or 2.1.11)
+$ php composer.phar create-project thelia/thelia path/ 2.3.5 (2.2.6 or 2.1.11)
 ```
 
 ## Install it

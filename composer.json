@@ -30,10 +30,10 @@
         "thelia/hook-customer-module": "2.4.0",
         "thelia/hook-products-offer-module": "2.4.0",
         "thelia/hook-newsletter-module": "2.4.0",
-        "thelia/carousel-module": "dev-master",
-        "thelia/free-order-module": "dev-master",
-        "thelia/thelia-migrate-country-module": "dev-master",
-        "thelia/hook-admin-home-module": "dev-master"
+        "thelia/carousel-module": "2.4.0",
+        "thelia/free-order-module": "2.4.0",
+        "thelia/thelia-migrate-country-module": "2.4.0",
+        "thelia/hook-admin-home-module": "2.4.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

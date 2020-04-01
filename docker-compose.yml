@@ -1,0 +1,37 @@
+version: "3.1"
+
+services:
+
+  mariadb:
+    image: mariadb:10.1
+    container_name: thelia-mariadb
+    working_dir: /application
+    volumes:
+      - .:/application
+      - .docker/mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=thelia
+      - MYSQL_USER=thelia
+      - MYSQL_PASSWORD=thelia
+    ports:
+      - "8086:3306"
+
+  webserver:
+    image: nginx:alpine
+    container_name: thelia-webserver
+    working_dir: /application
+    volumes:
+      - .:/application
+      - .docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+
+  php-fpm:
+    build: .docker/php-fpm
+    container_name: thelia-php-fpm
+    working_dir: /application
+    volumes:
+      - .:/application
+      - .docker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+      - .docker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/cli/conf.d/99-overrides.ini

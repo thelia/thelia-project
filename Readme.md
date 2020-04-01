@@ -33,6 +33,85 @@ Requirements
 * Web Server Apache 2 or Nginx
 * MySQL 5
 
+## Create a Thelia project
+
+``` bash
+$ curl -sS https://getcomposer.org/installer | php
+$ php composer.phar create-project thelia/thelia-project path/ 2.3.2 (or 2.2.4)
+```
+
+## Install it with your own environment
+
+You can install Thelia using the cli tool and the scripts provided by thelia/setup
+
+``` bash
+$ php Thelia thelia:install
+```
+
+Consult the page : http://localhost/thelia/web/index_dev.php
+
+You can create a virtual host and choose web folder for root directory.
+
+## Quick install with docker-compose
+
+`Docker` and `docker-compose` have to be installed.
+
+Build your docker containers on detached mode 
+``` bash
+$ docker-compose up -d
+```
+
+Install thelia
+``` bash
+$ php Thelia thelia:install
+```
+By default if you haven't changed the `docker-compose.yml` you'll have to answer these questions like this
+
+``` 
+Database host [default: localhost] : mariadb
+``` 
+``` 
+Database port [default: 3306] : 3306
+```
+``` 
+Database name (if database does not exist, Thelia will try to create it) : thelia
+```
+
+``` 
+Database username : thelia
+```
+
+``` 
+Database pasword : thelia
+```
+
+Next just go to http://localhost:8080 and you should see your Thelia installed !
+
+If you want add some sample data just execute this command (still in your container)
+``` bash
+$ php local/setup/import.php
+```
+
+If you want to access your database from your computer (with DBeaver, Sequel Pro or anything else) the host is `localhost` and the port is `8086` 
+
+Documentation
+-------------
+
+Thelia documentation is available at http://doc.thelia.net
+
+Roadmap
+-------
+
+The Roadmap is available at http://thelia.net/community/roadmap
+
+
+Contribute
+----------
+
+See the documentation : http://doc.thelia.net/en/documentation/contribute.html
+
+### Mac OSX
+
 If you use Mac OSX, it still doesn't use php 5.4 as default php version... There are many solutions for you :
 
 * use [phpbrew](https://github.com/c9s/phpbrew)
@@ -82,51 +161,3 @@ phar.readonly = Off
 For tar.bz2 archives, you need tar's dependencies and the extension "bzip2". See [PHP Doc](http://php.net/manual/fr/book.bzip2.php)
 
 For tar.gz archives, you need tar's dependencies and the extension "zlib". See [PHP Doc](http://fr2.php.net/manual/fr/book.zlib.php)
-
-## Create a Thelia project
-
-``` bash
-$ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.4.0 (or 2.3.5)
-```
-
-## Install it
-
-You can install Thelia using the cli tool and the scripts provided by thelia/setup
-
-### Using cli tools
-
-``` bash
-$ php Thelia thelia:install
-```
-
-You just have to follow all instructions.
-
-Documentation
--------------
-
-Thelia documentation is available at http://doc.thelia.net
-
-The documentation is also in beta version and some part can be obsolete cause to some refactor.
-
-
-Roadmap
--------
-
-The Roadmap is available at http://thelia.net/community/roadmap
-
-
-Contribute
-----------
-
-see the documentation : http://doc.thelia.net/en/documentation/contribute.html
-
-Usage
------
-
-Consult the page : http://localhost/thelia/web/index_dev.php
-
-You can create a virtual host and choose web folder for root directory.
-
-We still have lot of work to achieve but enjoy this part.
-

@@ -7,6 +7,8 @@
 !/cache/.gitkeep
 !/log/.gitkeep
 !/cache/.htaccess
+.docker/mysql-data/*
+!.docker/mysql-data/.gitkeep
 
 # Thelia default templates
 /templates/frontOffice/default
@@ -20,29 +22,7 @@
 /local/media
 /local/session
 
-# Thelia default modules
-/local/modules/Cheque
-/local/modules/Carousel
-/local/modules/HookCurrency
-/local/modules/HookProductsNew
-/local/modules/Tinymce
-/local/modules/Colissimo
-/local/modules/HookCustomer
-/local/modules/HookProductsOffer
-/local/modules/VirtualProductControl
-/local/modules/Front
-/local/modules/HookLang
-/local/modules/HookSearch
-/local/modules/VirtualProductDelivery
-/local/modules/HookAnalytics
-/local/modules/HookLinks
-/local/modules/HookSocial
-/local/modules/HookCart
-/local/modules/HookNavigation
-/local/modules/TheliaDebugBar
-/local/modules/HookContact
-/local/modules/HookNewsletter
-/local/modules/TheliaSmarty
-/local/modules/FreeOrder
+# Thelia modules
+/local/modules/*
 
 ### Please add your dependancies here

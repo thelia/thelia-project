@@ -37,7 +37,7 @@ Requirements
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.3.2 (or 2.2.4)
+$ php composer.phar create-project thelia/thelia-project path/ 2.4.0 (or 2.3.5)
 ```
 
 ## Install it with your own environment

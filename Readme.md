@@ -61,10 +61,16 @@ Build your docker containers on detached mode
 $ docker-compose up -d
 ```
 
+Enter in your container
+``` bash
+$ docker-compose exec php-fpm bash
+```
+
 Install thelia
 ``` bash
 $ php Thelia thelia:install
 ```
+
 By default if you haven't changed the `docker-compose.yml` you'll have to answer these questions like this
 
 ``` 

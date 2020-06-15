@@ -1,56 +1,56 @@
 {
-    "name": "thelia/thelia-project",
-    "description": "Thelia is an ecommerce CMS.",
-    "license": "LGPL-3.0+",
-    "require": {
-        "thelia/core": "2.4.0",
-        "thelia/frontoffice-default-template": "2.4.0",
-        "thelia/backoffice-default-template": "2.4.0",
-        "thelia/email-default-template": "2.4.0",
-        "thelia/pdf-default-template": "2.4.0",
-        "thelia/setup": "2.4.0",
-        "thelia/config": "2.4.0",
-        "thelia/smarty-module": "2.4.0",
-        "thelia/front-module": "2.4.0",
-        "thelia/virtual-product-control-module": "2.4.0",
-        "thelia/virtual-product-delivery-module": "2.4.0",
-        "thelia/tinymce-module": "2.4.0",
-        "thelia/colissimo-module": "2.4.0",
-        "thelia/cheque-module": "2.4.0",
-        "thelia/hook-lang-module": "2.4.0",
-        "thelia/hook-search-module": "2.4.0",
-        "thelia/hook-currency-module": "2.4.0",
-        "thelia/hook-products-new-module": "2.4.0",
-        "thelia/hook-analytics-module": "2.4.0",
-        "thelia/hook-links-module": "2.4.0",
-        "thelia/hook-social-module": "2.4.0",
-        "thelia/hook-cart-module": "2.4.0",
-        "thelia/hook-navigation-module": "2.4.0",
-        "thelia/hook-contact-module": "2.4.0",
-        "thelia/hook-customer-module": "2.4.0",
-        "thelia/hook-products-offer-module": "2.4.0",
-        "thelia/hook-newsletter-module": "2.4.0",
-        "thelia/carousel-module": "2.4.0",
-        "thelia/free-order-module": "2.4.0",
-        "thelia/thelia-migrate-country-module": "2.4.0",
-        "thelia/hook-admin-home-module": "2.4.0"
+  "name": "thelia/thelia-project",
+  "description": "Thelia is an ecommerce CMS.",
+  "license": "LGPL-3.0+",
+  "require": {
+    "thelia/core": "dev-master",
+    "thelia/frontoffice-default-template": "dev-master",
+    "thelia/backoffice-default-template": "dev-master",
+    "thelia/email-default-template": "dev-master",
+    "thelia/pdf-default-template": "dev-master",
+    "thelia/setup": "dev-master",
+    "thelia/config": "dev-master",
+    "thelia/smarty-module": "dev-master",
+    "thelia/front-module": "dev-master",
+    "thelia/virtual-product-control-module": "dev-master",
+    "thelia/virtual-product-delivery-module": "dev-master",
+    "thelia/tinymce-module": "dev-master",
+    "thelia/colissimo-module": "dev-master",
+    "thelia/cheque-module": "dev-master",
+    "thelia/hook-lang-module": "dev-master",
+    "thelia/hook-search-module": "dev-master",
+    "thelia/hook-currency-module": "dev-master",
+    "thelia/hook-products-new-module": "dev-master",
+    "thelia/hook-analytics-module": "dev-master",
+    "thelia/hook-links-module": "dev-master",
+    "thelia/hook-social-module": "dev-master",
+    "thelia/hook-cart-module": "dev-master",
+    "thelia/hook-navigation-module": "dev-master",
+    "thelia/hook-contact-module": "dev-master",
+    "thelia/hook-customer-module": "dev-master",
+    "thelia/hook-products-offer-module": "dev-master",
+    "thelia/hook-newsletter-module": "dev-master",
+    "thelia/carousel-module": "dev-master",
+    "thelia/free-order-module": "dev-master",
+    "thelia/thelia-migrate-country-module": "dev-master",
+    "thelia/hook-admin-home-module": "dev-master"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-0": {
+      "": "local/modules/"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-      "bin-dir": "bin"
-    },
-    "autoload": {
-        "psr-0": {
-          "": "local/modules/"
-        },
-        "psr-4": {
-            "Thelia\\Project\\": "lib/Thelia/Project"
-        }
-    },
-    "scripts": {
-        "post-create-project-cmd" : [
-            "Thelia\\Project\\ScriptHandler::installThelia"
-        ]
+    "psr-4": {
+      "Thelia\\Project\\": "lib/Thelia/Project"
     }
+  },
+  "scripts": {
+    "post-create-project-cmd" : [
+      "Thelia\\Project\\ScriptHandler::installThelia"
+    ]
+  }
 }

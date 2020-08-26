@@ -30,6 +30,9 @@ $loader->unregister();
 $cacheLoader->register(true);
 */
 
+if (file_exists(THELIA_ROOT.'.env')) {
+    (new \Symfony\Component\Dotenv\Dotenv())->load(THELIA_ROOT.'.env');
+}
 
 $request = Request::createFromGlobals();
 

@@ -26,6 +26,10 @@ $trustedIp = array(
   '127.0.0.1',
 );
 
+if (file_exists(THELIA_ROOT.'.env')) {
+    (new \Symfony\Component\Dotenv\Dotenv())->load(THELIA_ROOT.'.env');
+}
+
 $request = Request::createFromGlobals();
 $thelia = new Thelia("dev", true);
 

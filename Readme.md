@@ -18,7 +18,7 @@ A repository containing all thelia modules is available at this address : https:
 Requirements
 ------------
 
-* PHP 5.5
+* PHP 7.0
     * Required extensions :
         * PDO_Mysql
         * mcrypt
@@ -37,7 +37,7 @@ Requirements
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.4.3 (or 2.3.5)
+$ php composer.phar create-project thelia/thelia-project path/ 2.4.4 (or 2.3.5)
 ```
 
 ## Install it with your own environment

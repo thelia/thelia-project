@@ -8,6 +8,7 @@
 !/log/.gitkeep
 !/cache/.htaccess
 .docker/mysql-data/*
+.idea
 !.docker/mysql-data/.gitkeep
 
 # Thelia default templates

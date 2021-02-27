@@ -1,25 +1,24 @@
-version: "3.1"
+version: "3.7"
 
 services:
-
   mariadb:
-    image: mariadb:10.1
-    container_name: thelia-mariadb
+    image: mariadb:10.3
+    container_name: docker-thelia-mariadb
     working_dir: /application
     volumes:
       - .:/application
       - .docker/mysql-data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=thelia
-      - MYSQL_USER=thelia
-      - MYSQL_PASSWORD=thelia
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     ports:
       - "8086:3306"
 
   webserver:
     image: nginx:alpine
-    container_name: thelia-webserver
+    container_name: docker-thelia-webserver
     working_dir: /application
     volumes:
       - .:/application
@@ -29,9 +28,27 @@ services:
 
   php-fpm:
     build: .docker/php-fpm
-    container_name: thelia-php-fpm
+    container_name: docker-thelia-php-fpm
     working_dir: /application
     volumes:
       - .:/application
-      - .docker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
-      - .docker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/cli/conf.d/99-overrides.ini
+      - .docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      - .docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/cli/conf.d/99-overrides.ini
+    environment:
+      - "PHP_IDE_CONFIG:serverName=thelia"
+      - "XDEBUG_CONFIG:idekey=PHPSTORM"
+      - TEMPLATE_NAME
+
+  encore:
+    build:
+      context: ./templates/frontOffice/${TEMPLATE_NAME}
+      target: thelia_encore
+    container_name: docker-thelia-encore
+    working_dir: /application/templates/frontOffice/${TEMPLATE_NAME}
+    environment:
+      BROWSERSYNC_PROXY: http://localhost:8081
+    volumes:
+      - ./templates/frontOffice/${TEMPLATE_NAME}:/application/templates/frontOffice/${TEMPLATE_NAME}:delegated
+      - ./templates/frontOffice/${TEMPLATE_NAME}/node_modules:/application/templates/frontOffice/${TEMPLATE_NAME}/node_modules
+    ports:
+      - 8081:8081

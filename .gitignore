@@ -3,6 +3,8 @@
 /log/*
 /web/assets
 /web/cache
+/web/dist
+/web/tinymce
 /cache/*
 !/cache/.gitkeep
 !/log/.gitkeep
@@ -10,9 +12,11 @@
 .docker/mysql-data/*
 .idea
 !.docker/mysql-data/.gitkeep
+.env
 
 # Thelia default templates
 /templates/frontOffice/default
+/templates/frontOffice/modern
 /templates/backOffice/default
 /templates/email/default
 /templates/pdf/default

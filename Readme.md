@@ -54,61 +54,36 @@ You can create a virtual host and choose web folder for root directory.
 
 ## Quick install with docker-compose
 
-`Docker` and `docker-compose` have to be installed.
+This repo contains all the configuration needed to run Thelia with docker and docker-compose.    
+Warning, this docker configuration is not ready for production.
 
-Build your docker containers on detached mode 
+It requires obviously [docker](https://docker.com/) and [docker-compose](https://docs.docker.com/compose/)
+
+To install Thelia within Docker, run :
+
 ``` bash
-$ docker-compose up -d
+./start-docker.sh
 ```
 
-Enter in your container
-``` bash
-$ docker-compose exec php-fpm bash
-```
+It will ask you for a template name (usually your project name) if you don't have a .env file but you can create the .env by yourself, take a look at .env.docker to make your own.
 
-Install thelia
-``` bash
-$ php Thelia thelia:install
-```
-
-By default if you haven't changed the `docker-compose.yml` you'll have to answer these questions like this
-
-``` 
-Database host [default: localhost] : mariadb
-``` 
-``` 
-Database port [default: 3306] : 3306
-```
-``` 
-Database name (if database does not exist, Thelia will try to create it) : thelia
-```
-
-``` 
-Database username : thelia
-```
-
-``` 
-Database pasword : thelia
-```
+If your folder template does not exist it will copy the "modern" template.
 
 Next just go to http://localhost:8080 and you should see your Thelia installed !
 
-If you want add some sample data just execute this command (still in your container)
+And run the same command everytime you want launch your Thelia.
+
+If you want add some sample data just add the option `-demo`
 ``` bash
-$ php local/setup/import.php
+./start-docker.sh -demo
 ```
 
-If you want to access your database from your computer (with DBeaver, Sequel Pro or anything else) the host is `localhost` and the port is `8086` 
+If you want to access your database from your computer (with DBeaver, Sequel Pro or anything else) by default the host is `localhost` and the port is `8086`
 
 Documentation
 -------------
 
 Thelia documentation is available at http://doc.thelia.net
-
-Roadmap
--------
-
-The Roadmap is available at http://thelia.net/community/roadmap
 
 
 Contribute

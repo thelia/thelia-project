@@ -26,6 +26,9 @@
 /local/setup
 /local/media
 /local/session
+!local/media/images/store/favicon.png
+!local/media/images/store/thelia.svg
+!local/media/images/store/banner.png
 
 # Thelia modules
 /local/modules/*

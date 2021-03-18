@@ -12,12 +12,13 @@
 
 namespace Thelia\Project;
 
+use App\Kernel;
 use Composer\Script\Event;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Thelia\Command\Install;
 use Thelia\Core\Application;
-use Thelia\Core\Thelia;
+use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 
 /**
  * Class ScriptHandler
@@ -31,8 +32,36 @@ class ScriptHandler
         if ($event->getIO()->askConfirmation('Would you like to install Thelia now ? [Y/n] ', true)) {
             require __DIR__ . "/../../../bootstrap.php";
 
-            $kernel = new Thelia("install", true);
-            $kernel->boot();
+            $kernel = new class($env = "prod", true) extends Kernel {
+                use MicroKernelTrait;
+
+                public function getCacheDir()
+                {
+                    if (\defined('THELIA_ROOT')) {
+                        return THELIA_CACHE_DIR . $this->environment;
+                    }
+
+                    return parent::getCacheDir();
+                }
+
+                public function getLogDir()
+                {
+                    if (\defined('THELIA_ROOT')) {
+                        return THELIA_LOG_DIR;
+                    } else {
+                        return parent::getLogDir();
+                    }
+                }
+
+                public function registerBundles(): array
+                {
+                    return [
+                        new Symfony\Bundle\FrameworkBundle\FrameworkBundle()
+                    ];
+                }
+            };
+
+
 
             $cmd = new Install();
             $cmd->setApplication(new Application($kernel));

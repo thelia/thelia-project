@@ -1,14 +1,9 @@
 /vendor
-/bin
-/log/*
 /web/assets
 /web/cache
 /web/dist
 /web/tinymce
-/cache/*
-!/cache/.gitkeep
-!/log/.gitkeep
-!/cache/.htaccess
+/var
 .docker/mysql-data/*
 .idea
 !.docker/mysql-data/.gitkeep
@@ -34,3 +29,13 @@
 /local/modules/*
 
 ### Please add your dependancies here
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

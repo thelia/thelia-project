@@ -24,15 +24,25 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "config": {
-    "bin-dir": "bin"
+  "scripts": {
+    "demo-database": [
+      "php Thelia thelia:dev:reloadDB -f",
+      "php local/setup/import.php",
+      "php Thelia admin:create --login_name thelia --password thelia --last_name thelia --first_name thelia --email thelia@example.com"
+    ],
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
   },
   "autoload": {
-    "psr-0": {
-      "": "local/modules/"
-    },
     "psr-4": {
-      "Thelia\\Project\\": "lib/Thelia/Project"
+      "": [
+        "local/modules/",
+        "var/cache/propel/model"
+      ],
+      "TheliaMain\\": "var/cache/propel/database/TheliaMain",
+      "App\\": "src/"
     }
   }
 }

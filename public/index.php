@@ -10,33 +10,21 @@
 /*      file that was distributed with this source code.                             */
 /*************************************************************************************/
 
-use Thelia\Core\HttpFoundation\Request;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
-
-$env = 'dev';
-require __DIR__ . '/../bootstrap.php';
+use Thelia\Core\HttpFoundation\Request;
 
 
-$_SERVER['APP_ENV'] = 'dev';
-$_SERVER['APP_DEBUG'] = '1';
+$env = 'prod';
+$loader = require __DIR__ . '/../bootstrap.php';
 
-(new Dotenv())->loadEnv(dirname(__DIR__).'/.env');
+(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 
-$trustedIp = array_filter(
-    explode(',', $_SERVER['DEBUG_TRUSTED_IP'] ?? ''),
-    static function ($ip): bool {
-        return filter_var($ip, \FILTER_VALIDATE_IP);
-    }
-);
+if ($_SERVER['APP_DEBUG']) {
+    umask(0000);
 
-if (false === in_array(Request::createFromGlobals()->getClientIp(), $trustedIp)) {
-    header('HTTP/1.0 403 Forbidden');
-    exit('You are not allowed to access this file.');
+    Debug::enable();
 }
-
-umask(0000);
-Debug::enable();
 
 $thelia = new App\Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $request = Request::createFromGlobals();

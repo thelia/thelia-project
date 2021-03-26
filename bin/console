@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php
+
+$bootstrapFile = __DIR__ .  "/../bootstrap.php";
+require __DIR__ . "/../vendor/thelia/core/Thelia";

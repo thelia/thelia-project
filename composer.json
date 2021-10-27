@@ -14,7 +14,8 @@
     "thelia/better-seo-module": "dev-main",
     "thelia/rewrite-url-module": "dev-main",
     "thelia/url-sanitizer-module": "dev-main",
-    "thelia/canonical-url-module": "dev-main"
+    "thelia/canonical-url-module": "dev-main",
+    "thelia/invoice-ref": "dev-main"
   },
   "suggest": {
     "vlopes/maintenance-module": "Add a way to put your site in maintenance mode",

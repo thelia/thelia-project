@@ -33,7 +33,10 @@
     "auto-scripts": {
       "cache:clear": "symfony-cmd",
       "assets:install %PUBLIC_DIR%": "symfony-cmd"
-    }
+    },
+    "post-autoload-dump": [
+      "Thelia\\Config\\InitConfig::initConfig"
+    ]
   },
   "autoload": {
     "psr-4": {
@@ -43,6 +46,12 @@
       ],
       "TheliaMain\\": "var/cache/propel/database/TheliaMain",
       "App\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "symfony/flex": true,
+      "thelia/installer": true
     }
   }
 }

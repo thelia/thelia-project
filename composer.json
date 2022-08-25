@@ -15,8 +15,8 @@
     "thelia/rewrite-url-module": "dev-main",
     "thelia/url-sanitizer-module": "dev-main",
     "thelia/canonical-url-module": "dev-main",
-    "thelia/shortcode-module": "~2.0.0",
-    "thelia/short-code-meta-module": "~2.0.0"
+    "thelia/shortcode-module": "dev-main",
+    "thelia/short-code-meta-module": "dev-main"
   },
   "suggest": {
     "vlopes/maintenance-module": "Add a way to put your site in maintenance mode",

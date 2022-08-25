@@ -15,7 +15,7 @@
     "thelia/rewrite-url-module": "dev-main",
     "thelia/url-sanitizer-module": "dev-main",
     "thelia/canonical-url-module": "dev-main",
-    "thelia/shortcode-module": "dev-main",
+    "thelia/short-code-module": "dev-main",
     "thelia/short-code-meta-module": "dev-main"
   },
   "suggest": {

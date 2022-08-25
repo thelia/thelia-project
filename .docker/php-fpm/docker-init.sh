@@ -18,6 +18,8 @@ if ! test -f "$DB_FILE"; then
     php Thelia module:activate OpenApi
     php Thelia module:activate ChoiceFilter
     php Thelia module:activate StoreSeo
+    php Thelia module:activate ShortCode
+    php Thelia module:activate ShortCodeMeta
     php Thelia module:activate SmartyRedirection
     php Thelia module:deactivate HookAdminHome
     php Thelia module:deactivate HookAnalytics
@@ -34,7 +36,8 @@ if ! test -f "$DB_FILE"; then
     php Thelia module:deactivate HookLinks
     php Thelia module:deactivate HookProductsOffer
 
-    php Thelia template:front "${TEMPLATE_NAME}"
+    php Thelia template:set frontOffice "${ACTIVE_FRONT_TEMPLATE}"
+    php Thelia template:set backOffice "${ACTIVE_ADMIN_TEMPLATE}"
     php Thelia admin:create --login_name thelia2 --password thelia2 --last_name thelia2 --first_name thelia2 --email thelia2@example.com
 fi
 

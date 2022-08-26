@@ -23,9 +23,11 @@ set -o allexport
 eval $(cat '.env' | sed -e '/^#/d;/^\s*$/d' -e 's/\(\w*\)[ \t]*=[ \t]*\(.*\)/\1=\2/' -e "s/=['\"]\(.*\)['\"]/=\1/g" -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g")
 set +o allexport
 
-if [ ! -z "$TEMPLATE_NAME" ] && [ ! -d "templates/frontOffice/$TEMPLATE_NAME" ]; then
-  echo -e "\e[1;37;46m Copying template files to templates/frontOffice/$TEMPLATE_NAME \e[0m"
-  cp -r "templates/frontOffice/modern" "templates/frontOffice/$TEMPLATE_NAME";
+if [ ! -z "$ACTIVE_FRONT_TEMPLATE" ] && [ ! -d "templates/frontOffice/$ACTIVE_FRONT_TEMPLATE" ]; then
+  echo -e "\e[1;37;46m Copying template files to templates/frontOffice/$ACTIVE_FRONT_TEMPLATE \e[0m"
+  cp -r "templates/frontOffice/modern" "templates/frontOffice/$ACTIVE_FRONT_TEMPLATE";
+else
+  echo "Template files "$template_name" already exists"
 fi
 
   echo -e "\e[1;37;46m Starting docker \e[0m"
@@ -42,5 +44,5 @@ docker-compose exec php-fpm php Thelia c:c --env=prod
 docker-compose exec php-fpm php Thelia c:c --env=propel
 
 # Not safe but mandatory on linux env
-chmod -R 777 cache
-chmod -R 777 log
+chmod -R 777 var/cache
+chmod -R 777 var/log

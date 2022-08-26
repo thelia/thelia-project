@@ -1,2 +1,0 @@
-webpack_encore:
-  output_path: '%kernel.project_dir%/public/build'

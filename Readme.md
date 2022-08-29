@@ -15,29 +15,40 @@ You can download this version and have a try or take a look at the source code (
 
 A repository containing all thelia modules is available at this address : https://github.com/thelia-modules
 
+
+Compatibility
+------------
+
+|         |   Thelia 2.3    |      Thelia 2.4 |  Thelia 2.5 |
+|---------|:---------------:|----------------:|------------:|
+| PHP     | 5.5 5.6 7.0 7.1 | 7.0 7.1 7.2 7.3 |     8.0.2 8.1 |
+| MySQL   |     5.5 5.6     |     5.5 5.6 5.7 | 5.6 5.7 8.0 |
+| Symfony |       2.8       |             2.8 |     6.0 6.1 |
+
 Requirements
 ------------
 
-* PHP 7.0
+* PHP
     * Required extensions :
         * PDO_Mysql
-        * mcrypt
+        * openssl
         * intl
         * gd
         * curl
+        * dom
     * safe_mode off
     * memory_limit at least 128M, preferably 256.
-    * post_max_size 20M
-    * upload_max_filesize 2M
+    * post\_max\_size 20M
+    * upload\_max\_filesize 2M
     * date.timezone must be defined
 * Web Server Apache 2 or Nginx
-* MySQL 5
+* MySQL 5 or 8
 
 ## Create a Thelia project
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.4.4 (or 2.3.5)
+$ php composer.phar create-project thelia/thelia-project path/ 2.5.0 (or 2.4.5)
 ```
 
 ## Install it with your own environment
@@ -48,7 +59,7 @@ You can install Thelia using the cli tool and the scripts provided by thelia/set
 $ php Thelia thelia:install
 ```
 
-Consult the page : http://localhost/thelia/web/index_dev.php
+Consult the page : http://localhost/thelia/web
 
 You can create a virtual host and choose web folder for root directory.
 

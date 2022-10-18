@@ -15,7 +15,10 @@
     "thelia/rewrite-url-module": "dev-main",
     "thelia/url-sanitizer-module": "dev-main",
     "thelia/canonical-url-module": "dev-main",
-    "thelia/short-code-meta-module": "dev-main"
+    "thelia/short-code-meta-module": "dev-main",
+    "thelia/thelia-blocks-module": "dev-main",
+    "thelia/thelia-library-module": "dev-main",
+    "thelia/product-loop-attribute-filter-module": "dev-main"
   },
   "suggest": {
     "vlopes/maintenance-module": "Add a way to put your site in maintenance mode",

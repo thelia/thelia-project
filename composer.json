@@ -3,9 +3,9 @@
   "description": "Thelia is an ecommerce CMS.",
   "license": "LGPL-3.0+",
   "require": {
-    "thelia/thelia-skeleton": "~2.5.0",
+    "thelia/thelia-skeleton": "~2.5.1",
     "symfony/flex": "^1.19",
-    "thelia/frontoffice-modern-template": "~2.5.0",
+    "thelia/frontoffice-modern-template": "~2.5.1",
     "thelia/open-api-module": "~2.1.0",
     "thelia/smarty-redirection-module": "~2.0.0",
     "thelia/choice-filter-module": "~2.1.0",
@@ -15,7 +15,10 @@
     "thelia/rewrite-url-module": "~2.1.0",
     "thelia/url-sanitizer-module": "~2.1.0",
     "thelia/canonical-url-module": "~2.1.0",
-    "thelia/short-code-meta-module": "~2.0.0"
+    "thelia/short-code-meta-module": "~2.0.0",
+    "thelia/thelia-blocks-module": "^2.0.3-beta",
+    "thelia/thelia-library-module": "^1.1.7",
+    "thelia/product-loop-attribute-filter-module": "~2.0.0"
   },
   "suggest": {
     "vlopes/maintenance-module": "Add a way to put your site in maintenance mode",

@@ -3,9 +3,8 @@
   "description": "Thelia is an ecommerce CMS.",
   "license": "LGPL-3.0+",
   "require": {
-    "thelia/thelia-skeleton": "dev-main",
-    "symfony/flex": "^1.19",
-    "thelia/frontoffice-modern-template": "dev-main",
+    "thelia/thelia-skeleton": "dev-twig",
+    "symfony/flex": "^2.4",
     "thelia/open-api-module": "dev-main|^2.2",
     "thelia/smarty-redirection-module": "dev-main",
     "thelia/choice-filter-module": "dev-main",

@@ -5,6 +5,7 @@
   "require": {
     "thelia/thelia-skeleton": "dev-twig",
     "symfony/flex": "*",
+    "thelia/flexy": "*",
     "thelia/open-api-module": "dev-main|^2.2",
     "thelia/smarty-redirection-module": "dev-main",
     "thelia/choice-filter-module": "dev-main",

@@ -2,30 +2,25 @@
   "name": "thelia/thelia-project",
   "description": "Thelia is an ecommerce CMS.",
   "license": "LGPL-3.0+",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "templates/frontOffice/flexy/"
+    }
+  ],
   "require": {
     "thelia/thelia-skeleton": "dev-twig",
     "thelia/setup": "dev-twig",
     "symfony/flex": "*",
     "thelia/flexy": "*",
     "thelia/open-api-module": "dev-main|^2.2",
-    "thelia/smarty-redirection-module": "dev-main",
-    "thelia/choice-filter-module": "dev-main",
     "thelia/custom-delivery-module": "dev-main",
-    "thelia/store-seo-module": "dev-main",
-    "thelia/better-seo-module": "dev-main",
-    "thelia/rewrite-url-module": "dev-main",
-    "thelia/url-sanitizer-module": "dev-main",
-    "thelia/canonical-url-module": "dev-main",
-    "thelia/short-code-meta-module": "dev-main",
-    "thelia/thelia-blocks-module": "dev-main",
-    "thelia/thelia-library-module": "dev-main",
-    "thelia/product-loop-attribute-filter-module": "dev-main"
+    "thelia/thelia-blocks-module": "dev-twig",
+    "thelia/thelia-library-module": "dev-twig"
   },
   "suggest": {
     "vlopes/maintenance-module": "Add a way to put your site in maintenance mode",
-    "thelia/order-creation-module": "Create order from admin",
-    "cqfdev/best-sellers-module": "Show your best sellers on your home page",
-    "thelia/alternate-hreflang-module": "Generates a alternateHreflang URL for every page of your shop"
+    "thelia/order-creation-module": "Create order from admin"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -57,6 +52,15 @@
     "allow-plugins": {
       "symfony/flex": true,
       "thelia/installer": true
+    }
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": true,
+      "endpoint": [
+        "https://api.github.com/repos/thelia/thelia-recipes/contents/index.json?ref=main",
+        "flex://defaults"
+      ]
     }
   }
 }

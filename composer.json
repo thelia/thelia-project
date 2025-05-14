@@ -2,12 +2,6 @@
   "name": "thelia/thelia-project",
   "description": "Thelia is an ecommerce CMS.",
   "license": "LGPL-3.0+",
-  "repositories": [
-    {
-      "type": "path",
-      "url": "templates/frontOffice/flexy/"
-    }
-  ],
   "require": {
     "thelia/thelia-skeleton": "dev-twig",
     "thelia/setup": "dev-twig",

@@ -4,9 +4,7 @@
     "license": "LGPL-3.0+",
     "require": {
         "thelia/thelia-skeleton": "dev-twig",
-        "thelia/setup": "dev-twig",
-        "symfony/flex": "^2.4",
-        "thelia/flexy": "dev-twig"
+        "symfony/flex": "^2.4"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

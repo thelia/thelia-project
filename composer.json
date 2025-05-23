@@ -37,7 +37,9 @@
     "config": {
         "allow-plugins": {
             "symfony/flex": true,
-            "thelia/installer": false
+            "thelia/installer": false,
+            "composer/installers": true,
+            "symfony/runtime": true
         }
     },
     "extra": {

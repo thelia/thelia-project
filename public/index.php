@@ -14,6 +14,7 @@ use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Thelia\Core\HttpFoundation\Request;
 
+//use Symfony\Component\DependencyInjection;
 
 $env = 'prod';
 $loader = require __DIR__ . '/../bootstrap.php';

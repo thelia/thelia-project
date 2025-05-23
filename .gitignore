@@ -1,12 +1,10 @@
 /vendor
-/web/assets
-/web/cache
-/web/dist
-/web/tinymce
+/public/assets
+/public/cache
+/public/dist
+/public/tinymce
 /var
-.docker/mysql-data/*
 .idea
-!.docker/mysql-data/.gitkeep
 .env
 
 # Thelia default templates
@@ -24,9 +22,6 @@
 !local/media/images/store/favicon.png
 !local/media/images/store/thelia.svg
 !local/media/images/store/banner.png
-
-# Thelia modules
-/local/modules/*
 
 ### Please add your dependancies here
 

@@ -7,7 +7,13 @@ define('DS', DIRECTORY_SEPARATOR);
 define ("THELIA_ROOT", __DIR__ . DS);
 define ('THELIA_VENDOR', __DIR__ . DS . 'vendor' . DS);
 define ('THELIA_LIB', THELIA_VENDOR . 'thelia' . DS . 'core' . DS . 'lib' . DS . 'Thelia' . DS);
-define ("THELIA_SETUP_DIRECTORY", __DIR__ . DS . "local" . DS . "setup" . DS);
+if (is_dir(THELIA_VENDOR.'thelia'.DS.'setup'.DS) ) {
+    define('THELIA_SETUP_DIRECTORY', THELIA_VENDOR.'thelia'.DS.'setup'.DS);
+} elseif(is_dir(THELIA_ROOT.'setup'.DS)) {
+    define('THELIA_SETUP_DIRECTORY', THELIA_ROOT.'setup'.DS);
+} else {
+    define('THELIA_SETUP_DIRECTORY', THELIA_LOCAL_DIR.'setup'.DS);
+}
 
 // --------------------------------------------------
 

@@ -1,52 +1,69 @@
 {
-  "name": "thelia/thelia-project",
-  "description": "Thelia is an ecommerce CMS.",
-  "license": "LGPL-3.0+",
-  "require": {
-    "thelia/thelia-skeleton": "dev-twig",
-    "thelia/setup": "dev-twig",
-    "symfony/flex": "^2.4",
-    "thelia/flexy": "dev-twig"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "scripts": {
-    "demo-database": [
-      "php Thelia thelia:dev:reloadDB -f",
-      "php local/setup/import.php",
-      "php Thelia admin:create --login_name thelia --password thelia --last_name thelia --first_name thelia --email thelia@example.com"
-    ],
-    "auto-scripts": {
-      "cache:clear": "symfony-cmd",
-      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    "name": "thelia/thelia-project",
+    "description": "Thelia is an ecommerce CMS.",
+    "license": "LGPL-3.0+",
+    "require": {
+        "thelia/thelia-skeleton": "dev-twig",
+        "thelia/setup": "dev-twig",
+        "symfony/flex": "^2.4",
+        "thelia/flexy": "dev-twig"
     },
-    "post-autoload-dump": [
-      "Thelia\\Config\\InitConfig::initConfig"
-    ]
-  },
-  "autoload": {
-    "psr-4": {
-      "": [
-        "local/modules/",
-        "var/cache/propel/model"
-      ],
-      "TheliaMain\\": "var/cache/propel/database/TheliaMain",
-      "App\\": "src/"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "demo-database": [
+            "php Thelia thelia:dev:reloadDB -f",
+            "php local/setup/import.php",
+            "php Thelia admin:create --login_name thelia --password thelia --last_name thelia --first_name thelia --email thelia@example.com"
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-autoload-dump": [
+            "Thelia\\Config\\InitConfig::initConfig"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "": [
+                "local/modules/",
+                "var/cache/propel/model"
+            ],
+            "TheliaMain\\": "var/cache/propel/database/TheliaMain",
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true,
+            "thelia/installer": false
+        }
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "endpoint": [
+                "https://api.github.com/repos/thelia/thelia-recipes/contents/index.json?ref=main",
+                "flex://defaults"
+            ]
+        },
+        "installer-paths": {
+            "vendor/{$vendor}/modules/{$name}": [
+                "type:thelia-module"
+            ],
+            "template/frontOffice/{$name}": [
+                "thelia-frontoffice-template"
+            ],
+            "template/email/{$name}": [
+                "thelia-email-template"
+            ],
+            "template/pdf/{$name}": [
+                "thelia-pdf-template"
+            ],
+            "local/": [
+                "thelia-local"
+            ]
+        }
     }
-  },
-  "config": {
-    "allow-plugins": {
-      "symfony/flex": true,
-      "thelia/installer": false
-    }
-  },
-  "extra": {
-    "symfony": {
-      "allow-contrib": true,
-      "endpoint": [
-        "https://api.github.com/repos/thelia/thelia-recipes/contents/index.json?ref=main",
-        "flex://defaults"
-      ]
-    }
-  }
 }

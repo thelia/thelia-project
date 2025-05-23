@@ -6,7 +6,7 @@
     "thelia/thelia-skeleton": "dev-twig",
     "thelia/setup": "dev-twig",
     "symfony/flex": "^2.4",
-    "thelia/flexy": "dev-twig",
+    "thelia/flexy": "dev-twig"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,

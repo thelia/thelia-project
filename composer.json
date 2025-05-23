@@ -5,16 +5,8 @@
   "require": {
     "thelia/thelia-skeleton": "dev-twig",
     "thelia/setup": "dev-twig",
-    "symfony/flex": "*",
-    "thelia/flexy": "*",
-    "thelia/open-api-module": "dev-main|^2.2",
-    "thelia/custom-delivery-module": "dev-main",
-    "thelia/thelia-blocks-module": "dev-twig",
-    "thelia/thelia-library-module": "dev-twig"
-  },
-  "suggest": {
-    "vlopes/maintenance-module": "Add a way to put your site in maintenance mode",
-    "thelia/order-creation-module": "Create order from admin"
+    "symfony/flex": "^2.4",
+    "thelia/flexy": "dev-twig",
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -45,7 +37,7 @@
   "config": {
     "allow-plugins": {
       "symfony/flex": true,
-      "thelia/installer": true
+      "thelia/installer": false
     }
   },
   "extra": {

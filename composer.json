@@ -57,6 +57,9 @@
             "template/frontOffice/{$name}": [
                 "type:thelia-frontoffice-template"
             ],
+            "template/backOffice/{$name}": [
+                "type:thelia-backoffice-template"
+            ],
             "template/email/{$name}": [
                 "type:thelia-email-template"
             ],

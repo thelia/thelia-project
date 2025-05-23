@@ -52,16 +52,16 @@
           "vendor/{$vendor}/modules/{$name}": [
             "type:thelia-module"
           ],
-          "template/frontOffice/{$name}": [
+          "templates/frontOffice/{$name}": [
             "type:thelia-frontoffice-template"
           ],
-          "template/backOffice/{$name}": [
+          "templates/backOffice/{$name}": [
             "type:thelia-backoffice-template"
           ],
-          "template/email/{$name}": [
+          "templates/email/{$name}": [
             "type:thelia-email-template"
           ],
-          "template/pdf/{$name}": [
+          "templates/pdf/{$name}": [
             "type:thelia-pdf-template"
           ],
           "local/": [

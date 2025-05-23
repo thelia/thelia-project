@@ -26,6 +26,7 @@
         "psr-4": {
             "": [
                 "local/modules/",
+                "vendor/thelia/modules",
                 "var/cache/propel/model"
             ],
             "TheliaMain\\": "var/cache/propel/database/TheliaMain",

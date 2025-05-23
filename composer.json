@@ -47,26 +47,6 @@
                 "https://api.github.com/repos/thelia/thelia-recipes/contents/index.json?ref=main",
                 "flex://defaults"
             ]
-        },
-        "installer-paths": {
-            "vendor/{$vendor}/modules/{$name}": [
-                "type:thelia-module"
-            ],
-            "template/frontOffice/{$name}": [
-                "type:thelia-frontoffice-template"
-            ],
-            "template/backOffice/{$name}": [
-                "type:thelia-backoffice-template"
-            ],
-            "template/email/{$name}": [
-                "type:thelia-email-template"
-            ],
-            "template/pdf/{$name}": [
-                "type:thelia-pdf-template"
-            ],
-            "local/": [
-                "type:thelia-local"
-            ]
         }
     }
 }

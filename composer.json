@@ -55,16 +55,16 @@
                 "type:thelia-module"
             ],
             "template/frontOffice/{$name}": [
-                "thelia-frontoffice-template"
+                "type:thelia-frontoffice-template"
             ],
             "template/email/{$name}": [
-                "thelia-email-template"
+                "type:thelia-email-template"
             ],
             "template/pdf/{$name}": [
-                "thelia-pdf-template"
+                "type:thelia-pdf-template"
             ],
             "local/": [
-                "thelia-local"
+                "type:thelia-local"
             ]
         }
     }

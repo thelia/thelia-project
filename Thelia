@@ -2,4 +2,4 @@
 <?php
 
 $bootstrapFile = __DIR__ . "/vendor/autoload_runtime.php";
-require __DIR__ . "/vendor/thelia/core/Thelia";
+return require __DIR__ . "/vendor/thelia/core/Thelia";

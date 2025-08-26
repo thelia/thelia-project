@@ -18,6 +18,4 @@ if (is_dir(THELIA_VENDOR.'thelia'.DS.'setup'.DS) ) {
 
 // --------------------------------------------------
 
-$loader = require "vendor/autoload.php";
-
-return $loader;
+return require "vendor/autoload_runtime.php";

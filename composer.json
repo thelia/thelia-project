@@ -20,6 +20,9 @@
     },
     "post-autoload-dump": [
       "Thelia\\Config\\InitConfig::initConfig"
+    ],
+    "remove-flexy-bundle": [
+        "php -r \"\$f='config/bundles.php';if(file_exists(\$f)){file_put_contents(\$f,preg_replace('/^\\s*FlexyBundle\\\\\\\\FlexyBundle::class.*$/m','',file_get_contents(\$f)));}\""
     ]
   },
   "autoload": {

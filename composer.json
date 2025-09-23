@@ -45,10 +45,6 @@
     "symfony": {
       "allow-contrib": true,
       "require": "6.4.*",
-      "endpoint": [
-        "https://api.github.com/repos/thelia/thelia-recipes/contents/index.json?ref=main",
-        "flex://defaults"
-      ],
       "bundles": {
         "FlexyBundle\\FlexyBundle": "false"
       }

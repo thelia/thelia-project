@@ -1,74 +1,77 @@
 {
-    "name": "thelia/thelia-project",
-    "description": "Thelia is an ecommerce CMS.",
-    "license": "LGPL-3.0+",
-    "require": {
-        "thelia/thelia-skeleton": "dev-twig",
-        "symfony/flex": "^2.4"
+  "name": "thelia/thelia-project",
+  "description": "Thelia is an ecommerce CMS.",
+  "license": "LGPL-3.0+",
+  "require": {
+    "thelia/thelia-skeleton": "dev-twig",
+    "symfony/flex": "^2.4"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "demo-database": [
+      "php Thelia thelia:dev:reloadDB -f",
+      "php local/setup/import.php",
+      "php Thelia admin:create --login_name thelia --password thelia --last_name thelia --first_name thelia --email thelia@example.com"
+    ],
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "demo-database": [
-            "php Thelia thelia:dev:reloadDB -f",
-            "php local/setup/import.php",
-            "php Thelia admin:create --login_name thelia --password thelia --last_name thelia --first_name thelia --email thelia@example.com"
-        ],
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "post-autoload-dump": [
-            "Thelia\\Config\\InitConfig::initConfig"
-        ]
-    },
-    "autoload": {
-        "psr-4": {
-            "": [
-                "local/modules/",
-                "vendor/thelia/modules",
-                "var/cache/propel/model"
-            ],
-            "TheliaMain\\": "var/cache/propel/database/TheliaMain",
-            "App\\": "src/"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "symfony/flex": true,
-            "thelia/installer": false,
-            "composer/installers": true,
-            "symfony/runtime": true
-        }
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": true,
-            "require": "6.4.*",
-            "endpoint": [
-                "https://api.github.com/repos/thelia/thelia-recipes/contents/index.json?ref=main",
-                "flex://defaults"
-            ]
-        },
-        "installer-paths": {
-          "vendor/{$vendor}/modules/{$name}": [
-            "type:thelia-module"
-          ],
-          "templates/frontOffice/{$name}": [
-            "type:thelia-frontoffice-template"
-          ],
-          "templates/backOffice/{$name}": [
-            "type:thelia-backoffice-template"
-          ],
-          "templates/email/{$name}": [
-            "type:thelia-email-template"
-          ],
-          "templates/pdf/{$name}": [
-            "type:thelia-pdf-template"
-          ],
-          "local/": [
-            "type:thelia-local"
-          ]
-        }
+    "post-autoload-dump": [
+      "Thelia\\Config\\InitConfig::initConfig"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "": [
+        "local/modules/",
+        "vendor/thelia/modules",
+        "var/cache/propel/model"
+      ],
+      "TheliaMain\\": "var/cache/propel/database/TheliaMain",
+      "App\\": "src/"
     }
+  },
+  "config": {
+    "allow-plugins": {
+      "symfony/flex": true,
+      "thelia/installer": false,
+      "composer/installers": true,
+      "symfony/runtime": true
+    }
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": true,
+      "require": "6.4.*",
+      "endpoint": [
+        "https://api.github.com/repos/thelia/thelia-recipes/contents/index.json?ref=main",
+        "flex://defaults"
+      ],
+      "bundles": {
+        "FlexyBundle\\FlexyBundle": "false"
+      }
+    },
+    "installer-paths": {
+      "vendor/{$vendor}/modules/{$name}": [
+        "type:thelia-module"
+      ],
+      "templates/frontOffice/{$name}": [
+        "type:thelia-frontoffice-template"
+      ],
+      "templates/backOffice/{$name}": [
+        "type:thelia-backoffice-template"
+      ],
+      "templates/email/{$name}": [
+        "type:thelia-email-template"
+      ],
+      "templates/pdf/{$name}": [
+        "type:thelia-pdf-template"
+      ],
+      "local/": [
+        "type:thelia-local"
+      ]
+    }
+  }
 }

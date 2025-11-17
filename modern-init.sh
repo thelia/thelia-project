@@ -91,7 +91,7 @@ echo -e "\e[1;37;42m Module activated \e[0m"
 
 echo -e "\e[1;37;46m Changing active template \e[0m"
 
-php Thelia template:front "$TEMPLATE_NAME"
+php Thelia template:set frontOffice "$TEMPLATE_NAME"
 
 echo -e "\e[1;37;42m Active template changed \e[0m"
 

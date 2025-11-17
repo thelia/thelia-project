@@ -49,7 +49,7 @@ Requirements
 
 ``` bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.5.0 (or 2.4.5)
+$ php composer.phar create-project thelia/thelia-project path/ 2.6.0 (or 2.5.5)
 ```
 
 ## Install it with your own environment
@@ -64,38 +64,11 @@ Consult the page : http://localhost/thelia/web
 
 You can create a virtual host and choose web folder for root directory.
 
-## Quick install with docker-compose
-
-This repo contains all the configuration needed to run Thelia with docker and docker-compose.    
-Warning, this docker configuration is not ready for production.
-
-It requires obviously [docker](https://docker.com/) and [docker-compose](https://docs.docker.com/compose/)
-
-To install Thelia within Docker, run :
-
-``` bash
-./start-docker.sh
-```
-
-It will ask you for a template name (usually your project name) if you don't have a .env file but you can create the .env by yourself, take a look at .env.docker to make your own.
-
-If your folder template does not exist it will copy the "modern" template.
-
-Next just go to http://localhost:8080 and you should see your Thelia installed !
-
-And run the same command everytime you want launch your Thelia.
-
-If you want add some sample data just add the option `-demo`
-``` bash
-./start-docker.sh -demo
-```
-
-If you want to access your database from your computer (with DBeaver, Sequel Pro or anything else) by default the host is `localhost` and the port is `8086`
 
 Documentation
 -------------
 
-Thelia documentation is available at http://doc.thelia.net
+Thelia documentation is available at https://doc.thelia.net
 
 
 Contribute

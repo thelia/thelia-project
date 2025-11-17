@@ -64,6 +64,35 @@ Consult the page : http://localhost/thelia/web
 
 You can create a virtual host and choose web folder for root directory.
 
+## Quick start with DDEV
+
+To quickly set up your local environment, we recommend using [DDEV](https://ddev.com/get-started/).
+On macOS, we also suggest using [OrbStack](https://orbstack.dev/) instead of the classic Docker Desktop for noticeably better performance.
+
+Initialize your project with a single command:
+
+```bash
+ddev config --project-type=php --docroot=web --php-version=8.3
+```
+
+DDEV will automatically generate everything required (vhosts, database, etc.).
+
+You can then manage your environment with the following commands:
+
+```bash
+# Start the project
+ddev start
+
+# Stop it
+ddev stop
+
+# Display environment details
+ddev describe
+
+# Open a shell inside the container
+ddev ssh
+```
+Then, just run previous Thelia commands to install your project.
 
 Documentation
 -------------

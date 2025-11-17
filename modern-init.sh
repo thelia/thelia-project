@@ -1,37 +1,31 @@
 #!/bin/bash
 
-echo -e "\e[1;37;46m Checking node version \e[0m"
-if which node > /dev/null
-  then
-    node_version="$(node --version  | cut -c 2,3)";
-    if [[ "$node_version" =~ ^(10|11|12|14|15)$ ]]
-      then
-        echo -e "\e[1;37;42m Node: OK (v$node_version) \e[0m"
-      else
-        echo -e "\e[1;37;41m Your Node.js version isn't supported by this project, you need one of this versions: v10, v11, v12, v13, v14, v15 \e[0m"
-        exit 1
-    fi
-  else
-    echo -e "\e[1;37;41m Node.js is not installed or not in your PATH \e[0m"
+
+echo  "Checking node is installed"
+if command -v node > /dev/null 2>&1
+then
+    echo "${green}Node: OK${reset}"
+else
+    echo "${red}Node is not installed nor in your PATH${reset}"
     exit 1
 fi
 
-echo -e "\e[1;37;46m Checking yarn is installed \e[0m"
-if ! command -v yarn &> /dev/null
+echo  "Checking yarn is installed"
+if command -v yarn > /dev/null 2>&1
 then
-    echo -e "\e[1;37;41m Yarn is not installed or not in your PATH \e[0m"
-    exit
+    echo "${green}Yarn: OK${reset}"
 else
-    echo -e "\e[1;37;42m Yarn: OK \e[0m"
+    echo "${red}Yarn is not installed or nor in your PATH${reset}"
+    exit 1
 fi
 
-echo -e "\e[1;37;46m Checking composer is installed \e[0m"
+echo "Checking composer is installed"
 
-if which composer > /dev/null
+if command -v composer > /dev/null 2>&1
   then
-    echo -e "\e[1;37;42m Composer: OK \e[0m"
+    echo "${green}Composer: OK${reset}"
   else
-    echo -e "\e[1;37;41m Composer is not installed or not in your PATH \e[0m"
+    echo "${red}Composer is not installed nor in your PATH${reset}"
     exit 1
 fi
 

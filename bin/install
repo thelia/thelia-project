@@ -28,7 +28,6 @@ if (!defined('THELIA_ROOT')) {
 require dirname(__DIR__).'/vendor/autoload.php';
 
 use Symfony\Component\Dotenv\Dotenv;
-use Symfony\Component\Process\Process;
 use Thelia\Core\Install\CheckPermission;
 use Thelia\Install\Standalone\DatabaseSetup;
 
@@ -197,6 +196,11 @@ foreach ($themes as $type => $name) {
     (new Symfony\Component\Filesystem\Filesystem())->mirror($vendorPath, $targetDir);
 }
 
+// Phases 7-9 need the Symfony kernel. Boot App\Kernel in-process
+// (same approach as Install.php::applyTemplatesInSameCommandProcess).
+// Subprocesses don't work because PropelInitService crashes on the
+// first cold boot when building models from cross-referenced schemas.
+
 echo "Applying templates...\n";
 
 foreach ($themes as $type => $name) {
@@ -206,7 +210,7 @@ foreach ($themes as $type => $name) {
     }
 
     echo "  template:set {$type} = {$name}\n";
-    if (0 !== runConsole(['template:set', $type, $name])) {
+    if (0 !== runInKernel(['command' => 'template:set', 'type' => $type, 'name' => $name])) {
         fwrite(STDERR, "  ERROR: template:set failed for {$type}/{$name}\n");
         ++$errors;
     }
@@ -216,7 +220,7 @@ foreach ($themes as $type => $name) {
 
 if (isset($options['with-demo'])) {
     echo "Importing demo data...\n";
-    if (0 !== runConsole(['thelia:demo:import', '--skip-images'])) {
+    if (0 !== runInKernel(['command' => 'thelia:demo:import', '--skip-images' => true])) {
         fwrite(STDERR, "  ERROR: Demo import failed\n");
         ++$errors;
     }
@@ -226,13 +230,13 @@ if (isset($options['with-demo'])) {
 
 if (isset($options['with-admin'])) {
     echo "Creating admin user...\n";
-    if (0 !== runConsole([
-        'admin:create',
-        '--login_name='.($options['admin_login'] ?? 'thelia'),
-        '--first_name='.($options['admin_first_name'] ?? 'Admin'),
-        '--last_name='.($options['admin_last_name'] ?? 'Thelia'),
-        '--email='.($options['admin_email'] ?? 'admin@thelia.net'),
-        '--password='.($options['admin_password'] ?? 'thelia'),
+    if (0 !== runInKernel([
+        'command' => 'admin:create',
+        '--login_name' => $options['admin_login'] ?? 'thelia',
+        '--first_name' => $options['admin_first_name'] ?? 'Admin',
+        '--last_name' => $options['admin_last_name'] ?? 'Thelia',
+        '--email' => $options['admin_email'] ?? 'admin@thelia.net',
+        '--password' => $options['admin_password'] ?? 'thelia',
     ])) {
         fwrite(STDERR, "  ERROR: Admin creation failed\n");
         ++$errors;
@@ -247,20 +251,6 @@ if ($errors > 0) {
 }
 
 echo "\nThelia installed successfully.\n";
-
-// ─── Helpers ─────────────────────────────────────────────────────────
-
-function runConsole(array $args): int
-{
-    $cli = file_exists(THELIA_ROOT.'Thelia') ? THELIA_ROOT.'Thelia' : THELIA_ROOT.'bin/console';
-    $process = new Process(array_merge([PHP_BINARY, $cli], $args));
-    $process->setTimeout(null);
-    $process->run(static function (string $type, string $buffer): void {
-        echo $buffer;
-    });
-
-    return $process->getExitCode() ?? 1;
-}
 
 function removeBundlesForNonSelectedThemes(array $selectedThemes): void
 {
@@ -323,4 +313,23 @@ function removeBundlesForNonSelectedThemes(array $selectedThemes): void
 
     $lines[] = "];\n";
     file_put_contents($bundlesPath, implode('', $lines));
+}
+
+function runInKernel(array $input): int
+{
+    $kernelClass = class_exists(App\Kernel::class) ? App\Kernel::class : Thelia\Core\TheliaKernel::class;
+    $kernel = new $kernelClass($_SERVER['APP_ENV'] ?? 'dev', false);
+    $kernel->boot();
+
+    try {
+        $application = new Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
+        $application->setAutoExit(false);
+
+        return $application->run(
+            new Symfony\Component\Console\Input\ArrayInput($input),
+            new Symfony\Component\Console\Output\ConsoleOutput(),
+        );
+    } finally {
+        $kernel->shutdown();
+    }
 }

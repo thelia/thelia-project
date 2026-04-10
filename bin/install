@@ -1,0 +1,318 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Installs Thelia without booting the Symfony kernel.
+ *
+ * Phases 1-6 run standalone (PDO + filesystem only).
+ * Phase 7+ delegates to bin/console in subprocesses — by that point the
+ * database is populated, modules are registered, and the kernel can boot.
+ *
+ * Usage:
+ *   php bin/install                                       (reads env vars)
+ *   php bin/install --with-demo --with-admin              (non-interactive)
+ *   ddev exec php bin/install
+ *
+ * Required env vars: DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
+ */
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\Process\Process;
+use Thelia\Core\Install\CheckPermission;
+use Thelia\Install\Standalone\DatabaseSetup;
+
+(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+
+$appEnv = $_SERVER['APP_ENV'] ?? 'dev';
+
+$options = getopt('', [
+    'frontoffice_theme:',
+    'backoffice_theme:',
+    'pdf_theme:',
+    'email_theme:',
+    'with-demo',
+    'with-admin',
+    'admin_login:',
+    'admin_password:',
+    'admin_first_name:',
+    'admin_last_name:',
+    'admin_email:',
+]);
+
+$host     = $_SERVER['DATABASE_HOST'] ?? '';
+$port     = $_SERVER['DATABASE_PORT'] ?? '3306';
+$user     = $_SERVER['DATABASE_USER'] ?? '';
+$password = $_SERVER['DATABASE_PASSWORD'] ?? '';
+$dbName   = $_SERVER['DATABASE_NAME'] ?? '';
+$errors   = 0;
+
+if ('' === $host || '' === $dbName) {
+    fwrite(STDERR, "ERROR: DATABASE_HOST and DATABASE_NAME must be set.\n");
+    exit(1);
+}
+
+if (!preg_match('/^[a-zA-Z0-9_\-]+$/', $dbName)) {
+    fwrite(STDERR, "ERROR: DATABASE_NAME contains invalid characters: {$dbName}\n");
+    exit(1);
+}
+
+// ── Phase 1: Check permissions ───────────────────────────────────────
+
+// Ensure required directories exist (may be missing after a fresh clone)
+$fs = new Symfony\Component\Filesystem\Filesystem();
+foreach (['var', 'public', 'local/media', 'local/config'] as $dir) {
+    $fs->mkdir(THELIA_ROOT.$dir);
+}
+
+echo "Checking permissions...\n";
+
+$check = new CheckPermission(verifyInstall: false);
+if (!$check->exec()) {
+    foreach ($check->getValidationMessages() as $msg) {
+        if (!$msg['status']) {
+            fwrite(STDERR, "  FAIL: {$msg['text']} — {$msg['hint']}\n");
+        }
+    }
+    fwrite(STDERR, "ERROR: Permission checks failed.\n");
+    exit(1);
+}
+
+echo "  OK\n";
+
+// ── Phase 2-4: Database, schema, secret ──────────────────────────────
+
+try {
+    $setup = new DatabaseSetup($host, $port, $dbName, $user, $password);
+
+    echo "Creating database \"{$dbName}\"...\n";
+    $setup->createDatabase();
+
+    echo "Applying core schema...\n";
+    $setup->connect();
+    $setup->applyCoreSchemaAndSeed();
+    $setup->generateFormSecret();
+} catch (\PDOException $e) {
+    fwrite(STDERR, "ERROR: Database operation failed — {$e->getMessage()}\n");
+    exit(1);
+}
+
+// ── Phase 5: Write env file ──────────────────────────────────────────
+
+$envFile = 'test' === $appEnv ? '.env.test.local' : '.env.local';
+$envFilePath = THELIA_ROOT.$envFile;
+
+echo "Writing {$envFile}...\n";
+
+$envContent = sprintf(
+    "\n###> thelia/database-configuration ###\nDATABASE_HOST=%s\nDATABASE_PORT=%s\nDATABASE_NAME=%s\nDATABASE_USER=%s\nDATABASE_PASSWORD=%s\n###< thelia/database-configuration ###\n",
+    $host, $port, $dbName, $user, $password,
+);
+
+if (file_exists($envFilePath)) {
+    $existing = file_get_contents($envFilePath);
+    $existing = preg_replace('/\n?###> thelia\/database-configuration ###.*?###< thelia\/database-configuration ###\n?/s', '', $existing);
+    file_put_contents($envFilePath, $existing.$envContent);
+} else {
+    file_put_contents($envFilePath, $envContent);
+}
+
+// ── Phase 6: Register modules ────────────────────────────────────────
+
+echo "Registering modules...\n";
+$count = $setup->registerAndApplyModules();
+echo "  {$count} module(s) registered\n";
+
+foreach ($setup->getWarnings() as $warning) {
+    fwrite(STDERR, "  WARN {$warning}\n");
+}
+
+// ── Phase 7: Apply templates ─────────────────────────────────────────
+
+$themes = [
+    'frontOffice' => $options['frontoffice_theme'] ?? $_SERVER['ACTIVE_FRONT_TEMPLATE'] ?? 'flexy',
+    'backOffice'  => $options['backoffice_theme'] ?? $_SERVER['ACTIVE_ADMIN_TEMPLATE'] ?? 'default',
+    'pdf'         => $options['pdf_theme'] ?? $_SERVER['ACTIVE_PDF_TEMPLATE'] ?? 'default',
+    'email'       => $options['email_theme'] ?? $_SERVER['ACTIVE_EMAIL_TEMPLATE'] ?? 'default',
+];
+
+$configMap = [
+    'frontOffice' => 'active-front-template',
+    'backOffice'  => 'active-admin-template',
+    'pdf'         => 'active-pdf-template',
+    'email'       => 'active-mail-template',
+];
+
+foreach ($themes as $type => $name) {
+    if (isset($configMap[$type]) && '' !== trim($name)) {
+        $setup->setConfig($configMap[$type], trim($name));
+    }
+}
+
+removeBundlesForNonSelectedThemes($themes);
+
+// Pre-copy templates from vendor to templates/ so the kernel can boot.
+// template:set does this too, but the kernel crashes if the active
+// template directory doesn't exist yet when it scans for UiComponents.
+$composerHelper = new Thelia\Domain\Module\Composer\ComposerHelper();
+$templateTypeToComposerType = [
+    'frontOffice' => 'thelia-frontoffice-template',
+    'backOffice'  => 'thelia-backoffice-template',
+    'pdf'         => 'thelia-pdf-template',
+    'email'       => 'thelia-email-template',
+];
+
+foreach ($themes as $type => $name) {
+    $name = trim($name);
+    if ('' === $name) {
+        continue;
+    }
+
+    $targetDir = THELIA_TEMPLATE_DIR.$type.DS.$name;
+    if (is_dir($targetDir)) {
+        continue;
+    }
+
+    $packageType = $templateTypeToComposerType[$type] ?? null;
+    if (null === $packageType) {
+        continue;
+    }
+
+    $vendorPath = $composerHelper->findInstalledPackagePathByTypeAndInstallerName($packageType, $name);
+    if (null === $vendorPath || !is_dir($vendorPath)) {
+        continue;
+    }
+
+    echo "  Copying {$name} → templates/{$type}/{$name}\n";
+    (new Symfony\Component\Filesystem\Filesystem())->mirror($vendorPath, $targetDir);
+}
+
+echo "Applying templates...\n";
+
+foreach ($themes as $type => $name) {
+    $name = trim($name);
+    if ('' === $name) {
+        continue;
+    }
+
+    echo "  template:set {$type} = {$name}\n";
+    if (0 !== runConsole(['template:set', $type, $name])) {
+        fwrite(STDERR, "  ERROR: template:set failed for {$type}/{$name}\n");
+        ++$errors;
+    }
+}
+
+// ── Phase 8: Optional demo import ────────────────────────────────────
+
+if (isset($options['with-demo'])) {
+    echo "Importing demo data...\n";
+    if (0 !== runConsole(['thelia:demo:import', '--skip-images'])) {
+        fwrite(STDERR, "  ERROR: Demo import failed\n");
+        ++$errors;
+    }
+}
+
+// ── Phase 9: Optional admin creation ─────────────────────────────────
+
+if (isset($options['with-admin'])) {
+    echo "Creating admin user...\n";
+    if (0 !== runConsole([
+        'admin:create',
+        '--login_name='.($options['admin_login'] ?? 'thelia'),
+        '--first_name='.($options['admin_first_name'] ?? 'Admin'),
+        '--last_name='.($options['admin_last_name'] ?? 'Thelia'),
+        '--email='.($options['admin_email'] ?? 'admin@thelia.net'),
+        '--password='.($options['admin_password'] ?? 'thelia'),
+    ])) {
+        fwrite(STDERR, "  ERROR: Admin creation failed\n");
+        ++$errors;
+    }
+}
+
+// ── Result ───────────────────────────────────────────────────────────
+
+if ($errors > 0) {
+    echo "\nThelia installed with {$errors} error(s). Check messages above.\n";
+    exit(1);
+}
+
+echo "\nThelia installed successfully.\n";
+
+// ─── Helpers ─────────────────────────────────────────────────────────
+
+function runConsole(array $args): int
+{
+    $process = new Process(array_merge([PHP_BINARY, THELIA_ROOT.'bin/console'], $args));
+    $process->setTimeout(null);
+    $process->run(static function (string $type, string $buffer): void {
+        echo $buffer;
+    });
+
+    return $process->getExitCode() ?? 1;
+}
+
+function removeBundlesForNonSelectedThemes(array $selectedThemes): void
+{
+    $bundlesPath = THELIA_ROOT.'config'.DS.'bundles.php';
+    if (!file_exists($bundlesPath)) {
+        return;
+    }
+
+    $helper = new Thelia\Domain\Module\Composer\ComposerHelper();
+    $bundlesToRemove = [];
+
+    foreach (['frontOffice', 'backOffice', 'pdf', 'email'] as $type) {
+        $selectedName = $selectedThemes[$type] ?? '';
+        $templateBaseDir = THELIA_TEMPLATE_DIR.$type.DS;
+
+        if (!is_dir($templateBaseDir)) {
+            continue;
+        }
+
+        foreach (new DirectoryIterator($templateBaseDir) as $entry) {
+            if (!$entry->isDir() || $entry->isDot() || $entry->getFilename() === $selectedName) {
+                continue;
+            }
+
+            $bundleFqcn = $helper->findFirstClassBundle($entry->getPathname());
+            if (null !== $bundleFqcn) {
+                $bundlesToRemove[$bundleFqcn] = true;
+            }
+        }
+    }
+
+    if ([] === $bundlesToRemove) {
+        return;
+    }
+
+    $bundles = require $bundlesPath;
+    $changed = false;
+
+    foreach (array_keys($bundlesToRemove) as $fqcn) {
+        if (isset($bundles[$fqcn])) {
+            unset($bundles[$fqcn]);
+            $changed = true;
+        }
+    }
+
+    if (!$changed) {
+        return;
+    }
+
+    ksort($bundles);
+    $lines = ["<?php\n", "\nreturn [\n"];
+
+    foreach ($bundles as $fqcn => $envs) {
+        $envParts = [];
+        foreach ($envs as $env => $enabled) {
+            $envParts[] = sprintf("'%s' => %s", $env, $enabled ? 'true' : 'false');
+        }
+        $lines[] = sprintf("    %s::class => [%s],\n", $fqcn, implode(', ', $envParts));
+    }
+
+    $lines[] = "];\n";
+    file_put_contents($bundlesPath, implode('', $lines));
+}

@@ -1,0 +1,59 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Prepares a clean test database without booting the Symfony kernel.
+ *
+ * Usage:
+ *   php bin/test-prepare
+ *   ddev exec php bin/test-prepare
+ */
+
+require dirname(__DIR__).'/vendor/autoload.php';
+
+use Symfony\Component\Dotenv\Dotenv;
+use Thelia\Install\Standalone\DatabaseSetup;
+
+(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+
+$host     = $_SERVER['DATABASE_HOST'] ?? '';
+$port     = $_SERVER['DATABASE_PORT'] ?? '3306';
+$user     = $_SERVER['DATABASE_USER'] ?? '';
+$password = $_SERVER['DATABASE_PASSWORD'] ?? '';
+$dbName   = $_SERVER['DATABASE_NAME'] ?? '';
+
+if ('' === $host || '' === $dbName) {
+    fwrite(STDERR, "ERROR: DATABASE_HOST and DATABASE_NAME must be set.\n");
+    exit(1);
+}
+
+if (!preg_match('/^[a-zA-Z0-9_\-]+$/', $dbName)) {
+    fwrite(STDERR, "ERROR: DATABASE_NAME contains invalid characters: {$dbName}\n");
+    exit(1);
+}
+
+try {
+    $setup = new DatabaseSetup($host, $port, $dbName, $user, $password);
+
+    echo "Creating database \"{$dbName}\"...\n";
+    $setup->createDatabase();
+
+    echo "Applying core schema...\n";
+    $setup->connect();
+    $setup->applyCoreSchemaAndSeed();
+
+    echo "Registering modules...\n";
+    $count = $setup->registerAndApplyModules();
+    echo "  {$count} module(s) registered\n";
+
+    foreach ($setup->getWarnings() as $warning) {
+        fwrite(STDERR, "  WARN {$warning}\n");
+    }
+
+    echo "\nDone: database \"{$dbName}\" is ready.\n";
+} catch (\PDOException $e) {
+    fwrite(STDERR, "ERROR: Database connection failed — {$e->getMessage()}\n");
+    exit(1);
+}

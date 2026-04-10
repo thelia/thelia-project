@@ -18,6 +18,13 @@ declare(strict_types=1);
  * Required env vars: DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
  */
 
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+}
+if (!defined('THELIA_ROOT')) {
+    define('THELIA_ROOT', dirname(__DIR__).DS);
+}
+
 require dirname(__DIR__).'/vendor/autoload.php';
 
 use Symfony\Component\Dotenv\Dotenv;
@@ -245,7 +252,8 @@ echo "\nThelia installed successfully.\n";
 
 function runConsole(array $args): int
 {
-    $process = new Process(array_merge([PHP_BINARY, THELIA_ROOT.'bin/console'], $args));
+    $cli = file_exists(THELIA_ROOT.'Thelia') ? THELIA_ROOT.'Thelia' : THELIA_ROOT.'bin/console';
+    $process = new Process(array_merge([PHP_BINARY, $cli], $args));
     $process->setTimeout(null);
     $process->run(static function (string $type, string $buffer): void {
         echo $buffer;

@@ -11,14 +11,25 @@ declare(strict_types=1);
  *   ddev exec php bin/test-prepare
  */
 
+$projectRoot = dirname(__DIR__).DIRECTORY_SEPARATOR;
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 if (!defined('THELIA_ROOT')) {
-    define('THELIA_ROOT', dirname(__DIR__).DS);
+    define('THELIA_ROOT', $projectRoot);
+}
+if (!defined('THELIA_VENDOR')) {
+    define('THELIA_VENDOR', $projectRoot.'vendor'.DS);
+}
+if (!defined('THELIA_LIB')) {
+    $coreAtRoot = $projectRoot.'core'.DS.'lib'.DS.'Thelia'.DS;
+    define('THELIA_LIB', is_dir($coreAtRoot)
+        ? $coreAtRoot
+        : THELIA_VENDOR.'thelia'.DS.'core'.DS.'lib'.DS.'Thelia'.DS
+    );
 }
 
-require dirname(__DIR__).'/vendor/autoload.php';
+require $projectRoot.'vendor/autoload.php';
 
 use Symfony\Component\Dotenv\Dotenv;
 use Thelia\Install\Standalone\DatabaseSetup;

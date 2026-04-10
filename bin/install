@@ -18,14 +18,29 @@ declare(strict_types=1);
  * Required env vars: DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
  */
 
+// Define path constants before autoload. core/bootstrap.php derives
+// THELIA_LIB from THELIA_ROOT, which works in thelia/thelia (core/ at root)
+// but not in thelia-project (core/ in vendor/). Pre-defining them here
+// ensures correct resolution in both layouts.
+$projectRoot = dirname(__DIR__).DIRECTORY_SEPARATOR;
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 if (!defined('THELIA_ROOT')) {
-    define('THELIA_ROOT', dirname(__DIR__).DS);
+    define('THELIA_ROOT', $projectRoot);
+}
+if (!defined('THELIA_VENDOR')) {
+    define('THELIA_VENDOR', $projectRoot.'vendor'.DS);
+}
+if (!defined('THELIA_LIB')) {
+    $coreAtRoot = $projectRoot.'core'.DS.'lib'.DS.'Thelia'.DS;
+    define('THELIA_LIB', is_dir($coreAtRoot)
+        ? $coreAtRoot
+        : THELIA_VENDOR.'thelia'.DS.'core'.DS.'lib'.DS.'Thelia'.DS
+    );
 }
 
-require dirname(__DIR__).'/vendor/autoload.php';
+require $projectRoot.'vendor/autoload.php';
 
 use Symfony\Component\Dotenv\Dotenv;
 use Thelia\Core\Install\CheckPermission;
@@ -196,50 +211,79 @@ foreach ($themes as $type => $name) {
     (new Symfony\Component\Filesystem\Filesystem())->mirror($vendorPath, $targetDir);
 }
 
-// Phases 7-9 need the Symfony kernel. Boot App\Kernel in-process
+// Phases 7-9 need the Symfony kernel. Each template:set triggers
+// a cache:clear, so we must boot a fresh kernel per command
 // (same approach as Install.php::applyTemplatesInSameCommandProcess).
-// Subprocesses don't work because PropelInitService crashes on the
-// first cold boot when building models from cross-referenced schemas.
 
-echo "Applying templates...\n";
+$commands = [];
 
 foreach ($themes as $type => $name) {
     $name = trim($name);
-    if ('' === $name) {
-        continue;
-    }
-
-    echo "  template:set {$type} = {$name}\n";
-    if (0 !== runInKernel(['command' => 'template:set', 'type' => $type, 'name' => $name])) {
-        fwrite(STDERR, "  ERROR: template:set failed for {$type}/{$name}\n");
-        ++$errors;
+    if ('' !== $name) {
+        $commands[] = [
+            'label' => "template:set {$type} = {$name}",
+            'input' => ['command' => 'template:set', 'type' => $type, 'name' => $name],
+        ];
     }
 }
-
-// ── Phase 8: Optional demo import ────────────────────────────────────
 
 if (isset($options['with-demo'])) {
-    echo "Importing demo data...\n";
-    if (0 !== runInKernel(['command' => 'thelia:demo:import', '--skip-images' => true])) {
-        fwrite(STDERR, "  ERROR: Demo import failed\n");
-        ++$errors;
-    }
+    $commands[] = [
+        'label' => 'Importing demo data',
+        'input' => ['command' => 'thelia:demo:import', '--skip-images' => true],
+    ];
 }
 
-// ── Phase 9: Optional admin creation ─────────────────────────────────
-
 if (isset($options['with-admin'])) {
-    echo "Creating admin user...\n";
-    if (0 !== runInKernel([
-        'command' => 'admin:create',
-        '--login_name' => $options['admin_login'] ?? 'thelia',
-        '--first_name' => $options['admin_first_name'] ?? 'Admin',
-        '--last_name' => $options['admin_last_name'] ?? 'Thelia',
-        '--email' => $options['admin_email'] ?? 'admin@thelia.net',
-        '--password' => $options['admin_password'] ?? 'thelia',
-    ])) {
-        fwrite(STDERR, "  ERROR: Admin creation failed\n");
+    $commands[] = [
+        'label' => 'Creating admin user',
+        'input' => [
+            'command' => 'admin:create',
+            '--login_name' => $options['admin_login'] ?? 'thelia',
+            '--first_name' => $options['admin_first_name'] ?? 'Admin',
+            '--last_name' => $options['admin_last_name'] ?? 'Thelia',
+            '--email' => $options['admin_email'] ?? 'admin@thelia.net',
+            '--password' => $options['admin_password'] ?? 'thelia',
+        ],
+    ];
+}
+
+echo "Running kernel commands...\n";
+
+$kernelClass = class_exists(App\Kernel::class) ? App\Kernel::class : Thelia\Core\TheliaKernel::class;
+$output = new Symfony\Component\Console\Output\ConsoleOutput();
+
+foreach ($commands as $cmd) {
+    echo "  {$cmd['label']}\n";
+
+    $kernel = new $kernelClass($_SERVER['APP_ENV'] ?? 'dev', false);
+    $kernel->boot();
+
+    $app = new Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
+    $app->setAutoExit(false);
+
+    // template:set dispatches a cache:clear that deletes container files.
+    // The console.terminate event then fails loading a deleted service.
+    // We suppress this: the command itself has already completed.
+    try {
+        $exitCode = $app->run(new Symfony\Component\Console\Input\ArrayInput($cmd['input']), $output);
+    } catch (\Error $e) {
+        // Cache file deleted mid-process — command had already succeeded
+        $exitCode = str_contains($e->getMessage(), 'Failed opening required') ? 0 : 1;
+        if (0 !== $exitCode) {
+            fwrite(STDERR, "  ERROR: {$cmd['label']} — {$e->getMessage()}\n");
+            ++$errors;
+        }
+    }
+
+    if (0 !== $exitCode) {
+        fwrite(STDERR, "  ERROR: {$cmd['label']} failed\n");
         ++$errors;
+    }
+
+    try {
+        $kernel->shutdown();
+    } catch (\Throwable) {
     }
 }
 
@@ -251,6 +295,8 @@ if ($errors > 0) {
 }
 
 echo "\nThelia installed successfully.\n";
+
+// ─── Helpers ─────────────────────────────────────────────────────────
 
 function removeBundlesForNonSelectedThemes(array $selectedThemes): void
 {
@@ -313,23 +359,4 @@ function removeBundlesForNonSelectedThemes(array $selectedThemes): void
 
     $lines[] = "];\n";
     file_put_contents($bundlesPath, implode('', $lines));
-}
-
-function runInKernel(array $input): int
-{
-    $kernelClass = class_exists(App\Kernel::class) ? App\Kernel::class : Thelia\Core\TheliaKernel::class;
-    $kernel = new $kernelClass($_SERVER['APP_ENV'] ?? 'dev', false);
-    $kernel->boot();
-
-    try {
-        $application = new Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
-        $application->setAutoExit(false);
-
-        return $application->run(
-            new Symfony\Component\Console\Input\ArrayInput($input),
-            new Symfony\Component\Console\Output\ConsoleOutput(),
-        );
-    } finally {
-        $kernel->shutdown();
-    }
 }

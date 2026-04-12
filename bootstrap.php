@@ -31,4 +31,4 @@ if(!defined('THELIA_SETUP_DIRECTORY')) {
 
 // --------------------------------------------------
 
-return require "vendor/autoload_runtime.php";
+require_once THELIA_VENDOR.'autoload.php';

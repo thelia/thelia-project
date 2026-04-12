@@ -30,5 +30,7 @@ if(!defined('THELIA_SETUP_DIRECTORY')) {
 }
 
 // --------------------------------------------------
-
-require_once THELIA_VENDOR.'autoload.php';
+// NOTE: Do NOT require vendor/autoload.php here.
+// The Symfony Runtime (autoload_runtime.php) relies on autoload.php
+// NOT being loaded yet — it uses `require_once` as a guard to detect
+// if it was already included, and skips itself if so.

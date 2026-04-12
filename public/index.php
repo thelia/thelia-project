@@ -14,6 +14,10 @@ declare(strict_types=1);
 
 use App\Kernel;
 
+// Define Thelia directory constants BEFORE the Composer autoloader runs
+// core/bootstrap.php (which assumes core/ is at the project root).
+// This must happen before require autoload_runtime.php loads the autoloader.
 require_once dirname(__DIR__).'/bootstrap.php';
+require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
 return fn (array $context) => new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);

@@ -18,10 +18,7 @@
     "auto-scripts": {
       "cache:clear": "symfony-cmd",
       "assets:install %PUBLIC_DIR%": "symfony-cmd"
-    },
-    "post-autoload-dump": [
-      "Thelia\\Config\\InitConfig::initConfig"
-    ]
+    }
   },
   "autoload": {
     "psr-4": {

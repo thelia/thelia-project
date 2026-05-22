@@ -1,155 +1,102 @@
-Readme
-======
+# Thelia project skeleton
 
-#### This is the project creation repository of Thelia. If you want to contribute, please take a look at [thelia/thelia](https://github.com/thelia/thelia)
+This is the Composer project skeleton for [Thelia](https://thelia.net), the open-source e-commerce framework. Use it to bootstrap a new Thelia 3 project.
 
-Thelia
-------
-[![Actions Status: test](https://github.com/thelia/thelia/workflows/test/badge.svg)](https://github.com/thelia/thelia/actions?query=workflow%3A"test") [![License](https://poser.pugx.org/thelia/thelia/license.png)](https://packagist.org/packages/thelia/thelia) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/thelia/thelia/badges/quality-score.png?s=61e3e04a69bffd71c29b08e5392080317a546716)](https://scrutinizer-ci.com/g/thelia/thelia/)
+To contribute to Thelia itself, head over to [thelia/thelia](https://github.com/thelia/thelia).
 
-[Thelia](http://thelia.net/) is an open source tool for creating e-business websites and managing online content. This software is published under LGPL.
+## Requirements
 
-This is the new major version of Thelia.
+- PHP 8.3
+- MariaDB 10.11 / MySQL 8
+- Composer 2.7+
+- Web server (Nginx or Apache)
+- Node.js 20 + npm (only required when building front-office and back-office templates that ship a Webpack pipeline — see "Asset build" below)
 
-You can download this version and have a try or take a look at the source code (or anything you wish, respecting LGPL).  See http://thelia.net/ web site for more information.
+Required PHP extensions: `pdo_mysql`, `openssl`, `intl`, `gd`, `curl`, `dom`, `mbstring`, `zip`.
 
-A repository containing all thelia modules is available at this address : https://github.com/thelia-modules
+## Quick start
 
-
-Compatibility
-------------
-
-|         |   Thelia 2.3    |      Thelia 2.4 |  Thelia 2.5 |
-|---------|:---------------:|----------------:|------------:|
-| PHP     | 5.5 5.6 7.0 7.1 | 7.0 7.1 7.2 7.3 |     8.0.2 8.1 |
-| MySQL   |     5.5 5.6     |     5.5 5.6 5.7 | 5.6 5.7 8.0 |
-| Symfony |       2.8       |             2.8 |     6.0 6.1 |
-
-Requirements
-------------
-
-* PHP
-    * Required extensions :
-        * PDO_Mysql
-        * openssl
-        * intl
-        * gd
-        * curl
-        * dom
-    * safe_mode off
-    * memory_limit at least 128M, preferably 256.
-    * post\_max\_size 20M
-    * upload\_max\_filesize 2M
-    * date.timezone must be defined
-* Web Server Apache 2 or Nginx
-* MySQL 5 or 8
-
-## Create a Thelia project
-
-``` bash
-$ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar create-project thelia/thelia-project path/ 2.5.0 (or 2.4.5)
-```
-
-## Install it with your own environment
-
-You can install Thelia using the cli tool and the scripts provided by thelia/setup
-
-``` bash
-$ php Thelia thelia:install
-```
-
-Consult the page : http://localhost/thelia/web
-
-You can create a virtual host and choose web folder for root directory.
-
-## Quick install with docker-compose
-
-This repo contains all the configuration needed to run Thelia with docker and docker-compose.    
-Warning, this docker configuration is not ready for production.
-
-It requires obviously [docker](https://docker.com/) and [docker-compose](https://docs.docker.com/compose/)
-
-To install Thelia within Docker, run :
-
-``` bash
-./start-docker.sh
-```
-
-It will ask you for a template name (usually your project name) if you don't have a .env file but you can create the .env by yourself, take a look at .env.docker to make your own.
-
-If your folder template does not exist it will copy the "modern" template.
-
-Next just go to http://localhost:8080 and you should see your Thelia installed !
-
-And run the same command everytime you want launch your Thelia.
-
-If you want add some sample data just add the option `-demo`
-``` bash
-./start-docker.sh -demo
-```
-
-If you want to access your database from your computer (with DBeaver, Sequel Pro or anything else) by default the host is `localhost` and the port is `8086`
-
-Documentation
--------------
-
-Thelia documentation is available at http://doc.thelia.net
-
-
-Contribute
-----------
-
-See the documentation : http://doc.thelia.net/en/documentation/contribute.html
-
-### Mac OSX
-
-If you use Mac OSX, it still doesn't use php 5.4 as default php version... There are many solutions for you :
-
-* use [phpbrew](https://github.com/c9s/phpbrew)
-* use last MAMP version and put the php bin directory in your path:
+### 1. Create a new project
 
 ```bash
-export PATH=/Applications/MAMP/bin/php/php5.5.x/bin/:$PATH
+composer create-project thelia/thelia-project:dev-twig my-shop
+cd my-shop
 ```
 
-* configure a complete development environment : http://php-osx.liip.ch/
-* use a virtual machine with vagrant and puppet : https://puphpet.com/
+This pulls the latest dev sources for the upcoming Thelia 3 release. Stable releases will be available via `composer create-project thelia/thelia-project my-shop` once the first major version is tagged on Packagist.
 
-### MySQL 5.6
+### 2. Start the local environment
 
-As of MySQL 5.6, default configuration sets the sql_mode value to
+The repository does not ship a Docker setup; the recommended path is [DDEV](https://ddev.com), which gives you PHP 8.3, MariaDB 10.11 and Node.js 20 with a single command.
 
-```
-STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION
-```
-
-This 'STRICT_TRANS_TABLES' configuration results in SQL errors when no default value is defined on NOT NULL columns and the value is empty or invalid.
-
-You can edit this default config in ` /etc/my.cnf ` and change the sql_mode to remove the STRICT_TRANS_TABLES part
-
-```
-[mysqld]
-sql_mode=NO_ENGINE_SUBSTITUTION
+```bash
+ddev config --project-type=php --php-version=8.3 --database=mariadb:10.11 --docroot=public --nodejs-version=20
+ddev start
+ddev exec composer install
 ```
 
-Assuming your sql_mode is the default one, you can change the value directly on the run by running the following SQL Command
+If you prefer your own stack (LAMP, Symfony CLI, Docker Compose, etc.), point your web server's docroot at `public/` and make sure the PHP binary you use to run `bin/install` and `bin/console` is the same major version your web server uses.
 
-```sql
-SET @@GLOBAL.sql_mode='NO_ENGINE_SUBSTITUTION', @@SESSION.sql_mode='NO_ENGINE_SUBSTITUTION'
+### 3. Install Thelia
+
+`bin/install` reads its database credentials from the `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_NAME`, `DATABASE_USER` and `DATABASE_PASSWORD` environment variables. You can also pass them on the command line.
+
+With DDEV, the database is exposed inside the web container as `db:3306` with user `db` / password `db`:
+
+```bash
+ddev exec bin/install \
+  --database_host=db --database_port=3306 \
+  --database_name=db --database_user=db --database_password=db \
+  --frontoffice_theme=flexy --backoffice_theme=default \
+  --pdf_theme=default --email_theme=default \
+  --with-demo --with-admin \
+  --admin_login=thelia --admin_password=thelia \
+  --admin_first_name=Admin --admin_last_name=User \
+  --admin_email=admin@example.com
 ```
 
-For more information on sql_mode you can consult the [MySQL doc](http://dev.mysql.com/doc/refman/5.0/fr/server-sql-mode.html "sql Mode")
+Outside DDEV, export the matching env vars (or write them to `.env.local`) and run `php bin/install` with the same flags minus `--database_*`.
 
-## Archive builders
-Thelia's archive builder's needs external libraries.
-For zip archives, you need PECL zip. See [PHP Doc](http://php.net/manual/en/zip.installation.php)
+`bin/install` creates the database if needed, applies the schema, registers and activates modules, installs the selected templates, optionally imports demo data and creates an admin user. Running it again is idempotent for the credentials part — only the data steps (demo, admin) recreate state.
 
-For tar archives, you need PECL phar. Moreover, you need to deactivate php.ini option "phar.readonly":
-```ini
-phar.readonly = Off
+### 4. Build front-office and back-office assets
+
+The default Flexy front-office template and the optional Twig back-office template both ship a Webpack pipeline. Once `bin/install` finishes, build their static assets:
+
+```bash
+# Front-office (Flexy)
+ddev exec bash -c "cd templates/frontOffice/flexy && npm install && npm run build"
+
+# Back-office (only if you installed default-twig — see below)
+ddev exec bash -c "cd templates/backOffice/default-twig && npm install && npm run build"
 ```
 
-For tar.bz2 archives, you need tar's dependencies and the extension "bzip2". See [PHP Doc](http://php.net/manual/fr/book.bzip2.php)
+The legacy Smarty back-office (`templates/backOffice/default/`) does not require an npm build.
 
-For tar.gz archives, you need tar's dependencies and the extension "zlib". See [PHP Doc](http://fr2.php.net/manual/fr/book.zlib.php)
+Once built, open `https://my-shop.ddev.site` for the storefront and `https://my-shop.ddev.site/admin` for the admin (default credentials: `thelia` / `thelia` if you used the snippet above).
+
+## Choosing the back-office template
+
+The skeleton installs the legacy Smarty back-office (`templates/backOffice/default/`) by default. A modern Twig + Symfony UX + Bootstrap 5 back-office is available as a separate package.
+
+### Switch to the new Twig back-office
+
+```bash
+ddev exec composer require thelia/backoffice-default-twig-template
+ddev exec bin/console template:set backOffice default-twig
+ddev exec bash -c "cd templates/backOffice/default-twig && npm install && npm run build"
+ddev exec bin/console cache:clear -e dev
+```
+
+Both back-office templates can cohabit during the transition: the active one is controlled by `bin/console template:set backOffice <name>`. Third-party modules built against the Smarty back-office continue to work; refer to `templates/backOffice/default-twig/BREAKING_CHANGES.md` for the migration guide if you maintain a module.
+
+## Documentation
+
+- Project home: <https://thelia.net>
+- Documentation: <https://doc.thelia.net>
+- Source code: [thelia/thelia](https://github.com/thelia/thelia)
+- Modules: [thelia-modules](https://github.com/thelia-modules)
+
+## License
+
+LGPL-3.0-or-later. See `LICENSE.txt`.

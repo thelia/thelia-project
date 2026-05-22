@@ -11,11 +11,13 @@ declare(strict_types=1);
  * database is populated, modules are registered, and the kernel can boot.
  *
  * Usage:
- *   php bin/install                                       (reads env vars)
- *   php bin/install --with-demo --with-admin              (non-interactive)
- *   ddev exec php bin/install
+ *   php bin/install                                                                                 (reads env vars)
+ *   php bin/install --database_host=db --database_name=db --database_user=db --database_password=db (CLI flags)
+ *   php bin/install --with-demo --with-admin                                                        (non-interactive)
+ *   ddev exec php bin/install                                                                       (DDEV web_environment)
  *
- * Required env vars: DATABASE_HOST, DATABASE_PORT, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
+ * Database credentials are resolved in this order: CLI flag > env var ($_SERVER) > default.
+ * DATABASE_HOST and DATABASE_NAME are required (no default).
  */
 
 // Define path constants before autoload. core/bootstrap.php derives
@@ -56,23 +58,29 @@ $options = getopt('', [
     'pdf_theme:',
     'email_theme:',
     'with-demo',
+    'skip-demo-images',
     'with-admin',
     'admin_login:',
     'admin_password:',
     'admin_first_name:',
     'admin_last_name:',
     'admin_email:',
+    'database_host:',
+    'database_port:',
+    'database_name:',
+    'database_user:',
+    'database_password:',
 ]);
 
-$host     = $_SERVER['DATABASE_HOST'] ?? '';
-$port     = $_SERVER['DATABASE_PORT'] ?? '3306';
-$user     = $_SERVER['DATABASE_USER'] ?? '';
-$password = $_SERVER['DATABASE_PASSWORD'] ?? '';
-$dbName   = $_SERVER['DATABASE_NAME'] ?? '';
+$host     = $options['database_host']     ?? $_SERVER['DATABASE_HOST']     ?? '';
+$port     = $options['database_port']     ?? $_SERVER['DATABASE_PORT']     ?? '3306';
+$user     = $options['database_user']     ?? $_SERVER['DATABASE_USER']     ?? '';
+$password = $options['database_password'] ?? $_SERVER['DATABASE_PASSWORD'] ?? '';
+$dbName   = $options['database_name']     ?? $_SERVER['DATABASE_NAME']     ?? '';
 $errors   = 0;
 
 if ('' === $host || '' === $dbName) {
-    fwrite(STDERR, "ERROR: DATABASE_HOST and DATABASE_NAME must be set.\n");
+    fwrite(STDERR, "ERROR: DATABASE_HOST and DATABASE_NAME must be set (via env var or --database_host/--database_name).\n");
     exit(1);
 }
 
@@ -227,10 +235,19 @@ foreach ($themes as $type => $name) {
     }
 }
 
+// Run postActivation() for all modules — DatabaseSetup inserts modules
+// with activate=1 but never calls postActivation(), which means modules
+// that seed data in postActivation() (e.g. TheliaBlocks shortcodes)
+// would be missing their initial data.
+$commands[] = [
+    'label' => 'Running module post-activation hooks',
+    'input' => ['command' => 'module:post-activate-all'],
+];
+
 if (isset($options['with-demo'])) {
     $commands[] = [
         'label' => 'Importing demo data',
-        'input' => ['command' => 'thelia:demo:import', '--skip-images' => true],
+        'input' => ['command' => 'thelia:demo:import', '--skip-images' => isset($options['skip-demo-images'])],
     ];
 }
 
@@ -253,6 +270,17 @@ echo "Running kernel commands...\n";
 $kernelClass = class_exists(App\Kernel::class) ? App\Kernel::class : Thelia\Core\TheliaKernel::class;
 $output = new Symfony\Component\Console\Output\ConsoleOutput();
 
+// template:set triggers cache:clear which deletes container files mid-process.
+// This causes harmless PHP warnings ("Failed to open stream") when the
+// console.terminate event tries to load deleted services. We suppress them.
+set_error_handler(static function (int $errno, string $errstr) {
+    if (str_contains($errstr, 'Failed to open stream') || str_contains($errstr, 'Failed opening required')) {
+        return true;
+    }
+
+    return false;
+}, \E_WARNING);
+
 foreach ($commands as $cmd) {
     echo "  {$cmd['label']}\n";
 
@@ -262,9 +290,6 @@ foreach ($commands as $cmd) {
     $app = new Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
     $app->setAutoExit(false);
 
-    // template:set dispatches a cache:clear that deletes container files.
-    // The console.terminate event then fails loading a deleted service.
-    // We suppress this: the command itself has already completed.
     try {
         $exitCode = $app->run(new Symfony\Component\Console\Input\ArrayInput($cmd['input']), $output);
     } catch (\Error $e) {
@@ -287,6 +312,8 @@ foreach ($commands as $cmd) {
     }
 }
 
+restore_error_handler();
+
 // ── Result ───────────────────────────────────────────────────────────
 
 if ($errors > 0) {
@@ -307,6 +334,7 @@ function removeBundlesForNonSelectedThemes(array $selectedThemes): void
 
     $helper = new Thelia\Domain\Module\Composer\ComposerHelper();
     $bundlesToRemove = [];
+    $bundlePaths = [];
 
     foreach (['frontOffice', 'backOffice', 'pdf', 'email'] as $type) {
         $selectedName = $selectedThemes[$type] ?? '';
@@ -324,6 +352,7 @@ function removeBundlesForNonSelectedThemes(array $selectedThemes): void
             $bundleFqcn = $helper->findFirstClassBundle($entry->getPathname());
             if (null !== $bundleFqcn) {
                 $bundlesToRemove[$bundleFqcn] = true;
+                $bundlePaths[$bundleFqcn] = $entry->getPathname();
             }
         }
     }
@@ -339,6 +368,13 @@ function removeBundlesForNonSelectedThemes(array $selectedThemes): void
         if (isset($bundles[$fqcn])) {
             unset($bundles[$fqcn]);
             $changed = true;
+        }
+
+        // Recipe-installed route files reference custom route loaders provided by the bundle.
+        // When the bundle is removed, those YAML files must go too — otherwise the kernel
+        // fails with "Cannot load resource. Make sure there is a loader supporting...".
+        foreach (findRouteFilesUsingBundleLoaders($bundlePaths[$fqcn] ?? null) as $routeFile) {
+            unlink($routeFile);
         }
     }
 
@@ -359,4 +395,72 @@ function removeBundlesForNonSelectedThemes(array $selectedThemes): void
 
     $lines[] = "];\n";
     file_put_contents($bundlesPath, implode('', $lines));
+}
+
+/**
+ * Find config/routes/*.yaml files whose `type:` references a custom route loader
+ * shipped by the given bundle. Detection scans the bundle's PHP files for classes
+ * that extend Symfony's routing Loader and declare either a public `ROUTE_TYPE`
+ * constant or a `supports()` returning a literal string equality on `$type`.
+ *
+ * @return list<string> absolute paths to route YAML files to remove
+ */
+function findRouteFilesUsingBundleLoaders(?string $bundlePath): array
+{
+    if (null === $bundlePath || !is_dir($bundlePath)) {
+        return [];
+    }
+
+    $loaderTypes = [];
+    $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($bundlePath));
+
+    foreach ($files as $file) {
+        if (!$file->isFile() || 'php' !== $file->getExtension()) {
+            continue;
+        }
+
+        $contents = file_get_contents($file->getRealPath());
+        if (false === $contents || !preg_match('/extends\s+(?:\\\\?[A-Za-z_][A-Za-z0-9_\\\\]*\\\\)?(?:File)?Loader\b/', $contents)) {
+            continue;
+        }
+
+        if (preg_match("/public\s+const\s+ROUTE_TYPE\s*=\s*['\"]([^'\"]+)['\"]/", $contents, $m)) {
+            $loaderTypes[$m[1]] = true;
+        }
+
+        if (preg_match("/return\s+['\"]([^'\"]+)['\"]\s*===\s*\\\$type/", $contents, $m)) {
+            $loaderTypes[$m[1]] = true;
+        }
+    }
+
+    if ([] === $loaderTypes) {
+        return [];
+    }
+
+    $routesDir = THELIA_ROOT.'config'.DS.'routes';
+    if (!is_dir($routesDir)) {
+        return [];
+    }
+
+    $matchedFiles = [];
+
+    foreach (new DirectoryIterator($routesDir) as $entry) {
+        if (!$entry->isFile() || !\in_array($entry->getExtension(), ['yaml', 'yml'], true)) {
+            continue;
+        }
+
+        $contents = file_get_contents($entry->getRealPath());
+        if (false === $contents) {
+            continue;
+        }
+
+        foreach (array_keys($loaderTypes) as $type) {
+            if (preg_match("/^\s*type:\s*['\"]?".preg_quote($type, '/')."['\"]?\s*$/m", $contents)) {
+                $matchedFiles[] = $entry->getRealPath();
+                break;
+            }
+        }
+    }
+
+    return $matchedFiles;
 }

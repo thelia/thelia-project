@@ -1,0 +1,45 @@
+name: check-installer-parity
+
+# Verifies that bin/install stays byte-identical with the upstream copy in
+# thelia/thelia. This script is duplicated between the dev repo and the
+# skeleton because composer create-project must be able to invoke it before
+# Composer dependencies are installed — so we cannot ship it as a Composer
+# package. CI fails the PR whenever the two versions drift.
+#
+# bin/console and bin/test-prepare diverge on purpose:
+#   - bin/console: the skeleton pre-defines THELIA_ROOT via bootstrap.php
+#     before autoload, the dev repo uses the standard Symfony Runtime.
+#   - bin/test-prepare: the dev repo runs a richer setup (Propel cache purge,
+#     JWT keypair, module:post-activate-all) needed for the 642-test suite.
+#     The skeleton ships a minimal version sufficient for end-user smoke tests.
+
+on:
+  push:
+    branches: [main, twig]
+  pull_request:
+    branches: [main, twig]
+
+jobs:
+  check-bin-install-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download bin/install from thelia/thelia (twig branch)
+        run: |
+          curl -sSfL \
+            -o /tmp/upstream-install \
+            "https://raw.githubusercontent.com/thelia/thelia/twig/bin/install"
+
+      - name: Compare with skeleton bin/install
+        run: |
+          if ! diff -u bin/install /tmp/upstream-install; then
+            echo ""
+            echo "::error::bin/install diverges from thelia/thelia@twig:bin/install."
+            echo "Copy the upstream version into this repository:"
+            echo "  curl -sSfL -o bin/install https://raw.githubusercontent.com/thelia/thelia/twig/bin/install"
+            echo "  chmod +x bin/install"
+            exit 1
+          fi
+          echo "bin/install is in sync with thelia/thelia@twig."

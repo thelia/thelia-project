@@ -10,7 +10,7 @@ To contribute to Thelia itself, head over to [thelia/thelia](https://github.com/
 - MariaDB 10.11 / MySQL 8
 - Composer 2.7+
 - Web server (Nginx or Apache)
-- Node.js 20 + npm (only required when building front-office and back-office templates that ship a Webpack pipeline — see "Asset build" below)
+- Node.js 20 + npm (only required when building front-office and back-office templates that ship a Webpack pipeline; see the asset build step below)
 
 Required PHP extensions: `pdo_mysql`, `openssl`, `intl`, `gd`, `curl`, `dom`, `mbstring`, `zip`.
 
@@ -47,7 +47,7 @@ With DDEV, the database is exposed inside the web container as `db:3306` with us
 ddev exec bin/install \
   --database_host=db --database_port=3306 \
   --database_name=db --database_user=db --database_password=db \
-  --frontoffice_theme=flexy --backoffice_theme=default \
+  --frontoffice_theme=flexy --backoffice_theme=default-twig \
   --pdf_theme=default --email_theme=default \
   --with-demo --with-admin \
   --admin_login=thelia --admin_password=thelia \
@@ -57,38 +57,37 @@ ddev exec bin/install \
 
 Outside DDEV, export the matching env vars (or write them to `.env.local`) and run `php bin/install` with the same flags minus `--database_*`.
 
-`bin/install` creates the database if needed, applies the schema, registers and activates modules, installs the selected templates, optionally imports demo data and creates an admin user. Running it again is idempotent for the credentials part — only the data steps (demo, admin) recreate state.
+`bin/install` creates the database if needed, applies the schema, registers and activates modules, installs the selected templates, optionally imports demo data and creates an admin user. Running it again is idempotent for the credentials part: only the data steps (demo, admin) recreate state.
 
 ### 4. Build front-office and back-office assets
 
-The default Flexy front-office template and the optional Twig back-office template both ship a Webpack pipeline. Once `bin/install` finishes, build their static assets:
+The Flexy front-office template and the default-twig back-office template both ship a Webpack pipeline. Once `bin/install` finishes, build their static assets:
 
 ```bash
 # Front-office (Flexy)
 ddev exec bash -c "cd templates/frontOffice/flexy && npm install && npm run build"
 
-# Back-office (only if you installed default-twig — see below)
+# Back-office (default-twig)
 ddev exec bash -c "cd templates/backOffice/default-twig && npm install && npm run build"
 ```
-
-The legacy Smarty back-office (`templates/backOffice/default/`) does not require an npm build.
 
 Once built, open `https://my-shop.ddev.site` for the storefront and `https://my-shop.ddev.site/admin` for the admin (default credentials: `thelia` / `thelia` if you used the snippet above).
 
-## Choosing the back-office template
+## Back-office templates
 
-The skeleton installs the legacy Smarty back-office (`templates/backOffice/default/`) by default. A modern Twig + Symfony UX + Bootstrap 5 back-office is available as a separate package.
+The skeleton installs the Twig back-office (`templates/backOffice/default-twig/`) by default. It is built with Twig, Symfony UX and Bootstrap 5.
 
-### Switch to the new Twig back-office
+### Using the legacy Smarty back-office
+
+The Smarty back-office from Thelia 2 is still available for projects that need it while they migrate. Add it next to the Twig one:
 
 ```bash
-ddev exec composer require thelia/backoffice-default-twig-template
-ddev exec bin/console template:set backOffice default-twig
-ddev exec bash -c "cd templates/backOffice/default-twig && npm install && npm run build"
+ddev exec composer require thelia/backoffice-default-template
+ddev exec bin/console template:set backOffice default
 ddev exec bin/console cache:clear -e dev
 ```
 
-Both back-office templates can cohabit during the transition: the active one is controlled by `bin/console template:set backOffice <name>`. Third-party modules built against the Smarty back-office continue to work; refer to `templates/backOffice/default-twig/BREAKING_CHANGES.md` for the migration guide if you maintain a module.
+Both back-office templates can cohabit: the active one is controlled by `bin/console template:set backOffice <name>` (`default-twig` or `default`). Third-party modules built against the Smarty back-office keep working. If you maintain a module, the migration guide is in `templates/backOffice/default-twig/BREAKING_CHANGES.md`.
 
 ## Documentation
 

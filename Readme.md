@@ -19,11 +19,11 @@ Required PHP extensions: `pdo_mysql`, `openssl`, `intl`, `gd`, `curl`, `dom`, `m
 ### 1. Create a new project
 
 ```bash
-composer create-project thelia/thelia-project:dev-twig my-shop
+composer create-project thelia/thelia-project my-shop
 cd my-shop
 ```
 
-This pulls the latest dev sources for the upcoming Thelia 3 release. Stable releases will be available via `composer create-project thelia/thelia-project my-shop` once the first major version is tagged on Packagist.
+Thelia 3.0.0-beta1 is a pre-release. Composer only selects it when the beta stability is allowed, so add `--stability=beta` to the command above until the first stable version is tagged on Packagist.
 
 ### 2. Start the local environment
 

@@ -3,10 +3,10 @@
   "description": "Thelia is an ecommerce CMS.",
   "license": "GPL-3.0-or-later",
   "require": {
-    "thelia/thelia-skeleton": "dev-twig",
+    "thelia/thelia-skeleton": "^3.0.0-beta1",
     "symfony/flex": "^2.4"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "beta",
   "prefer-stable": true,
   "scripts": {
     "thelia-install": [

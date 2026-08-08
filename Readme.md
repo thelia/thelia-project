@@ -98,4 +98,4 @@ Both back-office templates can cohabit: the active one is controlled by `bin/con
 
 ## License
 
-LGPL-3.0-or-later. See `LICENSE.txt`.
+GPL-3.0-or-later. See `LICENSE.txt`.

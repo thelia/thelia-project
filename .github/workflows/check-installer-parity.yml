@@ -26,20 +26,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download bin/install from thelia/thelia (twig branch)
+      - name: Download bin/install from thelia/thelia (main branch)
         run: |
           curl -sSfL \
             -o /tmp/upstream-install \
-            "https://raw.githubusercontent.com/thelia/thelia/twig/bin/install"
+            "https://raw.githubusercontent.com/thelia/thelia/main/bin/install"
 
       - name: Compare with skeleton bin/install
         run: |
           if ! diff -u bin/install /tmp/upstream-install; then
             echo ""
-            echo "::error::bin/install diverges from thelia/thelia@twig:bin/install."
+            echo "::error::bin/install diverges from thelia/thelia@main:bin/install."
             echo "Copy the upstream version into this repository:"
-            echo "  curl -sSfL -o bin/install https://raw.githubusercontent.com/thelia/thelia/twig/bin/install"
+            echo "  curl -sSfL -o bin/install https://raw.githubusercontent.com/thelia/thelia/main/bin/install"
             echo "  chmod +x bin/install"
             exit 1
           fi
-          echo "bin/install is in sync with thelia/thelia@twig."
+          echo "bin/install is in sync with thelia/thelia@main."

@@ -92,9 +92,11 @@ if (!preg_match('/^[a-zA-Z0-9_\-]+$/', $dbName)) {
 
 // ── Phase 1: Check permissions ───────────────────────────────────────
 
-// Ensure required directories exist (may be missing after a fresh clone)
+// Ensure required directories exist (may be missing after a fresh clone).
+// var/translations is registered as an AssetMapper path by symfony/ux-translator,
+// which never creates it at boot: without it, the first page answers 500.
 $fs = new Symfony\Component\Filesystem\Filesystem();
-foreach (['var', 'public', 'local/media', 'local/config'] as $dir) {
+foreach (['var', 'public', 'local/media', 'local/config', 'var/translations'] as $dir) {
     $fs->mkdir(THELIA_ROOT.$dir);
 }
 
@@ -317,12 +319,18 @@ if (isset($options['with-admin'])) {
     ];
 }
 
-// The front-office assets a theme needs at runtime. A theme built on AssetMapper reads
-// its JavaScript from `assets/vendor`, and one built on Tailwind reads a stylesheet that
-// only exists once built: without either, the shop answers 500 on its very first page.
-// Both commands come from packages a theme may or may not require, so they are skipped
-// where nothing provides them. They run last: both read the theme that template:set chose.
-foreach (['importmap:install' => 'Installing front-office asset dependencies', 'tailwind:build' => 'Building the front-office stylesheet'] as $command => $label) {
+// The assets a theme needs at runtime. A theme built on AssetMapper reads its
+// JavaScript from `assets/vendor`, one built on Tailwind reads a stylesheet that only
+// exists once built, and one built on Sass (the Twig back-office) reads a stylesheet
+// compiled by sass:build: without them, the first page of the shop or of the admin
+// answers 500. Each command comes from a package a theme may or may not require, so it
+// is skipped where nothing provides it. They run last: all read the themes that
+// template:set chose.
+foreach ([
+    'importmap:install' => 'Installing front-office asset dependencies',
+    'tailwind:build' => 'Building the front-office stylesheet',
+    'sass:build' => 'Building the Sass stylesheets',
+] as $command => $label) {
     $commands[] = [
         'label' => $label,
         'input' => ['command' => $command],

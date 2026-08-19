@@ -10,7 +10,6 @@ To contribute to Thelia itself, head over to [thelia/thelia](https://github.com/
 - MariaDB 10.11 / MySQL 8
 - Composer 2.7+
 - Web server (Nginx or Apache)
-- Node.js 20 + npm (only required when building front-office and back-office templates that ship a Webpack pipeline; see the asset build step below)
 
 Required PHP extensions: `pdo_mysql`, `openssl`, `intl`, `gd`, `curl`, `dom`, `mbstring`, `zip`.
 
@@ -27,10 +26,10 @@ Thelia 3.0.0-beta1 is a pre-release. Composer only selects it when the beta stab
 
 ### 2. Start the local environment
 
-The repository does not ship a Docker setup; the recommended path is [DDEV](https://ddev.com), which gives you PHP 8.3, MariaDB 10.11 and Node.js 20 with a single command.
+The repository does not ship a Docker setup; the recommended path is [DDEV](https://ddev.com), which gives you PHP 8.3 and MariaDB 10.11 with a single command.
 
 ```bash
-ddev config --project-type=php --php-version=8.3 --database=mariadb:10.11 --docroot=public --nodejs-version=20
+ddev config --project-type=php --php-version=8.3 --database=mariadb:10.11 --docroot=public
 ddev start
 ddev exec composer install
 ```
@@ -59,19 +58,17 @@ Outside DDEV, export the matching env vars (or write them to `.env.local`) and r
 
 `bin/install` creates the database if needed, applies the schema, registers and activates modules, installs the selected templates, optionally imports demo data and creates an admin user. Running it again is idempotent for the credentials part: only the data steps (demo, admin) recreate state.
 
-### 4. Build front-office and back-office assets
+### 4. Open the shop
 
-The Flexy front-office template and the default-twig back-office template both ship a Webpack pipeline. Once `bin/install` finishes, build their static assets:
+`bin/install` also builds the theme assets: it runs `importmap:install` and `tailwind:build` for the Flexy front office, and `sass:build` for the default-twig back office. There is no npm step anywhere. To rebuild them later, run the same commands from the application root:
 
 ```bash
-# Front-office (Flexy)
-ddev exec bash -c "cd templates/frontOffice/flexy && npm install && npm run build"
-
-# Back-office (default-twig)
-ddev exec bash -c "cd templates/backOffice/default-twig && npm install && npm run build"
+ddev exec php bin/console importmap:install   # front-office JavaScript dependencies
+ddev exec php bin/console tailwind:build      # front-office stylesheet (Flexy)
+ddev exec php bin/console sass:build          # back-office stylesheet (default-twig)
 ```
 
-Once built, open `https://my-shop.ddev.site` for the storefront and `https://my-shop.ddev.site/admin` for the admin (default credentials: `thelia` / `thelia` if you used the snippet above).
+Open `https://my-shop.ddev.site` for the storefront and `https://my-shop.ddev.site/admin` for the admin (default credentials: `thelia` / `thelia` if you used the snippet above).
 
 ## Back-office templates
 

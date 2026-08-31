@@ -24,7 +24,7 @@ cd my-shop
 
 ### 2. Start the local environment
 
-The repository does not ship a Docker setup; the recommended path is [DDEV](https://ddev.com), which gives you PHP 8.3 and MariaDB 10.11 with a single command.
+The repository ships no ready-to-run container stack; the recommended path is [DDEV](https://ddev.com), which gives you PHP 8.3 and MariaDB 10.11 with a single command.
 
 ```bash
 ddev config --project-type=php --php-version=8.3 --database=mariadb:10.11 --docroot=public
@@ -77,7 +77,7 @@ The skeleton installs the Twig back-office (`templates/backOffice/default-twig/`
 The Smarty back-office from Thelia 2 is still available for projects that need it while they migrate. Add it next to the Twig one:
 
 ```bash
-ddev exec composer require thelia/backoffice-default-template
+ddev exec composer require 'thelia/backoffice-default-template:^1.0'
 ddev exec bin/console template:set backOffice default
 ddev exec bin/console cache:clear -e dev
 ```

@@ -22,8 +22,6 @@ composer create-project thelia/thelia-project my-shop
 cd my-shop
 ```
 
-Thelia 3.0.0-beta1 is a pre-release. Composer only selects it when the beta stability is allowed, so add `--stability=beta` to the command above until the first stable version is tagged on Packagist.
-
 ### 2. Start the local environment
 
 The repository does not ship a Docker setup; the recommended path is [DDEV](https://ddev.com), which gives you PHP 8.3 and MariaDB 10.11 with a single command.

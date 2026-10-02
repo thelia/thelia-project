@@ -7,8 +7,8 @@ declare(strict_types=1);
  * Installs Thelia without booting the Symfony kernel.
  *
  * Phases 1-6 run standalone (PDO + filesystem only).
- * Phase 7+ delegates to bin/console in subprocesses — by that point the
- * database is populated, modules are registered, and the kernel can boot.
+ * Phase 7+ boots a fresh kernel per command, in this process: by that point
+ * the database is populated, modules are registered, and the kernel can boot.
  *
  * Usage:
  *   php bin/install --help                                                                          (options, changes nothing)
@@ -134,6 +134,18 @@ if (!$check->exec()) {
 
 echo "  OK\n";
 
+// ── Phase 1b: Check module descriptors ───────────────────────────────
+
+// A descriptor the install refuses stops it here, before the database, the schema and
+// the environment file exist: phase 6 would only meet it once they are.
+echo "Checking module descriptors...\n";
+try {
+    (new Thelia\Install\Standalone\ModuleDescriptorReader())->read();
+} catch (\Thelia\Module\Exception\InvalidModuleDescriptorException $e) {
+    fwrite(STDERR, "ERROR: {$e->getMessage()}\n");
+    exit(1);
+}
+
 // ── Phase 2-4: Database, schema, secret ──────────────────────────────
 
 try {
@@ -197,7 +209,12 @@ foreach (['DATABASE_HOST' => $host, 'DATABASE_PORT' => $port, 'DATABASE_NAME' =>
 // ── Phase 6: Register modules ────────────────────────────────────────
 
 echo "Registering modules...\n";
-$count = $setup->registerAndApplyModules();
+try {
+    $count = $setup->registerAndApplyModules();
+} catch (\Thelia\Module\Exception\InvalidModuleDescriptorException $e) {
+    fwrite(STDERR, "ERROR: {$e->getMessage()}\n");
+    exit(1);
+}
 echo "  {$count} module(s) registered\n";
 
 foreach ($setup->getWarnings() as $warning) {
@@ -283,9 +300,19 @@ foreach ($themes as $type => $name) {
 
 // Phases 7-9 need the Symfony kernel. Each template:set triggers
 // a cache:clear, so we must boot a fresh kernel per command
-// (same approach as Install.php::applyTemplatesInSameCommandProcess).
+// (same approach as Thelia\Install\TemplateApplier::apply()).
 
 $commands = [];
+
+// The application cache pools outlive the database: they are kept outside var/cache/<env>
+// (or on a cache server, with THELIA_CACHE_DSN), so neither cache:clear nor template:set
+// empties them. Left as they are, they keep answering for the database that was just
+// replaced: a module's cached menus, cached API resources, refresh tokens of accounts that
+// no longer exist. They are emptied first, before any other command can read them.
+$commands[] = [
+    'label' => 'Clearing the application cache pools',
+    'input' => ['command' => 'cache:pool:clear', '--all' => true],
+];
 
 // The API login endpoints sign their tokens with the LexikJWTAuthenticationBundle
 // key pair. composer.json only generates it on post-install-cmd, so an install
@@ -323,10 +350,11 @@ foreach ($themes as $type => $name) {
     }
 }
 
-// Run postActivation() for all modules — DatabaseSetup inserts modules
-// with activate=1 but never calls postActivation(), which means modules
-// that seed data in postActivation() (e.g. TheliaBlocks shortcodes)
-// would be missing their initial data.
+// Run postActivation() for all active modules — DatabaseSetup registers
+// modules but never calls postActivation(), which means modules that seed
+// data in postActivation() (e.g. TheliaBlocks shortcodes) would be missing
+// their initial data. A module shipped inactive runs it when the merchant
+// activates it.
 $commands[] = [
     'label' => 'Running module post-activation hooks',
     'input' => ['command' => 'module:post-activate-all'],
@@ -409,7 +437,6 @@ foreach ($commands as $cmd) {
     $kernel->boot();
 
     $app = new Symfony\Bundle\FrameworkBundle\Console\Application($kernel);
-    $app->setAutoExit(false);
 
     // An optional command belongs to a package the active theme may not require.
     if (($cmd['optional'] ?? false) && !$app->has($cmd['input']['command'])) {
@@ -421,14 +448,13 @@ foreach ($commands as $cmd) {
     echo "  {$cmd['label']}\n";
 
     try {
-        $exitCode = $app->run(new Symfony\Component\Console\Input\ArrayInput($cmd['input']), $output);
+        // A console.terminate listener dying on a container file the command deleted does
+        // not decide the result: the exit code the command returned does.
+        $exitCode = (new Thelia\Install\CommandExitCodeRecorder())->run($app, new Symfony\Component\Console\Input\ArrayInput($cmd['input']), $output, $kernel->getContainer()->get('event_dispatcher'));
     } catch (\Error $e) {
-        // Cache file deleted mid-process — command had already succeeded
-        $exitCode = str_contains($e->getMessage(), 'Failed opening required') ? 0 : 1;
-        if (0 !== $exitCode) {
-            fwrite(STDERR, "  ERROR: {$cmd['label']} — {$e->getMessage()}\n");
-            ++$errors;
-        }
+        // Counted once, below, with the other failures.
+        $exitCode = 1;
+        fwrite(STDERR, "  ERROR: {$cmd['label']} — ".Thelia\Tools\TerminalText::withoutControlCharacters($e->getMessage())."\n");
     }
 
     if (0 !== $exitCode) {

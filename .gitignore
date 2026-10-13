@@ -19,6 +19,8 @@
 /local/setup
 /local/media
 /local/session
+/local/backup/*
+!/local/backup/.gitkeep
 !local/media/images/store/favicon.png
 !local/media/images/store/thelia.svg
 !local/media/images/store/banner.png

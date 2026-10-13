@@ -2,19 +2,18 @@
 /public/assets
 /public/cache
 /public/dist
-/public/tinymce
 /var
 .idea
 .env
 
-# Thelia default templates
-/templates/frontOffice/default
-/templates/frontOffice/modern
-/templates/backOffice/default
+# Themes installed by Composer
+/templates/frontOffice/flexy
+/templates/backOffice/default-twig
 /templates/email/default
 /templates/pdf/default
 
 # Thelia config
+/config/jwt/*.pem
 /local/config
 /local/setup
 /local/media
